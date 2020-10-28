@@ -350,8 +350,20 @@ export default {
               okTitle: this.$t('global.action.delete')
             }
           )
-          .then(deleteConfirmed => {
-            if (deleteConfirmed) this.deleteLogs(uris);
+          .then((deleteConfirmed) => {
+            if (deleteConfirmed) {
+              if (this.selectedRows.length === this.allLogs.length) {
+                this.$store
+                  .dispatch(
+                    'eventLog/deleteAllEventLogs',
+                    this.selectedRows.length
+                  )
+                  .then((message) => this.successToast(message))
+                  .catch(({ message }) => this.errorToast(message));
+              } else {
+                this.deleteLogs(uris);
+              }
+            }
           });
       }
     },
