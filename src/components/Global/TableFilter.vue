@@ -106,8 +106,13 @@ export default {
       this.emitChange();
     },
     emitChange() {
+<<<<<<< HEAD
       this.$emit('filterChange', {
         activeFilters: this.activeFilters
+=======
+      this.$emit('filter-change', {
+        activeFilters: this.activeFilters,
+>>>>>>> Resolve custom-event-name-casing lint warnings
       });
     },
     onChange(

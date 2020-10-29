@@ -177,8 +177,13 @@ export default {
   },
   mounted() {
     this.$root.$on(
+<<<<<<< HEAD
       'change:isNavigationOpen',
       isNavigationOpen => (this.isNavigationOpen = isNavigationOpen)
+=======
+      'change-is-navigation-open',
+      (isNavigationOpen) => (this.isNavigationOpen = isNavigationOpen)
+>>>>>>> Resolve custom-event-name-casing lint warnings
     );
   },
   methods: {
@@ -195,9 +200,15 @@ export default {
       this.$store.dispatch('authentication/logout');
     },
     toggleNavigation() {
+<<<<<<< HEAD
       this.$root.$emit('toggle:navigation');
     }
   }
+=======
+      this.$root.$emit('toggle-navigation');
+    },
+  },
+>>>>>>> Resolve custom-event-name-casing lint warnings
 };
 </script>
 
