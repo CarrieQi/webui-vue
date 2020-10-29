@@ -1,5 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+
+//Do not change store or routes import.
+//Exact match alias set to support
+//dotenv customizations.
 import store from '../store';
 import routes from './routes';
 

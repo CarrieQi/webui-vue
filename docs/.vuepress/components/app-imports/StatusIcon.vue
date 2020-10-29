@@ -34,28 +34,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "src/assets/styles/bmc/helpers";
+@import "src/assets/styles/bootstrap/helpers";
 .status-icon {
   vertical-align: text-bottom;
-
   &.info {
-    color: theme-color('info');
+    fill: theme-color('info');
   }
   &.success {
-    color: theme-color('success');
+    fill: theme-color('success');
   }
   &.danger {
-    color: theme-color('danger');
+    fill: theme-color('danger');
   }
   &.secondary {
-    color: gray('600');
-    transform: rotate(-45deg);
+    fill: gray('600');
+
+    svg {
+      transform: rotate(-45deg);
+    }
   }
   &.warning {
-    color: theme-color('warning');
-  }
-
-  svg {
-    fill: currentColor;
+    fill: theme-color('warning');
   }
 }
 </style>
