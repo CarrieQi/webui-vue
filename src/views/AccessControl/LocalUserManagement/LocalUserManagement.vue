@@ -199,8 +199,8 @@ export default {
           status: user.Locked
             ? 'Locked'
             : user.Enabled
-            ? 'Enabled'
-            : 'Disabled',
+            ? this.$t('global.status.enabled')
+            : this.$t('global.status.disabled'),
           actions: [
             {
               value: 'edit',
@@ -247,7 +247,8 @@ export default {
           }),
           {
             title: this.$tc('pageLocalUserManagement.deleteUser'),
-            okTitle: this.$tc('pageLocalUserManagement.deleteUser')
+            okTitle: this.$tc('pageLocalUserManagement.deleteUser'),
+            cancelTitle: this.$t('global.action.cancel')
           }
         )
         .then(deleteConfirmed => {

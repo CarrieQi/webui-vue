@@ -30,7 +30,7 @@
             >
               <b-form-text id="password-help-block">
                 {{
-                  $t('pageLocalUserManagement.modal.passwordMustBeBetween', {
+                  $t('pageProfileSettings.newPassLabelTextInfo', {
                     min: passwordRequirements.minLength,
                     max: passwordRequirements.maxLength
                   })

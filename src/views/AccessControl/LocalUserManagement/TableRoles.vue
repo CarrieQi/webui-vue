@@ -116,7 +116,10 @@ export default {
         }
       ],
       fields: [
-        { key: 'description', label: 'Privilege' },
+        {
+          key: 'description',
+          label: this.$t('pageLocalUserManagement.table.privilege')
+        },
         { key: 'administrator', label: 'Administrator', class: 'text-center' },
         { key: 'operator', label: 'Operator', class: 'text-center' },
         { key: 'readonly', label: 'ReadOnly', class: 'text-center' },

@@ -78,8 +78,8 @@ export default {
   data() {
     return {
       userInfo: {
-        username: null,
-        password: null
+        username: 'root',
+        password: '0penBmc'
       },
       disableSubmitButton: false,
       languages: [
@@ -90,6 +90,10 @@ export default {
         {
           value: 'es',
           text: 'Español'
+        },
+        {
+          value: 'cn',
+          text: '中文'
         }
       ]
     };
