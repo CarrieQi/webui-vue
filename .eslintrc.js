@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['plugin:vue/recommended', '@vue/prettier'],
+  extends: ['plugin:vue/recommended', 'eslint:recommended', '@vue/prettier'],
   rules: {
     'no-console': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -13,7 +13,8 @@ module.exports = {
         singleQuote: true
       }
     ],
-    'vue/component-name-in-template-casing': ['error', 'kebab-case']
+    'vue/component-name-in-template-casing': ['error', 'kebab-case'],
+    'vue/custom-event-name-casing': ['warn']
   },
   parserOptions: {
     parser: 'babel-eslint'

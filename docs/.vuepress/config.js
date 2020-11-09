@@ -48,7 +48,14 @@ module.exports = {
             "/guide/components/",
             "/guide/components/alert",
             "/guide/components/button",
+            "/guide/components/table",
             "/guide/components/toast",
+          ]
+          },
+          {
+            title: "Quick Start",
+            children: [
+            "/guide/quickstart/page-anatomy"
           ]
           }
         ],

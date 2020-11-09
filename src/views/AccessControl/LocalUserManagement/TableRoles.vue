@@ -1,21 +1,21 @@
 <template>
   <b-table stacked="sm" hover small :items="items" :fields="fields">
-    <template v-slot:cell(administrator)="data">
+    <template #cell(administrator)="data">
       <template v-if="data.value">
         <checkmark20 />
       </template>
     </template>
-    <template v-slot:cell(operator)="data">
+    <template #cell(operator)="data">
       <template v-if="data.value">
         <checkmark20 />
       </template>
     </template>
-    <template v-slot:cell(readonly)="data">
+    <template #cell(readonly)="data">
       <template v-if="data.value">
         <checkmark20 />
       </template>
     </template>
-    <template v-slot:cell(noaccess)="data">
+    <template #cell(noaccess)="data">
       <template v-if="data.value">
         <checkmark20 />
       </template>
@@ -56,8 +56,8 @@ export default {
             'pageLocalUserManagement.tableRoles.updatePasswordForCurrentUserAccount'
           ),
           administrator: true,
-          operator: false, // TODO Set to true when profile page added
-          readonly: false, // TODO Set to true when profile page added
+          operator: true,
+          readonly: true,
           noaccess: false
         },
         {
