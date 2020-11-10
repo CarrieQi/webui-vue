@@ -206,7 +206,7 @@ const FirmwareStore = {
           throw new Error(i18n.t('pageFirmware.toast.errorUploadAndReboot'));
         });
     },
-    async swtichBmcFirmware({ state }) {
+    async switchBmcFirmware({ state }) {
       const backupLoaction = state.bmcFirmware.backupLoaction;
       const data = {
         Links: {

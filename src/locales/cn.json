@@ -3,20 +3,20 @@
     "action": {
       "add": "增加",
       "cancel": "取消",
-      "clearAll": "Clear all",
-      "confirm": "Confirm",
-      "copy": "Copy",
+      "clearAll": "清除所有",
+      "confirm": "确认",
+      "copy": "复制",
       "delete": "删除",
       "disable": "禁用",
-      "download": "Download",
-      "edit": "Edit",
+      "download": "下载",
+      "edit": "编辑",
       "enable": "启用",
-      "export": "Export",
-      "filter": "Filter",
+      "export": "导出",
+      "filter": "筛选",
       "replace": "更新",
       "save": "保存",
       "saveSettings": "保存设置",
-      "selected": "Selected"
+      "selected": "已选择"
     },
     "ariaLabel": {
       "clearSearch": "Clear search input",
@@ -32,7 +32,7 @@
     "fileUpload": {
       "browseText": "浏览",
       "dropPlaceholder": "Drop files here",
-      "placeholder": "No file selected"
+      "placeholder": "未选中任何文件"
     },
     "form": {
       "dateMustBeAfter": "Date must be after %{date}",
@@ -72,16 +72,24 @@
       "selectedItems":"%{filterCount} of %{count} items",
       "toDate": "To date",
       "viewAll": "View all"
+    },
+    "toast": {
+      "unAuthTitle": "Unauthorized",
+      "unAuthDescription": "The attempted action is not accessible from the logged in account. Contact your system administrator to check your privilege role."
     }
   },
   "appHeader": {
     "applicationHeader": "Application header",
     "health": "Health",
-    "logOut": "Log out",
+    "logOut": "注销",
     "power": "Power",
     "profileSettings": "@:appPageTitle.profileSettings",
     "refresh": "Refresh",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "titleHideNavigation": "Hide navigation",
+    "titleShowNavigation": "Show navigation",
+    "titleProfile": "Show profile menu",
+    "titleRefresh": "Refresh application data"
   },
   "appNavigation": {
     "accessControl": "访问控制",
@@ -110,16 +118,16 @@
   },
   "appPageTitle": {
     "changePassword": "Change password",
-    "dateTimeSettings": "Date and time settings",
+    "dateTimeSettings": "日期时间设置",
     "eventLogs": "Event logs",
-    "firmware": "Firmware",
+    "firmware": "固件刷新",
     "hardwareStatus": "Hardware status",
     "kvm": "KVM",
     "ldap": "LDAP",
     "localUserManagement": "本地用户管理",
     "login": "Login",
     "managePowerUsage": "Manage power usage",
-    "networkSettings": "Network settings",
+    "networkSettings": "网络设置",
     "overview": "Overview",
     "pageNotFound": "Page not found",
     "profileSettings": "个人信息设置",
@@ -128,7 +136,7 @@
     "serialOverLan": "Serial over LAN (SOL) console",
     "serverLed": "Server LED",
     "serverPowerOperations": "Server power operations",
-    "snmpSettings": "SNMP settings",
+    "snmpSettings": "SNMP 设置",
     "sslCertificates": "SSL 证书",
     "unauthorized": "Unauthorized",
     "virtualMedia": "Virtual media"
@@ -136,7 +144,7 @@
   "pageChangePassword": {
     "changePassword": "修改密码",
     "changePasswordAlertMessage": "密码过期，请修改。",
-    "changePasswordError": "There was an error changing the password.",
+    "changePasswordError": "更改密码时出现错误。",
     "confirmNewPassword": "确认新密码",
     "goBack": "返回",
     "newPassword": "新密码",
@@ -186,67 +194,80 @@
     }
   },
   "pageFirmware": {
-    "backup": "Backup:",
-    "backupImage": "Backup image",
-    "bmcStatus": "BMC status",
-    "changeAndRebootBmc": "Change image and reboot BMC",
+    "backup": "备份:",
+    "backupImage": "备份镜像",
+    "bmcStatus": "BMC 状态",
+    "changeAndRebootBmc": "修改镜像并重启BMC",
     "changeToBackupImage": "Change to backup image",
-    "current": "Current:",
-    "firmwareOnSystem": "Firmware on system",
-    "hostStatus": "Host status",
-    "pageDescription": "Update firmware by uploading a system image file from your workstation or TFTP server",
-    "running": "Running",
-    "state": "State",
-    "updateCode": "Update code",
+    "current": "当前版本:",
+    "firmwareOnBmc": "BMC固件",
+    "firmwareOnHost": "主机固件",
+    "firmwareOnSystem": "系统固件",
+    "hostStatus": "主机状态",
+    "makeCurrentVersion": "生成当前版本",
+    "pageDescription": "通过本地计算机或TFTP服务上传镜像来刷新固件",
+    "pageDescriptionSingleImage": "通过成本地计算机或TFTP服务上传镜像来刷新固件",
+    "running": "运行中",
+    "state": "状态",
+    "updateCode": "更新固件",
     "alert": {
-      "operationInProgress": "Server power operation in progress.",
-      "serverShutdownRequiredBeforeUpdate": "Server shutdown required before update",
-      "serverShutdownRequiredInfo": "Shutdown will be orderly - OS will shutdown before the server shuts down.",
-      "shutDownServer": "Shut down server",
-      "updateProcess": "Update process",
-      "updateProcessInfo": "The new image will be uploaded and activated. After that, the BMC will reboot automatically to run from the new image."
+      "operationInProgress": "正在进行服务器电源操作。",
+      "serverShutdownRequiredBeforeUpdate": "更新前必须关闭服务器",
+      "serverShutdownRequiredInfo": "关闭将是有序的- OS将关闭之前，服务器关闭。",
+      "shutDownServer": "关闭服务器",
+      "updateProcess": "更新过程",
+      "updateProcessInfo": "新镜像上传成功并激活后，BMC或者主机会使用新的镜像并自动重启",
+      "updateProcessInfoSingleImage": "新镜像将被上传并激活。之后，BMC将自动重新启动以从新镜像运行。"
     },
     "form": {
-      "imageFile": "Image file",
-      "imageFileName": "Image file name",
-      "onlyTarFilesAccepted": "Only .tar files accepted",
-      "tftpServer": "TFTP server",
-      "tftpServerAddress": "TFTP server address",
-      "tftpServerAddressHelper": "IP address or FQDN",
-      "uploadAndRebootBmc": "Upload and reboot BMC",
-      "uploadLocation": "Upload location",
-      "workstation": "Workstation"
+      "imageFile": "镜像文件",
+      "imageFileName": "镜像名称",
+      "onlyTarFilesAccepted": "只能上传.tar为后缀的文件",
+      "tftpServer": "TFTP服务器",
+      "tftpServerAddress": "TFTP服务器地址",
+      "tftpServerAddressHelper": "IP地址或者FQDN",
+      "uploadAndRebootBmc": "上传并重启BMC",
+      "uploadAndRebootBmcOrHost": "上传并重启BMC或主机",
+      "uploadLocation": "上传地点",
+      "workstation": "本地"
     },
     "modal": {
-      "connectionToBmcWillBeLost": "Connection to BMC will be lost",
-      "serverShutdownMessage": "There will be a server outage until the server is powered back on. Are you sure you want to shut down?",
-      "serverShutdownWillCauseOutage": "Server shutdown will cause outage",
-      "shutDownServer": "Shut down server",
+      "connectionToBmcWillBeLost": "到BMC的连接将要断开",
+      "serverShutdownMessage": "在服务器重新通电之前，服务器将会关机。你确定要关机吗?",
+      "serverShutdownWillCauseOutage": "服务器关闭将导致关机",
+      "shutDownServer": "关闭服务器",
       "rebootFromBackup": {
-        "message1": "A BMC reboot is required before the system can run the backup image %{backup}. The reboot will cause a disconnection, and may require logging in again.",
-        "message2": "The current firmware image %{current} will be moved to backup. During the reboot, server cannot be powered back on.",
-        "message3": "Are you sure you want to reboot the BMC from backup image %{backup}?",
-        "primaryAction": "Reboot BMC from backup image",
+        "message1": "在系统能够运行备份镜像%{backup}之前，需要重新启动BMC。重新启动将导致断开连接，可能需要重新登录。",
+        "message2": "当前固件映像%{current}将移动到备份。在重新启动期间，服务器无法重新启动。",
+        "message3": "您确定要通过备份镜像%{backup}重启BMC？",
+        "primaryAction": "从备份镜像重启BMC",
         "title": "@:pageFirmware.modal.connectionToBmcWillBeLost"
       },
-      "uploadAndReboot": {
-        "message1": "A BMC reboot is required before the system can run the new firmware image. The reboot will cause a disconnection, and may require logging in again.",
-        "message2": "During the reboot, the server cannot be powered back on. The backup image will be permanently deleted.",
-        "message3": "Are you sure you want to upload the new firmware image and reboot the BMC?",
-        "primaryAction": "Upload and reboot BMC",
+      "uploadAndRebootSingleImage": {
+        "message1": "在系统能够运行新镜像前需要重启BMC或者主机。重启会导致BMC断开连接，可能需要重新登录",
+        "message2": "在重新启动期间，服务器无法重新启动。备份映像将被永久删除。",
+        "message3": "您确定要上传新镜像并重启BMC？",
+        "primaryAction": "上传并重启BMC",
         "title": "@:pageFirmware.modal.connectionToBmcWillBeLost"
+      },
+      "uploadAndRebootBmcOrHost": {
+        "message1": "在系统可以运行新的固件映像之前，需要进行BMC或主机重新引导。重新启动将导致断开连接，可能需要再次登录。",
+        "message2": "备份镜像将被永久删除。",
+        "message3": "您确定要上传新的固件映像并重新启动BMC或主机吗?",
+        "primaryAction": "上传并重启BMC或主机",
+        "title": "到BMC或主机的连接将要断开"
       }
     },
     "toast": {
-      "errorRebootFromBackup": "Error rebooting from backup image.",
-      "errorUploadAndReboot": "Error uploading image.",
-      "infoRefreshApplicationMessage": "Refresh the application to confirm the code update has completed and was successful.",
-      "infoRefreshApplicationTitle": "Verify code update",
-      "infoUploadStartTimeMessage": "Start time: %{startTime}",
-      "infoUploadStartTimeTitle": "Upload started",
-      "successRebootFromBackup": "Successfully started reboot from backup image.",
-      "successUploadMessage": "The upload was successful. During code update, the BMC will be not be responsive. Wait for the code update notification before making any changes.",
-      "successUploadTitle": "Code update started"
+      "errorRebootFromBackup": "从备份镜像重新启动时出错。",
+      "errorUploadAndReboot": "上传镜像时出错。",
+      "infoRefreshApplicationMessage": "刷新应用程序以确认代码更新已经完成并成功。",
+      "infoRefreshApplicationTitle": "验证代码更新",
+      "infoUploadStartTimeMessage": "开始时间：%{startTime}",
+      "infoUploadStartTimeTitle": "上传开始",
+      "successRebootFromBackup": "从备份镜像成功启动重新启动。",
+      "successUploadMessage": "上传成功。在代码更新期间，BMC将不会响应。在进行任何更改之前，等待代码更新通知。",
+      "successUploadTitle": "代码更新开始"
     }
   },
   "pageHardwareStatus": {
@@ -299,54 +320,54 @@
     "disconnected": "Disconnected"
   },
   "pageLdap": {
-    "pageDescription": "LDAP 和 用户群组设置。",
-    "roleGroups": "用户群组",
+    "pageDescription": "LDAP 和 用户组设置。",
+    "roleGroups": "用户组",
     "settings": "LDAP 设置",
-    "addRoleGroup": "添加用户群组",
+    "addRoleGroup": "添加用户组",
     "ariaLabel": {
-      "ldapSettings": "LDAP settings"
+      "ldapSettings": "LDAP 设置"
     },
     "form": {
       "baseDn": "Base DN",
       "bindDn": "Bind DN",
       "bindPassword": "Bind密码",
       "caCertificateValidUntil": "CA证书有效期至",
-      "groupIdAttribute": "Group ID attribute",
+      "groupIdAttribute": "Group ID 属性",
       "ldapAuthentication": "LDAP 身份认证",
       "ldapCertificateValidUntil": "LDAP证书有效期至",
       "manageSslCertificates": "设置SSL证书",
       "secureLdapHelper": "开启安全LDAP需要有AD证书和LDAP证书",
       "secureLdapUsingSsl": "使用SSL确保LDAP安全性",
       "serverUri": "服务器地址",
-      "serverUriTooltip": "Enabling Secure LDAP changes URI scheme to ldaps",
+      "serverUriTooltip": "启用安全LDAP将URI方案更改为LDAP",
       "serviceType": "服务类型",
-      "userIdAttribute": "User ID attribute"
+      "userIdAttribute": "User ID 属性"
     },
     "modal": {
-      "addNewRoleGroup": "添加用户群组",
-      "deleteRoleGroupBatchConfirmMessage": "确定删除这%{count}个用户群组? 删除任务不能取消。",
+      "addNewRoleGroup": "添加用户组",
+      "deleteRoleGroupBatchConfirmMessage": "确定删除这%{count}个用户组? 删除任务不能取消。",
       "deleteRoleGroupConfirmMessage": "确定删除用户组'%{groupName}'?删除任务不能取消。",
-      "deleteRoleGroup": "删除用户群组",
-      "editRoleGroup": "编辑用户群组",
+      "deleteRoleGroup": "删除用户组",
+      "editRoleGroup": "编辑用户组",
       "groupName": "群组名称",
       "groupPrivilege": "群组权限"
     },
     "tableRoleGroups": {
-      "alertContent": "LDAP认证必须开启才能修改用户群组。",
+      "alertContent": "LDAP认证必须开启才能修改用户组。",
       "groupName": "群组名称",
       "groupPrivilege": "群组权限"
     },
     "toast": {
-      "errorAddRoleGroup": "Error adding role group.",
-      "errorDeleteRoleGroup": "Error deleting role group. | Error deleting role groups.",
-      "errorSaveActiveDirectorySettings": "Error saving Active Directory settings.",
-      "errorSaveLdapSettings": "Error saving Open LDAP settings.",
-      "errorSaveRoleGroup": "Error saving role group.",
-      "successAddRoleGroup": "Successfully added role group '%{groupName}'.",
-      "successDeleteRoleGroup": "Successfully deleted role group. | Successfully deleted role groups.",
-      "successSaveActiveDirectorySettings": "Successfully saved Active Directory settings.",
-      "successSaveLdapSettings": "Successfully saved Open LDAP settings.",
-      "successSaveRoleGroup": "Successfully saved role group '%{groupName}'."
+      "errorAddRoleGroup": "添加用户组时出错。",
+      "errorDeleteRoleGroup": "删除用户组出错。",
+      "errorSaveActiveDirectorySettings": "保存活动目录设置时出错。",
+      "errorSaveLdapSettings": "保存打开的LDAP设置时出错。",
+      "errorSaveRoleGroup": "保存用户组错误。",
+      "successAddRoleGroup": "成功添加用户组'%{groupName}'.",
+      "successDeleteRoleGroup": "成功删除用户组。",
+      "successSaveActiveDirectorySettings": "成功保存活动目录设置。",
+      "successSaveLdapSettings": "已成功保存打开的LDAP设置。",
+      "successSaveRoleGroup": "成功保存用户组'%{groupName}'."
     }
   },
   "pageLocalUserManagement": {
@@ -356,14 +377,14 @@
     "editUser": "编辑用户",
     "viewPrivilegeRoleDescriptions": "查看角色权限描述",
     "modal": {
-      "accountLocked": "Account locked",
+      "accountLocked": "账号锁定了",
       "accountStatus": "账号状态",
       "automaticAfterTimeout": "超时自动解锁",
-      "batchDeleteConfirmMessage": "Are you sure you want to delete %{count} user? This action cannot be undone. | Are you sure you want to delete %{count} users? This action cannot be undone.",
+      "batchDeleteConfirmMessage": "您确定要删除%{count}用户吗?此操作无法撤消。",
       "cannotStartWithANumber": "不能以数字开头",
       "clickSaveToUnlockAccount": "点击 \"保存\" 来解锁账号",
       "confirmUserPassword": "确认密码",
-      "deleteConfirmMessage": "Are you sure you want to delete user '%{user}'? This action cannot be undone.",
+      "deleteConfirmMessage": "您确定要删除'%{user}'用户吗?此操作无法撤消。",
       "manual": "手动解锁",
       "maxFailedLoginAttempts": "最大会话数",
       "noSpecialCharactersExceptUnderscore": "除下划线外不能有其他特殊符号",
@@ -371,7 +392,7 @@
       "passwordsDoNotMatch": "密码不匹配",
       "privilege": "权限",
       "timeoutDurationSeconds": "超时时间(秒)",
-      "unlock": "Unlock",
+      "unlock": "解锁",
       "username": "用户名",
       "userPassword": "密码",
       "userUnlockMethod": "用户解锁方式"
@@ -393,18 +414,18 @@
       "webUiAccessPoint": "页面访问权限"
     },
     "toast": {
-      "errorBatchDelete": "Error deleting %{count} user. | Error deleting %{count} users.",
-      "errorBatchDisable": "Error disabling %{count} user. | Error disabling %{count} users.",
-      "errorBatchEnable": "Error enabling %{count} user. | Error enabling %{count} users.",
-      "errorCreateUser": "Error creating user '%{username}'.",
-      "errorDeleteUser": "Error deleting user '%{username}'.",
-      "errorLoadAccountSettings": "Error loading account settings",
-      "errorLoadUsers": "Error loading users.",
-      "errorSaveSettings": "Error saving account settings.",
-      "errorUpdateUser": "Error updating user '%{username}'.",
-      "successBatchDelete": "Successfully deleted %{count} user. | Successfully deleted %{count} users.",
-      "successBatchDisable": "Successfully disabled %{count} user. | Successfully disabled %{count} users.",
-      "successBatchEnable": "Successfully enabled %{count} user. | Successfully enabled %{count} users.",
+      "errorBatchDelete": "删除用户%{count}出错。",
+      "errorBatchDisable": "禁用用户%{count}出错。",
+      "errorBatchEnable": "启用用户%{count}出错。",
+      "errorCreateUser": "创建用户'%{username}'出错。",
+      "errorDeleteUser": "删除用户'%{username}'出错。",
+      "errorLoadAccountSettings": "加载帐户设置错误。",
+      "errorLoadUsers": "加载用户错误。",
+      "errorSaveSettings": "保存用户设置出错。",
+      "errorUpdateUser": "更新用户'%{username}'出错。",
+      "successBatchDelete": "删除用户%{count}成功。",
+      "successBatchDisable": "禁用用户%{count}成功。",
+      "successBatchEnable": "启用用户%{count}成功。",
       "successCreateUser": "增加用户'%{username}'成功。",
       "successDeleteUser": "删除用户'%{username}'成功。",
       "successSaveSettings": "配置用户信息成功。",
@@ -640,9 +661,6 @@
       "successDeleteCertificate": "Successfully deleted %{certificate}.",
       "successReplaceCertificate": "Successfully replaced %{certificate}."
     }
-  },
-  "pageUnauthorized": {
-    "description": "The attempted action is not accessible from the logged in account. Contact your system administrator to check your privilege role."
   },
   "pageVirtualMedia": {
     "configureConnection": "Configure Connection",
