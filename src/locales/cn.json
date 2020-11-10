@@ -1,19 +1,19 @@
 {
   "global": {
     "action": {
-      "add": "Add",
+      "add": "增加",
       "cancel": "取消",
       "clearAll": "Clear all",
       "confirm": "Confirm",
       "copy": "Copy",
-      "delete": "Delete",
+      "delete": "删除",
       "disable": "禁用",
       "download": "Download",
       "edit": "Edit",
       "enable": "启用",
       "export": "Export",
       "filter": "Filter",
-      "replace": "Replace",
+      "replace": "更新",
       "save": "保存",
       "saveSettings": "保存设置",
       "selected": "Selected"
@@ -30,7 +30,7 @@
       "useCursorKeysToNavigateCalendarDates": "Use cursor keys to navigate calendar dates"
     },
     "fileUpload": {
-      "browseText": "Browse",
+      "browseText": "浏览",
       "dropPlaceholder": "Drop files here",
       "placeholder": "No file selected"
     },
@@ -46,7 +46,7 @@
       "passwordsDoNotMatch": "Passwords do not match",
       "required": "Required",
       "search": "Search",
-      "selectAnOption": "Select an option",
+      "selectAnOption": "请选择一项",
       "valueMustBeBetween": "数字必须在%{min} – %{max}之间。"
     },
     "status": {
@@ -84,7 +84,7 @@
     "skipToContent": "Skip to content"
   },
   "appNavigation": {
-    "accessControl": "Access control",
+    "accessControl": "访问控制",
     "configuration": "Configuration",
     "control": "Control",
     "dateTimeSettings": "@:appPageTitle.dateTimeSettings",
@@ -129,7 +129,7 @@
     "serverLed": "Server LED",
     "serverPowerOperations": "Server power operations",
     "snmpSettings": "SNMP settings",
-    "sslCertificates": "SSL certificates",
+    "sslCertificates": "SSL 证书",
     "unauthorized": "Unauthorized",
     "virtualMedia": "Virtual media"
   },
@@ -299,42 +299,42 @@
     "disconnected": "Disconnected"
   },
   "pageLdap": {
-    "pageDescription": "Configure LDAP settings and manage role groups",
-    "roleGroups": "Role groups",
-    "settings": "Settings",
-    "addRoleGroup": "Add role group",
+    "pageDescription": "LDAP 和 用户群组设置。",
+    "roleGroups": "用户群组",
+    "settings": "LDAP 设置",
+    "addRoleGroup": "添加用户群组",
     "ariaLabel": {
       "ldapSettings": "LDAP settings"
     },
     "form": {
       "baseDn": "Base DN",
       "bindDn": "Bind DN",
-      "bindPassword": "Bind password",
-      "caCertificateValidUntil": "CA Certificate valid until",
+      "bindPassword": "Bind密码",
+      "caCertificateValidUntil": "CA证书有效期至",
       "groupIdAttribute": "Group ID attribute",
-      "ldapAuthentication": "LDAP authentication",
-      "ldapCertificateValidUntil": "LDAP Certificate valid until",
-      "manageSslCertificates": "Manage SSL certificates",
-      "secureLdapHelper": "A CA certificate and an LDAP certificate are required to enable secure LDAP",
-      "secureLdapUsingSsl": "Secure LDAP using SSL",
-      "serverUri": "Server URI",
+      "ldapAuthentication": "LDAP 身份认证",
+      "ldapCertificateValidUntil": "LDAP证书有效期至",
+      "manageSslCertificates": "设置SSL证书",
+      "secureLdapHelper": "开启安全LDAP需要有AD证书和LDAP证书",
+      "secureLdapUsingSsl": "使用SSL确保LDAP安全性",
+      "serverUri": "服务器地址",
       "serverUriTooltip": "Enabling Secure LDAP changes URI scheme to ldaps",
-      "serviceType": "Service type",
+      "serviceType": "服务类型",
       "userIdAttribute": "User ID attribute"
     },
     "modal": {
-      "addNewRoleGroup": "Add new role group",
-      "deleteRoleGroupBatchConfirmMessage": "Are you sure you want to delete %{count} role group? This action cannot be undone. | Are you sure you want to delete %{count} role groups? This action cannot be undone.",
-      "deleteRoleGroupConfirmMessage": "Are you sure you want to delete '%{groupName}'? This action cannot be undone.",
-      "deleteRoleGroup": "Delete role group",
-      "editRoleGroup": "Edit role group",
-      "groupName": "Group name",
-      "groupPrivilege": "Group privilege"
+      "addNewRoleGroup": "添加用户群组",
+      "deleteRoleGroupBatchConfirmMessage": "确定删除这%{count}个用户群组? 删除任务不能取消。",
+      "deleteRoleGroupConfirmMessage": "确定删除用户组'%{groupName}'?删除任务不能取消。",
+      "deleteRoleGroup": "删除用户群组",
+      "editRoleGroup": "编辑用户群组",
+      "groupName": "群组名称",
+      "groupPrivilege": "群组权限"
     },
     "tableRoleGroups": {
-      "alertContent": "LDAP authentication must be enabled to modify role groups.",
-      "groupName": "Group name",
-      "groupPrivilege": "Group privilege"
+      "alertContent": "LDAP认证必须开启才能修改用户群组。",
+      "groupName": "群组名称",
+      "groupPrivilege": "群组权限"
     },
     "toast": {
       "errorAddRoleGroup": "Error adding role group.",
@@ -589,25 +589,25 @@
     }
   },
   "pageSslCertificates": {
-    "addNewCertificate": "Add new certificate",
-    "caCertificate": "CA Certificate",
-    "deleteCertificate": "Delete certificate",
-    "generateCsr": "Generate CSR",
-    "httpsCertificate": "HTTPS Certificate",
-    "ldapCertificate": "LDAP Certificate",
-    "replaceCertificate": "Replace certificate",
+    "addNewCertificate": "添加新证书",
+    "caCertificate": "CA 证书",
+    "deleteCertificate": "删除证书",
+    "generateCsr": "生成 CSR",
+    "httpsCertificate": "HTTPS 证书",
+    "ldapCertificate": "LDAP 证书",
+    "replaceCertificate": "更新证书",
     "alert": {
-      "certificateExpiredMessage": "%{certificate} has expired. Consider replacing it with a new certificate.",
-      "certificateExpiringMessage": "%{certificate} is expiring soon. Consider replacing it with a new certificate.",
-      "certificatesExpiredMessage": "Some certificates have expired. Consider replacing them with new certificates.",
-      "certificatesExpiringMessage": "Some certificates are expiring soon. Consider replacing them with new certificates."
+      "certificateExpiredMessage": "%{certificate}已经过期了，请更新。",
+      "certificateExpiringMessage": "%{certificate}快要过期了，请更新。",
+      "certificatesExpiredMessage": "有些证书已经过期了，请更新。",
+      "certificatesExpiringMessage": "有些证书快要过期了，请更新。"
     },
     "modal": {
       "alternateName": "Alternate name",
       "alternateNameHelperText": "Add multiple alternate names separated by space",
-      "certificateFile": "Certificate file",
+      "certificateFile": "证书文件",
       "certificateSigningRequest": "Certificate Signing Request (CSR)",
-      "certificateType": "Certificate type",
+      "certificateType": "证书类型",
       "challengePassword": "Challenge password",
       "city": "City",
       "commonName": "Common name",
@@ -619,18 +619,18 @@
       "duplicateAlternateName": "Duplicate alternate name",
       "emailAddress": "Email address",
       "generateACertificateSigningRequest": "Generate a Certificate Signing Request (CSR)",
-      "keyBitLength": "Key bit length",
+      "keyBitLength": "秘钥长度(bit)",
       "keyCurveId": "Key curve ID",
-      "keyPairAlgorithm": "Key pair algorithm",
-      "privateKey": "Private key",
+      "keyPairAlgorithm": "秘钥对算法",
+      "privateKey": "私钥",
       "state": "State"
     },
     "table": {
-      "certificate": "Certificate",
-      "issuedBy": "Issued by",
-      "issuedTo": "Issued to",
-      "validFrom": "Valid from",
-      "validUntil": "Valid until"
+      "certificate": "证书",
+      "issuedBy": "签发单位",
+      "issuedTo": "签发对象",
+      "validFrom": "有效期自",
+      "validUntil": "有效期至"
     },
     "toast": {
       "errorAddCertificate": "Error adding certificate.",

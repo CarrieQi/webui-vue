@@ -244,7 +244,8 @@ export default {
           }),
           {
             title: this.$t('pageSslCertificates.deleteCertificate'),
-            okTitle: this.$t('global.action.delete')
+            okTitle: this.$t('global.action.delete'),
+            cancelTitle: this.$t('global.action.cancel')
           }
         )
         .then(deleteConfirmed => {
