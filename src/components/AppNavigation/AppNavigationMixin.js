@@ -110,9 +110,9 @@ const AppNavigationMixin = {
             {
               id: 'snmp-settings',
               label: this.$t('appNavigation.snmpSettings'),
-              route: ''
-            }
-          ]
+              route: '/snmp-settings',
+            },
+          ],
         },
         {
           id: 'access-control',
