@@ -101,21 +101,22 @@ export default {
     OverviewEvents,
     OverviewNetwork,
     PageTitle,
-    PageSection
+    PageSection,
   },
   mixins: [LoadingBarMixin],
   data() {
     return {
       firmwareStoreModuleName: this.$store.hasModule('firmwareSingleImage')
         ? 'firmwareSingleImage'
-        : 'firmware'
+        : 'firmware',
     };
   },
   computed: {
     ...mapState({
-      server: state => state.system.systems[0],
-      powerCapValue: state => state.powerControl.powerCapValue,
-      powerConsumptionValue: state => state.powerControl.powerConsumptionValue,
+      server: (state) => state.system.systems[0],
+      powerCapValue: (state) => state.powerControl.powerCapValue,
+      powerConsumptionValue: (state) =>
+        state.powerControl.powerConsumptionValue,
       serverManufacturer() {
         if (this.server) return this.server.manufacturer || '--';
         return '--';
@@ -131,24 +132,24 @@ export default {
       hostFirmwareVersion() {
         if (this.server) return this.server.firmwareVersion || '--';
         return '--';
-      }
+      },
     }),
     bmcFirmwareVersion() {
       return this.$store.getters[
         `${this.firmwareStoreModuleName}/bmcFirmwareCurrentVersion`
       ];
-    }
+    },
   },
   created() {
     this.startLoader();
-    const quicklinksPromise = new Promise(resolve => {
-      this.$root.$on('overview::quicklinks::complete', () => resolve());
+    const quicklinksPromise = new Promise((resolve) => {
+      this.$root.$on('overview-quicklinks-complete', () => resolve());
     });
-    const networkPromise = new Promise(resolve => {
-      this.$root.$on('overview::network::complete', () => resolve());
+    const networkPromise = new Promise((resolve) => {
+      this.$root.$on('overview-network-complete', () => resolve());
     });
-    const eventsPromise = new Promise(resolve => {
-      this.$root.$on('overview::events::complete', () => resolve());
+    const eventsPromise = new Promise((resolve) => {
+      this.$root.$on('overview-events-complete', () => resolve());
     });
     Promise.all([
       this.$store.dispatch('system/getSystem'),
@@ -158,9 +159,9 @@ export default {
       this.$store.dispatch('powerControl/getPowerControl'),
       quicklinksPromise,
       networkPromise,
-      eventsPromise
+      eventsPromise,
     ]).finally(() => this.endLoader());
-  }
+  },
 };
 </script>
 

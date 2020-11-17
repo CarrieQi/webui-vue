@@ -63,22 +63,16 @@ export default {
   mixins: [AppNavigationMixin],
   data() {
     return {
-      isNavigationOpen: false
+      isNavigationOpen: false,
     };
   },
   watch: {
-    $route: function() {
+    $route: function () {
       this.isNavigationOpen = false;
     },
-<<<<<<< HEAD
-    isNavigationOpen: function(isNavigationOpen) {
-      this.$root.$emit('change:isNavigationOpen', isNavigationOpen);
-    }
-=======
     isNavigationOpen: function (isNavigationOpen) {
       this.$root.$emit('change-is-navigation-open', isNavigationOpen);
     },
->>>>>>> Resolve custom-event-name-casing lint warnings
   },
   mounted() {
     this.$root.$on('toggle-navigation', () => this.toggleIsOpen());
@@ -86,8 +80,8 @@ export default {
   methods: {
     toggleIsOpen() {
       this.isNavigationOpen = !this.isNavigationOpen;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 const LoadingBarMixin = {
   data() {
     return {
-      loading: true
+      loading: true,
     };
   },
   methods: {
@@ -14,15 +14,9 @@ const LoadingBarMixin = {
       this.loading = false;
     },
     hideLoader() {
-<<<<<<< HEAD
-      this.$root.$emit('loader::hide');
-    }
-  }
-=======
       this.$root.$emit('loader-hide');
     },
   },
->>>>>>> Resolve custom-event-name-casing lint warnings
 };
 
 export default LoadingBarMixin;
