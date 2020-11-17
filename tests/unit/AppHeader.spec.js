@@ -11,7 +11,8 @@ localVue.use(Vuex);
 describe('AppHeader.vue', () => {
   const actions = {
     'global/getHostStatus': jest.fn(),
-    'eventLog/getEventLogData': jest.fn()
+    'eventLog/getEventLogData': jest.fn(),
+    'authentication/resetStoreState': jest.fn(),
   };
 
   const store = new Vuex.Store({ actions });
@@ -43,11 +44,11 @@ describe('AppHeader.vue', () => {
     expect(wrapper.emitted('refresh')).toBeTruthy();
   });
 
-  it('nav-trigger button click should emit toggle:navigation event', async () => {
+  it('nav-trigger button click should emit toggle-navigation event', async () => {
     const rootWrapper = createWrapper(wrapper.vm.$root);
     wrapper.get('#app-header-trigger').trigger('click');
     await wrapper.vm.$nextTick();
-    expect(rootWrapper.emitted('toggle:navigation')).toBeTruthy();
+    expect(rootWrapper.emitted('toggle-navigation')).toBeTruthy();
   });
 
   it('logout button should dispatch authentication/logout', async () => {
@@ -58,7 +59,7 @@ describe('AppHeader.vue', () => {
 
   it('change:isNavigationOpen event should set isNavigationOpen prop to false', async () => {
     const rootWrapper = createWrapper(wrapper.vm.$root);
-    rootWrapper.vm.$emit('change:isNavigationOpen', false);
+    rootWrapper.vm.$emit('change-is-navigation-open', false);
     await rootWrapper.vm.$nextTick();
     expect(wrapper.vm.isNavigationOpen).toEqual(false);
   });
