@@ -80,21 +80,21 @@ export default {
     certificate: {
       type: Object,
       default: null,
-      validator: prop => {
+      validator: (prop) => {
         if (prop === null) return true;
         return (
           Object.prototype.hasOwnProperty.call(prop, 'type') &&
           Object.prototype.hasOwnProperty.call(prop, 'certificate')
         );
-      }
-    }
+      },
+    },
   },
   data() {
     return {
       form: {
         certificateType: null,
-        file: null
-      }
+        file: null,
+      },
     };
   },
   computed: {
@@ -105,30 +105,30 @@ export default {
       return this.certificateTypes.map(({ type, label }) => {
         return {
           text: label,
-          value: type
+          value: type,
         };
       });
-    }
+    },
   },
   watch: {
-    certificateOptions: function(options) {
+    certificateOptions: function (options) {
       if (options.length) {
         this.form.certificateType = options[0].value;
       }
-    }
+    },
   },
   validations() {
     return {
       form: {
         certificateType: {
-          required: requiredIf(function() {
+          required: requiredIf(function () {
             return !this.certificate;
-          })
+          }),
         },
         file: {
-          required
-        }
-      }
+          required,
+        },
+      },
     };
   },
   methods: {
@@ -141,7 +141,7 @@ export default {
         location: this.certificate ? this.certificate.location : null,
         type: this.certificate
           ? this.certificate.type
-          : this.form.certificateType
+          : this.form.certificateType,
       });
       this.closeModal();
     },
@@ -161,7 +161,7 @@ export default {
       // prevent modal close
       bvModalEvt.preventDefault();
       this.handleSubmit();
-    }
-  }
+    },
+  },
 };
 </script>

@@ -252,7 +252,7 @@ export default {
     InputPasswordToggle,
     PageTitle,
     PageSection,
-    TableRoleGroups
+    TableRoleGroups,
   },
   mixins: [BVToastMixin, VuelidateMixin, LoadingBarMixin],
   beforeRouteLeave(to, from, next) {
@@ -272,8 +272,8 @@ export default {
         bindPassword: '',
         baseDn: '',
         userIdAttribute: '',
-        groupIdAttribute: ''
-      }
+        groupIdAttribute: '',
+      },
     };
   },
   computed: {
@@ -281,70 +281,70 @@ export default {
       'isServiceEnabled',
       'isActiveDirectoryEnabled',
       'ldap',
-      'activeDirectory'
+      'activeDirectory',
     ]),
     sslCertificates() {
       return this.$store.getters['sslCertificates/allCertificates'];
     },
     caCertificateExpiration() {
       const caCertificate = find(this.sslCertificates, {
-        type: 'TrustStore Certificate'
+        type: 'TrustStore Certificate',
       });
       if (caCertificate === undefined) return null;
       return caCertificate.validUntil;
     },
     ldapCertificateExpiration() {
       const ldapCertificate = find(this.sslCertificates, {
-        type: 'LDAP Certificate'
+        type: 'LDAP Certificate',
       });
       if (ldapCertificate === undefined) return null;
       return ldapCertificate.validUntil;
     },
     ldapProtocol() {
       return this.form.secureLdapEnabled ? 'ldaps://' : 'ldap://';
-    }
+    },
   },
   watch: {
-    isServiceEnabled: function(value) {
+    isServiceEnabled: function (value) {
       this.form.ldapAuthenticationEnabled = value;
     },
-    isActiveDirectoryEnabled: function(value) {
+    isActiveDirectoryEnabled: function (value) {
       this.form.activeDirectoryEnabled = value;
       this.setFormValues();
-    }
+    },
   },
   validations: {
     form: {
       ldapAuthenticationEnabled: {},
       secureLdapEnabled: {},
       activeDirectoryEnabled: {
-        required: requiredIf(function() {
+        required: requiredIf(function () {
           return this.form.ldapAuthenticationEnabled;
-        })
+        }),
       },
       serverUri: {
-        required: requiredIf(function() {
+        required: requiredIf(function () {
           return this.form.ldapAuthenticationEnabled;
-        })
+        }),
       },
       bindDn: {
-        required: requiredIf(function() {
+        required: requiredIf(function () {
           return this.form.ldapAuthenticationEnabled;
-        })
+        }),
       },
       bindPassword: {
-        required: requiredIf(function() {
+        required: requiredIf(function () {
           return this.form.ldapAuthenticationEnabled;
-        })
+        }),
       },
       baseDn: {
-        required: requiredIf(function() {
+        required: requiredIf(function () {
           return this.form.ldapAuthenticationEnabled;
-        })
+        }),
       },
       userIdAttribute: {},
-      groupIdAttribute: {}
-    }
+      groupIdAttribute: {},
+    },
   },
   created() {
     this.startLoader();
@@ -366,7 +366,7 @@ export default {
         bindDn = '',
         baseDn = '',
         userAttribute = '',
-        groupsAttribute = ''
+        groupsAttribute = '',
       } = serviceType;
       const secureLdap =
         serviceAddress && serviceAddress.includes('ldaps://') ? true : false;
@@ -392,12 +392,12 @@ export default {
         bindPassword: this.form.bindPassword,
         baseDn: this.form.baseDn,
         userIdAttribute: this.form.userIdAttribute,
-        groupIdAttribute: this.form.groupIdAttribute
+        groupIdAttribute: this.form.groupIdAttribute,
       };
       this.startLoader();
       this.$store
         .dispatch('ldap/saveAccountSettings', data)
-        .then(success => {
+        .then((success) => {
           this.successToast(success);
           this.$v.form.$reset();
         })
@@ -426,7 +426,7 @@ export default {
         // disables the service.
         this.setFormValues();
       }
-    }
-  }
+    },
+  },
 };
 </script>

@@ -89,47 +89,47 @@ export default {
     roleGroup: {
       type: Object,
       default: null,
-      validator: prop => {
+      validator: (prop) => {
         if (prop === null) return true;
         return (
           Object.prototype.hasOwnProperty.call(prop, 'groupName') &&
           Object.prototype.hasOwnProperty.call(prop, 'groupPrivilege')
         );
-      }
-    }
+      },
+    },
   },
   data() {
     return {
       form: {
         groupName: null,
-        groupPrivilege: null
-      }
+        groupPrivilege: null,
+      },
     };
   },
   computed: {
     accountRoles() {
       return this.$store.getters['localUsers/accountRoles'];
-    }
+    },
   },
   watch: {
-    roleGroup: function(value) {
+    roleGroup: function (value) {
       if (value === null) return;
       this.form.groupName = value.groupName;
       this.form.groupPrivilege = value.groupPrivilege;
-    }
+    },
   },
   validations() {
     return {
       form: {
         groupName: {
-          required: requiredIf(function() {
+          required: requiredIf(function () {
             return !this.roleGroup;
-          })
+          }),
         },
         groupPrivilege: {
-          required
-        }
-      }
+          required,
+        },
+      },
     };
   },
   methods: {
@@ -139,7 +139,7 @@ export default {
       this.$emit('ok', {
         addNew: !this.roleGroup,
         groupName: this.form.groupName,
-        groupPrivilege: this.form.groupPrivilege
+        groupPrivilege: this.form.groupPrivilege,
       });
       this.closeModal();
     },
@@ -158,7 +158,7 @@ export default {
       // prevent modal close
       bvModalEvt.preventDefault();
       this.handleSubmit();
-    }
-  }
+    },
+  },
 };
 </script>

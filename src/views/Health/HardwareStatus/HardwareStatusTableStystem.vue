@@ -96,42 +96,42 @@ export default {
         {
           key: 'expandRow',
           label: '',
-          tdClass: 'table-row-expand'
+          tdClass: 'table-row-expand',
         },
         {
           key: 'id',
           label: this.$t('pageHardwareStatus.table.id'),
-          formatter: this.tableFormatter
+          formatter: this.tableFormatter,
         },
         {
           key: 'health',
           label: this.$t('pageHardwareStatus.table.health'),
           formatter: this.tableFormatter,
-          tdClass: 'text-nowrap'
+          tdClass: 'text-nowrap',
         },
         {
           key: 'partNumber',
           label: this.$t('pageHardwareStatus.table.partNumber'),
-          formatter: this.tableFormatter
+          formatter: this.tableFormatter,
         },
         {
           key: 'serialNumber',
           label: this.$t('pageHardwareStatus.table.serialNumber'),
-          formatter: this.tableFormatter
-        }
-      ]
+          formatter: this.tableFormatter,
+        },
+      ],
     };
   },
   computed: {
     systems() {
       return this.$store.getters['system/systems'];
-    }
+    },
   },
   created() {
     this.$store.dispatch('system/getSystem').finally(() => {
       // Emit initial data fetch complete to parent component
       this.$root.$emit('hardware-status-system-complete');
     });
-  }
+  },
 };
 </script>

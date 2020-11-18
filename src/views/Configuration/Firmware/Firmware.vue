@@ -211,7 +211,7 @@ export default {
     ModalRebootBackupBmc,
     ModalUpload,
     PageSection,
-    PageTitle
+    PageTitle,
   },
   mixins: [BVToastMixin, LoadingBarMixin, VuelidateMixin],
   beforeRouteLeave(to, from, next) {
@@ -225,7 +225,7 @@ export default {
       file: null,
       tftpIpAddress: null,
       tftpFileName: null,
-      timeoutId: null
+      timeoutId: null,
     };
   },
   computed: {
@@ -237,16 +237,16 @@ export default {
       'hostFirmwareCurrentVersion',
       'hostFirmwareCurrentState',
       'hostFirmwareBackupVersion',
-      'hostFirmwareBackupState'
-    ])
+      'hostFirmwareBackupState',
+    ]),
   },
   watch: {
-    isWorkstationSelected: function() {
+    isWorkstationSelected: function () {
       this.$v.$reset();
       this.file = null;
       this.tftpIpAddress = null;
       this.tftpFileName = null;
-    }
+    },
   },
   created() {
     this.startLoader();
@@ -258,20 +258,20 @@ export default {
   validations() {
     return {
       file: {
-        required: requiredIf(function() {
+        required: requiredIf(function () {
           return this.isWorkstationSelected;
-        })
+        }),
       },
       tftpIpAddress: {
-        required: requiredIf(function() {
+        required: requiredIf(function () {
           return !this.isWorkstationSelected;
-        })
+        }),
       },
       tftpFileName: {
-        required: requiredIf(function() {
+        required: requiredIf(function () {
           return !this.isWorkstationSelected;
-        })
-      }
+        }),
+      },
     };
   },
   methods: {
@@ -291,7 +291,7 @@ export default {
     dispatchWorkstationUpload() {
       this.$store
         .dispatch('firmware/uploadFirmware', this.file)
-        .then(success =>
+        .then((success) =>
           this.infoToast(
             success,
             this.$t('pageFirmware.toast.successUploadTitle')
@@ -305,11 +305,11 @@ export default {
     dispatchTftpUpload() {
       const data = {
         address: this.tftpIpAddress,
-        filename: this.tftpFileName
+        filename: this.tftpFileName,
       };
       this.$store
         .dispatch('firmware/uploadFirmwareTFTP', data)
-        .then(success =>
+        .then((success) =>
           this.infoToast(
             success,
             this.$t('pageFirmware.toast.successUploadTitle')
@@ -324,7 +324,7 @@ export default {
       this.setRebootTimeout();
       this.$store
         .dispatch('firmware/switchBmcFirmware')
-        .then(success =>
+        .then((success) =>
           this.infoToast(success, this.$t('global.status.success'))
         )
         .catch(({ message }) => {
@@ -354,8 +354,8 @@ export default {
       this.$v.$touch();
       if (this.$v.$invalid) return;
       this.$bvModal.show('modal-upload');
-    }
-  }
+    },
+  },
 };
 </script>
 

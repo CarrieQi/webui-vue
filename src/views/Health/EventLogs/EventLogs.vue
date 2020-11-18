@@ -179,7 +179,7 @@ export default {
     TableRowAction,
     TableToolbar,
     TableToolbarExport,
-    TableDateFilter
+    TableDateFilter,
   },
   mixins: [
     BVPaginationMixin,
@@ -189,7 +189,7 @@ export default {
     TableFilterMixin,
     TableDataFormatterMixin,
     TableSortMixin,
-    SearchFilterMixin
+    SearchFilterMixin,
   ],
   beforeRouteLeave(to, from, next) {
     // Hide loader if the user navigates to another page
@@ -202,57 +202,57 @@ export default {
       fields: [
         {
           key: 'checkbox',
-          sortable: false
+          sortable: false,
         },
         {
           key: 'id',
           label: this.$t('pageEventLogs.table.id'),
-          sortable: true
+          sortable: true,
         },
         {
           key: 'severity',
           label: this.$t('pageEventLogs.table.severity'),
           sortable: true,
-          tdClass: 'text-nowrap'
+          tdClass: 'text-nowrap',
         },
         {
           key: 'type',
           label: this.$t('pageEventLogs.table.type'),
-          sortable: true
+          sortable: true,
         },
         {
           key: 'date',
           label: this.$t('pageEventLogs.table.date'),
-          sortable: true
+          sortable: true,
         },
         {
           key: 'description',
-          label: this.$t('pageEventLogs.table.description')
+          label: this.$t('pageEventLogs.table.description'),
         },
         {
           key: 'actions',
           sortable: false,
           label: '',
-          tdClass: 'text-right text-nowrap'
-        }
+          tdClass: 'text-right text-nowrap',
+        },
       ],
       tableFilters: [
         {
           key: 'severity',
           label: this.$t('pageEventLogs.table.severity'),
-          values: ['OK', 'Warning', 'Critical']
-        }
+          values: ['OK', 'Warning', 'Critical'],
+        },
       ],
       activeFilters: [],
       batchActions: [
         {
           value: 'delete',
-          label: this.$t('global.action.delete')
-        }
+          label: this.$t('global.action.delete'),
+        },
       ],
       filterStartDate: null,
       filterEndDate: null,
-      searchTotalFilteredRows: 0
+      searchTotalFilteredRows: 0,
     };
   },
   computed: {
@@ -262,24 +262,24 @@ export default {
         : this.filteredLogs.length;
     },
     allLogs() {
-      return this.$store.getters['eventLog/allEvents'].map(event => {
+      return this.$store.getters['eventLog/allEvents'].map((event) => {
         return {
           ...event,
           actions: [
             {
               value: 'export',
-              title: this.$t('global.action.export')
+              title: this.$t('global.action.export'),
             },
             {
               value: 'delete',
-              title: this.$t('global.action.delete')
-            }
-          ]
+              title: this.$t('global.action.delete'),
+            },
+          ],
         };
       });
     },
     batchExportData() {
-      return this.selectedRows.map(row => omit(row, 'actions'));
+      return this.selectedRows.map((row) => omit(row, 'actions'));
     },
     filteredLogsByDate() {
       return this.getFilteredTableDataByDate(
@@ -293,7 +293,7 @@ export default {
         this.filteredLogsByDate,
         this.activeFilters
       );
-    }
+    },
   },
   created() {
     this.startLoader();
@@ -303,15 +303,17 @@ export default {
   },
   methods: {
     deleteLogs(uris) {
-      this.$store.dispatch('eventLog/deleteEventLogs', uris).then(messages => {
-        messages.forEach(({ type, message }) => {
-          if (type === 'success') {
-            this.successToast(message);
-          } else if (type === 'error') {
-            this.errorToast(message);
-          }
+      this.$store
+        .dispatch('eventLog/deleteEventLogs', uris)
+        .then((messages) => {
+          messages.forEach(({ type, message }) => {
+            if (type === 'success') {
+              this.successToast(message);
+            } else if (type === 'error') {
+              this.errorToast(message);
+            }
+          });
         });
-      });
     },
     onFilterChange({ activeFilters }) {
       this.activeFilters = activeFilters;
@@ -326,16 +328,16 @@ export default {
         this.$bvModal
           .msgBoxConfirm(this.$tc('pageEventLogs.modal.deleteMessage'), {
             title: this.$tc('pageEventLogs.modal.deleteTitle'),
-            okTitle: this.$t('global.action.delete')
+            okTitle: this.$t('global.action.delete'),
           })
-          .then(deleteConfirmed => {
+          .then((deleteConfirmed) => {
             if (deleteConfirmed) this.deleteLogs([uri]);
           });
       }
     },
     onBatchAction(action) {
       if (action === 'delete') {
-        const uris = this.selectedRows.map(row => row.uri);
+        const uris = this.selectedRows.map((row) => row.uri);
         this.$bvModal
           .msgBoxConfirm(
             this.$tc(
@@ -347,7 +349,7 @@ export default {
                 'pageEventLogs.modal.deleteTitle',
                 this.selectedRows.length
               ),
-              okTitle: this.$t('global.action.delete')
+              okTitle: this.$t('global.action.delete'),
             }
           )
           .then((deleteConfirmed) => {
@@ -380,13 +382,9 @@ export default {
       date =
         date.toISOString().slice(0, 10) +
         '_' +
-        date
-          .toString()
-          .split(':')
-          .join('-')
-          .split(' ')[4];
+        date.toString().split(':').join('-').split(' ')[4];
       return this.$t('pageEventLogs.exportFilePrefix') + date;
-    }
-  }
+    },
+  },
 };
 </script>

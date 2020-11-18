@@ -119,7 +119,7 @@ export default {
     TableCellCount,
     TableFilter,
     TableToolbar,
-    TableToolbarExport
+    TableToolbarExport,
   },
   mixins: [
     TableFilterMixin,
@@ -127,7 +127,7 @@ export default {
     LoadingBarMixin,
     TableDataFormatterMixin,
     TableSortMixin,
-    SearchFilterMixin
+    SearchFilterMixin,
   ],
   beforeRouteLeave(to, from, next) {
     this.hideLoader();
@@ -139,55 +139,55 @@ export default {
         {
           key: 'checkbox',
           sortable: false,
-          label: ''
+          label: '',
         },
         {
           key: 'name',
           sortable: true,
-          label: this.$t('pageSensors.table.name')
+          label: this.$t('pageSensors.table.name'),
         },
         {
           key: 'status',
           sortable: true,
           label: this.$t('pageSensors.table.status'),
-          tdClass: 'text-nowrap'
+          tdClass: 'text-nowrap',
         },
         {
           key: 'lowerCritical',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.lowerCritical')
+          label: this.$t('pageSensors.table.lowerCritical'),
         },
         {
           key: 'lowerCaution',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.lowerWarning')
+          label: this.$t('pageSensors.table.lowerWarning'),
         },
 
         {
           key: 'currentValue',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.currentValue')
+          label: this.$t('pageSensors.table.currentValue'),
         },
         {
           key: 'upperCaution',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.upperWarning')
+          label: this.$t('pageSensors.table.upperWarning'),
         },
         {
           key: 'upperCritical',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.upperCritical')
-        }
+          label: this.$t('pageSensors.table.upperCritical'),
+        },
       ],
       tableFilters: [
         {
           key: 'status',
           label: this.$t('pageSensors.table.status'),
-          values: ['OK', 'Warning', 'Critical']
-        }
+          values: ['OK', 'Warning', 'Critical'],
+        },
       ],
       activeFilters: [],
-      searchTotalFilteredRows: 0
+      searchTotalFilteredRows: 0,
     };
   },
   computed: {
@@ -201,7 +201,7 @@ export default {
     },
     filteredSensors() {
       return this.getFilteredTableData(this.allSensors, this.activeFilters);
-    }
+    },
   },
   created() {
     this.startLoader();
@@ -230,13 +230,9 @@ export default {
       date =
         date.toISOString().slice(0, 10) +
         '_' +
-        date
-          .toString()
-          .split(':')
-          .join('-')
-          .split(' ')[4];
+        date.toString().split(':').join('-').split(' ')[4];
       return this.$t('pageSensors.exportFilePrefix') + date;
-    }
-  }
+    },
+  },
 };
 </script>

@@ -86,7 +86,7 @@ export default {
     TableRowExpandMixin,
     TableDataFormatterMixin,
     TableSortMixin,
-    SearchFilterMixin
+    SearchFilterMixin,
   ],
   data() {
     return {
@@ -95,35 +95,35 @@ export default {
           key: 'expandRow',
           label: '',
           tdClass: 'table-row-expand',
-          sortable: false
+          sortable: false,
         },
         {
           key: 'id',
           label: this.$t('pageHardwareStatus.table.id'),
           formatter: this.tableFormatter,
-          sortable: true
+          sortable: true,
         },
         {
           key: 'health',
           label: this.$t('pageHardwareStatus.table.health'),
           formatter: this.tableFormatter,
           sortable: true,
-          tdClass: 'text-nowrap'
+          tdClass: 'text-nowrap',
         },
         {
           key: 'partNumber',
           label: this.$t('pageHardwareStatus.table.partNumber'),
           formatter: this.tableFormatter,
-          sortable: true
+          sortable: true,
         },
         {
           key: 'serialNumber',
           label: this.$t('pageHardwareStatus.table.serialNumber'),
           formatter: this.tableFormatter,
-          sortable: true
-        }
+          sortable: true,
+        },
       ],
-      searchTotalFilteredRows: 0
+      searchTotalFilteredRows: 0,
     };
   },
   computed: {
@@ -134,7 +134,7 @@ export default {
     },
     dimms() {
       return this.$store.getters['memory/dimms'];
-    }
+    },
   },
   created() {
     this.$store.dispatch('memory/getDimms').finally(() => {
@@ -150,7 +150,7 @@ export default {
     },
     onFiltered(filteredItems) {
       this.searchTotalFilteredRows = filteredItems.length;
-    }
-  }
+    },
+  },
 };
 </script>

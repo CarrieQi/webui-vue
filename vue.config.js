@@ -32,13 +32,13 @@ module.exports = {
               @import "@/assets/styles/bootstrap/_helpers";
             `;
           }
-        }
-      }
-    }
+        },
+      },
+    },
   },
   devServer: {
     https: true,
-    proxy: {
+    /*proxy: {
       '/': {
         target: process.env.BASE_URL,
         onProxyRes: proxyRes => {
@@ -47,11 +47,11 @@ module.exports = {
           delete proxyRes.headers['strict-transport-security'];
         }
       }
-    },
-    port: 8000
+    },*/
+    port: 8000,
   },
   productionSourceMap: false,
-  configureWebpack: config => {
+  configureWebpack: (config) => {
     const envName = process.env.VUE_APP_ENV_NAME;
     const hasCustomStore = process.env.CUSTOM_STORE === 'true' ? true : false;
     const hasCustomRouter = process.env.CUSTOM_ROUTER === 'true' ? true : false;
@@ -80,7 +80,7 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       config.plugins.push(
         new CompressionPlugin({
-          deleteOriginalAssets: true
+          deleteOriginalAssets: true,
         })
       );
     }
@@ -88,7 +88,7 @@ module.exports = {
   pluginOptions: {
     i18n: {
       localeDir: 'locales',
-      enableInSFC: true
-    }
-  }
+      enableInSFC: true,
+    },
+  },
 };

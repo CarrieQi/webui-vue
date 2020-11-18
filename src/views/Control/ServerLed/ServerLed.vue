@@ -49,8 +49,8 @@ export default {
       },
       set(newValue) {
         return newValue;
-      }
-    }
+      },
+    },
   },
   created() {
     this.startLoader();
@@ -62,7 +62,7 @@ export default {
     changeLedValue(indicatorLed) {
       this.$store
         .dispatch('serverLed/saveIndicatorLedValue', indicatorLed)
-        .then(message => this.successToast(message))
+        .then((message) => this.successToast(message))
         .catch(({ message }) => {
           this.errorToast(message);
           if (indicatorLed === 'Off') {
@@ -71,7 +71,7 @@ export default {
             this.indicatorLed === 'Off';
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>

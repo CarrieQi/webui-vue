@@ -229,7 +229,7 @@
                       size="lg"
                       separator=" "
                       :input-attrs="{
-                        'aria-describedby': 'alternate-name-help-block'
+                        'aria-describedby': 'alternate-name-help-block',
                       }"
                       :duplicate-tag-text="
                         $t('pageSslCertificates.modal.duplicateAlternateName')
@@ -406,25 +406,25 @@ export default {
         alternateName: [],
         keyPairAlgorithm: null,
         keyCurveId: null,
-        keyBitLength: null
+        keyBitLength: null,
       },
       certificateOptions: CERTIFICATE_TYPES.reduce((arr, cert) => {
         if (cert.type === 'TrustStore Certificate') return arr;
         arr.push({
           text: cert.label,
-          value: cert.type
+          value: cert.type,
         });
         return arr;
       }, []),
-      countryOptions: COUNTRY_LIST.map(country => ({
+      countryOptions: COUNTRY_LIST.map((country) => ({
         text: country.label,
-        value: country.code
+        value: country.code,
       })),
       keyPairAlgorithmOptions: ['EC', 'RSA'],
       keyCurveIdOptions: ['prime256v1', 'secp521r1', 'secp384r1'],
       keyBitLengthOptions: [2048],
       csrString: '',
-      csrStringCopied: false
+      csrStringCopied: false,
     };
   },
   validations: {
@@ -442,16 +442,16 @@ export default {
       alternateName: {},
       keyPairAlgorithm: { required },
       keyCurveId: {
-        reuired: requiredIf(function(form) {
+        reuired: requiredIf(function (form) {
           return form.keyPairAlgorithm === 'EC';
-        })
+        }),
       },
       keyBitLength: {
-        reuired: requiredIf(function(form) {
+        reuired: requiredIf(function (form) {
           return form.keyPairAlgorithm === 'RSA';
-        })
-      }
-    }
+        }),
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -493,7 +493,7 @@ export default {
           this.csrStringCopied = false;
         }, 5000 /*5 seconds*/);
       });
-    }
-  }
+    },
+  },
 };
 </script>
