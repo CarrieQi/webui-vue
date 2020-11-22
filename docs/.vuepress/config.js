@@ -42,12 +42,13 @@ module.exports = {
               "/guide/guidelines/typography"
             ]
           },
+          "/guide/unit-testing/",
           {
             title: "Components",
             children: [
             "/guide/components/",
             "/guide/components/alert",
-            "/guide/components/button",
+            "/guide/components/buttons/",
             "/guide/components/table",
             "/guide/components/toast",
           ]
