@@ -19,97 +19,96 @@
       "selected": "已选择"
     },
     "ariaLabel": {
-      "clearSearch": "Clear search input",
-      "hidePassword": "Hide password",
-      "showPassword": "Show password as plain text. Note: this will visually expose your password on the screen.",
-      "tooltip": "Tooltip",
-      "progressBar": "Page loading progress bar"
+      "clearSearch": "清空搜索框",
+      "hidePassword": "隐藏密码",
+      "showPassword": "以纯文本显示密码。注意:这将在屏幕上显示您的密码.",
+      "tooltip": "提示",
+      "progressBar": "页面加载进度条"
     },
     "calendar": {
-      "openDatePicker": "Open date picker",
-      "useCursorKeysToNavigateCalendarDates": "Use cursor keys to navigate calendar dates"
+      "openDatePicker": "打开日期选择器",
+      "useCursorKeysToNavigateCalendarDates": "使用光标键浏览日历日期"
     },
     "fileUpload": {
       "browseText": "浏览",
-      "dropPlaceholder": "Drop files here",
-      "placeholder": "未选中任何文件"
+      "clearSelectedFile": "清除选择的文件"
     },
     "form": {
-      "dateMustBeAfter": "Date must be after %{date}",
-      "dateMustBeBefore": "Date must be before %{date}",
+      "dateMustBeAfter": "日期必须在 %{date}之后",
+      "dateMustBeBefore": "日期必须在%{date}之前",
       "fieldRequired": "此项必须输入",
-      "invalidFormat": "Invalid format",
-      "invalidValue": "Invalid value",
-      "lengthMustBeBetween": "Length must be between %{min} – %{max} characters",
-      "mustBeAtLeast": "Must be at least %{value}",
-      "optional": "optional",
-      "passwordsDoNotMatch": "Passwords do not match",
-      "required": "Required",
-      "search": "Search",
+      "invalidFormat": "格式错误",
+      "invalidValue": "无效的值",
+      "lengthMustBeBetween": "长度必须在%{min} - %{max}字符之间",
+      "mustBeAtLeast": "必须至少 %{value}",
+      "optional": "可选的",
+      "passwordsDoNotMatch": "密码不匹配",
+      "required": "必须输入",
+      "search": "搜索",
       "selectAnOption": "请选择一项",
       "valueMustBeBetween": "数字必须在%{min} – %{max}之间。"
     },
     "status": {
-      "copied": "Copied",
+      "copied": "复制",
       "disabled": "禁用",
       "enabled": "启用",
       "error": "错误",
-      "notAvailable": "Not available",
+      "notAvailable": "无法使用的",
       "off": "关闭",
       "on": "开启",
       "success": "成功",
-      "warning": "Warning",
-      "informational": "Informational"
+      "warning": "警告",
+      "informational": "信息"
     },
     "table": {
-      "collapseTableRow": "Collapse table row",
-      "emptyMessage": "No items available",
-      "emptySearchMessage": "No items match the search query",
-      "expandTableRow": "Expand table row",
-      "fromDate": "From date",
-      "items": "%{count} items",
-      "itemsPerPage": "Items per page",
-      "selectedItems":"%{filterCount} of %{count} items",
-      "toDate": "To date",
-      "viewAll": "View all"
+      "collapseTableRow": "折叠表行",
+      "emptyMessage": "无可用项",
+      "emptySearchMessage": "没有与搜索查询匹配的项目",
+      "expandTableRow": "展开表行",
+      "fromDate": "起始日期",
+      "items": "%{count}个项目",
+      "itemsPerPage": "每页项目数",
+      "selectedItems":"%{count}个项目的%{filterCount}",
+      "toDate": "截止日期",
+      "viewAll": "查看全部"
     },
     "toast": {
-      "unAuthTitle": "Unauthorized",
-      "unAuthDescription": "The attempted action is not accessible from the logged in account. Contact your system administrator to check your privilege role."
+      "unAuthTitle": "未授权",
+      "unAuthDescription": "无法从已登录帐户访问尝试的操作。请与系统管理员联系以检查您的权限角色。"
     }
   },
   "appHeader": {
-    "applicationHeader": "Application header",
-    "health": "Health",
+    "applicationHeader": "应用程序头",
+    "health": "健康",
     "logOut": "注销",
     "power": "Power",
     "profileSettings": "@:appPageTitle.profileSettings",
-    "refresh": "Refresh",
-    "skipToContent": "Skip to content",
-    "titleHideNavigation": "Hide navigation",
-    "titleShowNavigation": "Show navigation",
-    "titleProfile": "Show profile menu",
-    "titleRefresh": "Refresh application data"
+    "refresh": "刷新",
+    "skipToContent": "跳到内容",
+    "titleHideNavigation": "隐藏导航",
+    "titleShowNavigation": "显示导航",
+    "titleProfile": "显示配置文件菜单",
+    "titleRefresh": "刷新应用程序数据"
   },
   "appNavigation": {
     "accessControl": "访问控制",
-    "configuration": "Configuration",
-    "control": "Control",
+    "configuration": "配置",
+    "control": "控制",
     "dateTimeSettings": "@:appPageTitle.dateTimeSettings",
     "eventLogs": "@:appPageTitle.eventLogs",
     "firmware": "@:appPageTitle.firmware",
     "hardwareStatus": "@:appPageTitle.hardwareStatus",
-    "health": "Health",
+    "health": "健康",
     "kvm": "@:appPageTitle.kvm",
     "ldap": "@:appPageTitle.ldap",
     "localUserManagement": "@:appPageTitle.localUserManagement",
     "managePowerUsage": "@:appPageTitle.managePowerUsage",
     "networkSettings": "@:appPageTitle.networkSettings",
     "overview": "@:appPageTitle.overview",
-    "primaryNavigation": "Primary navigation",
+    "primaryNavigation": "主导航",
     "rebootBmc": "@:appPageTitle.rebootBmc",
     "sensors": "@:appPageTitle.sensors",
-    "serialOverLan": "SOL console",
+    "serialOverLan": "SOL 控制台",
     "serverLed": "@:appPageTitle.serverLed",
     "serverPowerOperations": "@:appPageTitle.serverPowerOperations",
     "snmpSettings": "@:appPageTitle.snmpSettings",
@@ -117,29 +116,28 @@
     "virtualMedia": "@:appPageTitle.virtualMedia"
   },
   "appPageTitle": {
-    "changePassword": "Change password",
+    "changePassword": "修改密码",
     "dateTimeSettings": "日期时间设置",
-    "eventLogs": "Event logs",
+    "eventLogs": "事件日志",
     "firmware": "固件刷新",
-    "hardwareStatus": "Hardware status",
+    "hardwareStatus": "硬件状态",
     "kvm": "KVM",
     "ldap": "LDAP",
     "localUserManagement": "本地用户管理",
-    "login": "Login",
-    "managePowerUsage": "Manage power usage",
+    "login": "登录",
+    "managePowerUsage": "电源管理",
     "networkSettings": "网络设置",
-    "overview": "Overview",
-    "pageNotFound": "Page not found",
+    "overview": "概述",
+    "pageNotFound": "找不到页面",
     "profileSettings": "个人信息设置",
-    "rebootBmc": "Reboot BMC",
-    "sensors": "Sensors",
-    "serialOverLan": "Serial over LAN (SOL) console",
-    "serverLed": "Server LED",
-    "serverPowerOperations": "Server power operations",
+    "rebootBmc": "重启 BMC",
+    "sensors": "传感器",
+    "serialOverLan": "LAN (SOL) 串行控制台",
+    "serverLed": "服务器LED",
+    "serverPowerOperations": "服务器电源操作",
     "snmpSettings": "SNMP 设置",
     "sslCertificates": "SSL 证书",
-    "unauthorized": "Unauthorized",
-    "virtualMedia": "Virtual media"
+    "virtualMedia": "虚拟媒体"
   },
   "pageChangePassword": {
     "changePassword": "修改密码",
@@ -152,15 +150,15 @@
   },
   "pageDateTimeSettings": {
     "alert": {
-      "message": "To change how date and time are displayed (either UTC or browser offset) throughout the application, visit ",
-      "link": "Profile Settings"
+      "message": "配置文件设置要更改整个应用程序中日期和时间的显示方式（UTC或浏览器偏移量）",
+      "link": "配置文件设置"
     },
-    "configureSettings": "Configure settings",
+    "configureSettings": "配置设置",
     "form": {
-      "date": "Date",
-      "manual": "Manual",
+      "date": "日期",
+      "manual": "手册",
       "time": {
-        "label": "24-hour time",
+        "label": "24小时制",
         "timezone": "@:pageDateTimeSettings.form.time.label (%{timezone})"
       },
       "ntpServers": {
@@ -170,27 +168,27 @@
       }
     },
     "toast": {
-      "errorSaveDateTimeSettings": "Error saving date and time settings.",
-      "successSaveDateTimeSettings": "Successfully saved date and time settings."
+      "errorSaveDateTimeSettings": "保存日期和时间设置时出错。",
+      "successSaveDateTimeSettings": "保存日期和时间设置时成功。"
     }
   },
   "pageEventLogs": {
     "exportFilePrefix": "event_logs_",
     "modal": {
-      "deleteTitle": "Delete log | Delete logs",
-      "deleteMessage": "Are you sure you want to delete %{count} log? This action cannot be undone. | Are you sure you want to delete %{count} logs? This action cannot be undone."
+      "deleteTitle": "删除日志",
+      "deleteMessage": "确认删除这%{count}个日志?"
     },
     "table": {
-      "date": "Date",
-      "description": "Description",
+      "date": "日期",
+      "description": "描述",
       "id": "ID",
-      "searchLogs": "Search logs",
-      "severity": "Severity",
-      "type": "Type"
+      "searchLogs": "搜索日志",
+      "severity": "严重程度",
+      "type": "类型"
     },
     "toast": {
-      "errorDelete": "Error deleting %{count} log. | Error deleting %{count} logs.",
-      "successDelete": "Successfully deleted %{count} log. | Successfully deleted %{count} logs."
+      "errorDelete": "删除日志这%{count}个失败。",
+      "successDelete": "删除日志这%{count}个成功。"
     }
   },
   "pageFirmware": {
@@ -198,7 +196,7 @@
     "backupImage": "备份镜像",
     "bmcStatus": "BMC 状态",
     "changeAndRebootBmc": "修改镜像并重启BMC",
-    "changeToBackupImage": "Change to backup image",
+    "changeToBackupImage": "切换为备份镜像",
     "current": "当前版本:",
     "firmwareOnBmc": "BMC固件",
     "firmwareOnHost": "主机固件",
@@ -271,53 +269,53 @@
     }
   },
   "pageHardwareStatus": {
-    "dimmSlot": "DIMM slot",
-    "fans": "Fans",
-    "powerSupplies": "Power supplies",
-    "bmcManager": "BMC manager",
-    "chassis": "Chassis",
-    "processors": "Processors",
-    "system": "System",
+    "dimmSlot": "DIMM插槽",
+    "fans": "风扇",
+    "powerSupplies": "风扇",
+    "bmcManager": "BMC管理器",
+    "chassis": "机箱",
+    "processors": "处理器",
+    "system": "系统",
     "table": {
-      "assetTag": "Asset tag",
-      "chassisType": "Chassis type",
-      "connectTypesSupported": "Connect types supported",
-      "description": "Description",
-      "efficiencyPercent": "Efficiency percent",
-      "firmwareVersion": "Firmware version",
-      "graphicalConsole": "Graphical console",
-      "health": "Health",
+      "assetTag": "资产标签",
+      "chassisType": "机箱类型",
+      "connectTypesSupported": "支持的连接类型",
+      "description": "说明",
+      "efficiencyPercent": "效率百分比",
+      "firmwareVersion": "固件版本",
+      "graphicalConsole": "图形控制台",
+      "health": "健康",
       "id": "ID",
-      "indicatorLed": "Indicator LED",
-      "instructionSet": "Instruction set",
-      "manufacturer": "Manufacturer",
-      "maxConcurrentSessions": "Max concurrent sessions",
+      "indicatorLed": "LED指示灯",
+      "instructionSet": "指令集",
+      "manufacturer": "制造商",
+      "maxConcurrentSessions": "最大并发会话数",
       "model": "Model",
       "name": "Name",
-      "partNumber": "Part number",
-      "powerInputWatts": "Power input watts",
-      "powerState": "Power state",
-      "processorArchitecture": "Architecture",
-      "processorType": "Type",
-      "serialConsole": "Serial console",
-      "serialNumber": "Serial number",
-      "serviceEnabled": "Service enabled",
-      "serviceEntryPointUuid": "Service entry point UUID",
-      "statusHealthRollup": "Status (Health rollup)",
-      "statusState": "Status (State)",
-      "systemType": "System type",
-      "totalCores": "Total cores",
+      "partNumber": "零件号",
+      "powerInputWatts": "功率输入瓦特",
+      "powerState": "电源状态",
+      "processorArchitecture": "架构",
+      "processorType": "类型",
+      "serialConsole": "串行控制台",
+      "serialNumber": "序列号",
+      "serviceEnabled": "服务启用",
+      "serviceEntryPointUuid": "服务入口点UUID",
+      "statusHealthRollup": "运行状况汇总",
+      "statusState": "状态",
+      "systemType": "系统类型",
+      "totalCores": "总核数",
       "uuid": "UUID"
     }
   },
   "pageKvm": {
-    "openNewTab": "Open in new tab",
-    "subTitle": "Access the KVM console",
-    "buttonCtrlAltDelete": "Send Ctrl+Alt+Delete",
-    "status": "Status",
-    "connected": "Connected",
-    "connecting": "Connecting",
-    "disconnected": "Disconnected"
+    "openNewTab": "在新选项卡中打开",
+    "subTitle": "访问KVM控制台",
+    "buttonCtrlAltDelete": "发送Ctrl+Alt+Delete",
+    "status": "状态",
+    "connected": "已连接",
+    "connecting": "正在连接",
+    "disconnected": "连接断开"
   },
   "pageLdap": {
     "pageDescription": "LDAP 和 用户组设置。",
@@ -433,43 +431,43 @@
     }
   },
   "pageLogin": {
-    "language": "Language",
-    "logIn": "Log in",
-    "password": "Password",
-    "username": "Username",
+    "language": "语言",
+    "logIn": "登录",
+    "password": "密码",
+    "username": "用户名",
     "alert": {
-      "message": "Invalid username or password"
+      "message": "用户名或密码错误"
     }
   },
   "pageOverview": {
-    "bmcInformation": "BMC information",
-    "firmwareVersion": "Firmware version",
-    "highPriorityEvents": "High priority events",
-    "manufacturer": "Manufacturer",
+    "bmcInformation": "BMC信息",
+    "firmwareVersion": "固件版本",
+    "highPriorityEvents": "高优先级事件",
+    "manufacturer": "制造商",
     "model": "Model",
-    "networkInformation": "Network information",
-    "powerCap": "Power cap",
-    "powerConsumption": "Power consumption",
-    "serialNumber": "Serial number",
-    "serverInformation": "Server information",
+    "networkInformation": "网络信息",
+    "powerCap": "功率上限",
+    "powerConsumption": "功耗",
+    "serialNumber": "序列号",
+    "serverInformation": "服务器信息",
     "events": {
-      "date": "Date",
-      "description": "Description",
+      "date": "日期",
+      "description": "描述",
       "id": "ID",
-      "noHighEventsMsg": "There are no high priority events to display at this time.",
-      "severity": "Severity",
-      "type": "Type",
-      "viewAllButton": "View all event logs"
+      "noHighEventsMsg": "此时没有要显示的高优先级事件。",
+      "severity": "严重程度",
+      "type": "类型",
+      "viewAllButton": "查看所有事件日志"
     },
     "network": {
-      "hostname": "Hostname",
-      "ipAddress": "IP address",
-      "macAddress": "MAC address"
+      "hostname": "主机名",
+      "ipAddress": "IP地址",
+      "macAddress": "MAC地址"
     },
     "quicklinks": {
-      "bmcTime": "BMC time",
-      "editNetworkSettings": "Edit network settings",
-      "serverLed": "Server LED",
+      "bmcTime": "BMC时间",
+      "editNetworkSettings": "编辑网络设置",
+      "serverLed": "服务器LED",
       "solConsole": "@:appNavigation.serialOverLan"
     }
   },
@@ -487,126 +485,126 @@
     "timezoneDisplayDesc": "选择应用显示时间",
     "username": "用户名",
     "toast": {
-      "successSaveSettings": "Successfully saved account settings."
+      "successSaveSettings": "已成功保存帐户设置。"
     }
   },
   "pageManagePowerUsage": {
-    "description": "Set a power cap to keep power consumption at or below the specified value in watts",
-    "powerCapLabel": "Power cap value (in watts)",
-    "powerCapLabelTextInfo": " Value must be between %{min} and %{max}",
-    "powerCapSettingData": "Apply power cap",
-    "powerCapSettingLabel": "Power cap setting",
-    "powerConsumption": "Current power consumption",
-    "serverPowCapSetting": "Server power cap setting"
+    "description": "设置功率上限，使功耗保持在或低于指定的瓦特值",
+    "powerCapLabel": "功率上限值（瓦特）",
+    "powerCapLabelTextInfo": "值必须介于%{min}和%{max}之间",
+    "powerCapSettingData": "应用功率上限",
+    "powerCapSettingLabel": "功率上限设置",
+    "powerConsumption": "当前功耗",
+    "serverPowCapSetting": "服务器功率上限设置"
   },
   "pageNetworkSettings": {
-    "interface": "Interface",
-    "pageDescription": "Configure network settings for the BMC and the Virtualization management interface",
-    "staticDns": "Static DNS",
-    "staticIpv4": "Static IPv4",
-    "system": "System",
+    "interface": "接口",
+    "pageDescription": "配置BMC和虚拟化管理接口的网络设置",
+    "staticDns": "静态DNS",
+    "staticIpv4": "静态IPv4",
+    "system": "系统",
     "ariaLabel": {
-      "staticDnsRow": "Static DNS address",
-      "staticIpv4AddressRow": "Static IPv4 address",
-      "staticIpv4SubnetRow": "Static IPV4 subnet"
+      "staticDnsRow": "静态DNS地址",
+      "staticIpv4AddressRow": "静态IPv4地址",
+      "staticIpv4SubnetRow": "静态IPV4子网"
     },
     "form": {
-      "defaultGateway": "Default gateway",
-      "hostname": "Hostname",
-      "macAddress": "MAC address",
-      "networkInterface": "Network interface"
+      "defaultGateway": "默认网关",
+      "hostname": "主机名",
+      "macAddress": "MAC地址",
+      "networkInterface": "网络接口"
     },
     "table": {
-      "addDns": "Add DNS server",
-      "addStaticIpv4Address": "Add static IP",
-      "deleteDns": "Delete DNS row",
-      "deleteStaticIpv4": "Delete IPv4 row",
-      "ipAddress": "IP address",
-      "subnet": "Subnet mask"
+      "addDns": "添加DNS服务器",
+      "addStaticIpv4Address": "添加静态IP",
+      "deleteDns": "删除DNS行",
+      "deleteStaticIpv4": "删除IPv4行",
+      "ipAddress": "IP地址",
+      "subnet": "子网掩码"
     },
     "toast": {
-      "errorSaveNetworkSettings": "Error saving network settings.",
-      "successSaveNetworkSettings": "Successfully saved network settings."
+      "errorSaveNetworkSettings": "保存网络设置时出错。",
+      "successSaveNetworkSettings": "已成功保存网络设置。"
     }
   },
   "pagePageNotFound": {
-    "description": "The requested resource could not be found."
+    "description": "找不到请求的资源。"
   },
   "pageRebootBmc": {
     "lastReboot": "Last BMC reboot",
-    "rebootBmc": "Reboot BMC",
-    "rebootInformation": "When you reboot the BMC, your web browser loses contact with the BMC for several minutes. When the BMC is back online, you may need to log in again.",
+    "rebootBmc": "重启BMC",
+    "rebootInformation": "重新启动BMC时，web浏览器将与BMC失去联系几分钟。当BMC重新联机时，您可能需要再次登录。",
     "modal": {
-      "confirmMessage": "Are you sure you want to reboot the BMC?",
-      "confirmTitle": "Confirm BMC reboot"
+      "confirmMessage": "您确定要重新启动BMC吗？",
+      "confirmTitle": "确认BMC重新启动"
     },
     "toast": {
-      "errorRebootStart": "Error rebooting BMC.",
-      "successRebootStart": "Rebooting BMC."
+      "errorRebootStart": "重启BMC失败。",
+      "successRebootStart": "正在重启BMC。"
     }
   },
   "pageSensors": {
     "exportFilePrefix": "sensors_",
-    "searchForSensors": "Search for sensors",
+    "searchForSensors": "搜索传感器",
     "table": {
-      "currentValue": "Current value",
-      "lowerWarning": "Lower warning",
-      "lowerCritical": "Lower critical",
+      "currentValue": "当前值",
+      "lowerWarning": "警告下限",
+      "lowerCritical": "下临界点",
       "name": "Name",
-      "status": "Status",
-      "upperWarning": "Upper warning",
-      "upperCritical": "Upper critical"
+      "status": "状态",
+      "upperWarning": "警告上限",
+      "upperCritical": "上临界点"
     }
   },
   "pageSerialOverLan": {
-    "connected": "Connected",
-    "disconnected": "Disconnected",
-    "openNewTab": "Open in new tab",
-    "status": "Status",
-    "subTitle": "SOL console redirects server's serial port output to this window."
+    "connected": "已连接",
+    "disconnected": "连接断开",
+    "openNewTab": "打开新选项卡",
+    "status": "状态",
+    "subTitle": "SOL 控制台将服务器的串行输出口重定向到此窗口。"
   },
   "pageServerLed": {
-    "serverLedSubTitle": "Server indicator LED",
-    "serverLedTitle": "LED light control",
+    "serverLedSubTitle": "服务器指示灯LED",
+    "serverLedTitle": "LED灯控制",
     "toast": {
-      "errorServerLedOff": "Error turning LED off.",
-      "errorServerLedOn": "Error turning LED on.",
-      "successServerLedOff": "Server LED successfully turned off.",
-      "successServerLedOn": "Server LED successfully turned on."
+      "errorServerLedOff": "关闭LED时出错。",
+      "errorServerLedOn": "打开LED时出错。",
+      "successServerLedOff": "服务器LED已成功关闭。",
+      "successServerLedOn": "服务器LED已成功打开。"
     }
   },
   "pageServerPowerOperations": {
-    "currentStatus": "Current status",
-    "hostOsBootSettings": "Host OS boot settings",
-    "hostStatus": "Host status",
-    "immediateReboot": "Immediate – Server reboots without OS shutting down; may cause data corruption",
-    "immediateShutdown": "Immediate - Server shuts down without OS shutting down; may cause data corruption",
-    "lastPowerOperation": "Last power operation",
-    "oneTimeBootWarning": "Pending one time boot. Next boot will be performed with the specified one time boot settings. Subsequent boots will be performed with the default settings.",
-    "operationInProgress": "There are no options to display while a power operation is in progress. When complete, power operations will be displayed here.",
-    "operations": "Operations",
-    "orderlyReboot": "Orderly – OS shuts down, then server reboots",
-    "orderlyShutdown": "Orderly - OS shuts down, then server shuts down",
-    "powerOn": "Power on",
-    "reboot": "Reboot",
-    "rebootServer": "Reboot server",
-    "shutDown": "Shut down",
-    "shutdownServer": "Shutdown server",
+    "currentStatus": "当前状态",
+    "hostOsBootSettings": "主机操作系统引导设置",
+    "hostStatus": "主机状态",
+    "immediateReboot": "服务器重新启动而不关闭操作系统；可能导致数据损坏",
+    "immediateShutdown": "服务器在不关闭操作系统的情况下关闭；可能导致数据损坏",
+    "lastPowerOperation": "上一次电源操作",
+    "oneTimeBootWarning": "等待一次性启动。下一次引导将使用指定的一次性启动设置执行。后续引导将使用默认设置执行。",
+    "operationInProgress": "在电源操作过程中没有可显示的选项。完成后，电源操作将显示在此处。",
+    "operations": "操作",
+    "orderlyReboot": "有序–操作系统关闭，然后服务器重新启动",
+    "orderlyShutdown": "有序-OS关闭，然后服务器关闭",
+    "powerOn": "开机",
+    "reboot": "重启",
+    "rebootServer": "重启服务器",
+    "shutDown": "关机",
+    "shutdownServer": "关闭服务器",
     "bootSettings": {
-      "bootSettingsOverride": "Boot settings override",
-      "enableOneTimeBoot": "Enable one time boot",
-      "tpmRequiredPolicy": "TPM required policy",
-      "tpmRequiredPolicyHelper": "Enable to ensure the system only boots when the TPM is functional."
+      "bootSettingsOverride": "引导设置覆盖",
+      "enableOneTimeBoot": "启用一次性启动",
+      "tpmRequiredPolicy": "TPM所需策略",
+      "tpmRequiredPolicyHelper": "启用以确保系统仅在TPM正常工作时启动。"
     },
     "modal": {
-      "confirmRebootMessage": "Are you sure you want to reboot?",
-      "confirmRebootTitle": "Server reboot will cause outage",
-      "confirmShutdownMessage": "Are you sure you want to shut down?",
-      "confirmShutdownTitle": "Server shutdown will cause outage"
+      "confirmRebootMessage": "是否确实要重新启动？",
+      "confirmRebootTitle": "服务器重启会导致停机",
+      "confirmShutdownMessage": "确定要关机吗？",
+      "confirmShutdownTitle": "服务器关闭将导致停机"
     },
     "toast": {
-      "errorSaveSettings": "Error saving settings.",
-      "successSaveSettings": "Successfully saved settings."
+      "errorSaveSettings": "保存设置时出错。",
+      "successSaveSettings": "成功保存设置。"
     }
   },
   "pageSslCertificates": {
@@ -624,27 +622,27 @@
       "certificatesExpiringMessage": "有些证书快要过期了，请更新。"
     },
     "modal": {
-      "alternateName": "Alternate name",
-      "alternateNameHelperText": "Add multiple alternate names separated by space",
+      "alternateName": "替代名称",
+      "alternateNameHelperText": "备用名称添加多个用空格分隔的备用名称",
       "certificateFile": "证书文件",
-      "certificateSigningRequest": "Certificate Signing Request (CSR)",
+      "certificateSigningRequest": "证书签名请求(CSR)",
       "certificateType": "证书类型",
-      "challengePassword": "Challenge password",
+      "challengePassword": "质询密码",
       "city": "City",
-      "commonName": "Common name",
-      "companyName": "Company name",
-      "companyUnit": "Company unit",
-      "contactPerson": "Contact person",
+      "commonName": "常用名",
+      "companyName": "公司名称",
+      "companyUnit": "单位",
+      "contactPerson": "联系人",
       "country": "Country",
-      "deleteConfirmMessage": "Are you sure you want to delete '%{certificate}' issued by %{issuedBy}? This action cannot be undone.",
-      "duplicateAlternateName": "Duplicate alternate name",
-      "emailAddress": "Email address",
-      "generateACertificateSigningRequest": "Generate a Certificate Signing Request (CSR)",
+      "deleteConfirmMessage": "是否确实要删除由%{issuedBy}颁发的'%{certificate}'？",
+      "duplicateAlternateName": "备用名称重复",
+      "emailAddress": "Email地址",
+      "generateACertificateSigningRequest": "生成证书签名请求（CSR）",
       "keyBitLength": "秘钥长度(bit)",
-      "keyCurveId": "Key curve ID",
+      "keyCurveId": "关键曲线ID",
       "keyPairAlgorithm": "秘钥对算法",
       "privateKey": "私钥",
-      "state": "State"
+      "state": "状态"
     },
     "table": {
       "certificate": "证书",
@@ -654,34 +652,34 @@
       "validUntil": "有效期至"
     },
     "toast": {
-      "errorAddCertificate": "Error adding certificate.",
-      "errorDeleteCertificate": "Error deleting certificate.",
-      "errorReplaceCertificate": "Error replacing certificate.",
-      "successAddCertificate": "Successfully added %{certificate}.",
-      "successDeleteCertificate": "Successfully deleted %{certificate}.",
-      "successReplaceCertificate": "Successfully replaced %{certificate}."
+      "errorAddCertificate": "添加证书时出错。",
+      "errorDeleteCertificate": "删除证书时出错。",
+      "errorReplaceCertificate": "替换证书时出错。",
+      "successAddCertificate": "成功添加%{certificate}.",
+      "successDeleteCertificate": "成功删除%{certificate}.",
+      "successReplaceCertificate": "已成功替换%{certificate}."
     }
   },
   "pageVirtualMedia": {
-    "configureConnection": "Configure Connection",
-    "defaultDeviceName": "Virtual media device",
-    "start": "Start",
-    "stop": "Stop",
-    "virtualMediaSubTitleFirst": "Save image in a web browser",
-    "virtualMediaSubTitleSecond": "Load image from external server",
+    "configureConnection": "配置连接",
+    "defaultDeviceName": "虚拟媒体设备",
+    "start": "开始",
+    "stop": "停止",
+    "virtualMediaSubTitleFirst": "在web浏览器中保存图像",
+    "virtualMediaSubTitleSecond": "从外部服务器加载映像",
     "modal": {
-      "password": "Password",
-      "serverUri": "External server URI",
-      "title": "Legacy mode configuration",
-      "username": "Username"
+      "password": "密码",
+      "serverUri": "外部服务器URI",
+      "title": "传统模式配置",
+      "username": "用户名"
     },
     "toast": {
-      "errorMounting": "Error mounting",
-      "errorReadingFile": "Error reading file. Closing server.",
-      "errorUnmounting": "Error unmounting",
-      "serverRunning": "Server running",
-      "serverClosedSuccessfully": "Server closed successfully",
-      "serverClosedWithErrors": "Server closed with errors"
+      "errorMounting": "挂载错误。",
+      "errorReadingFile": "读取文件时出错。正在关闭服务器。",
+      "errorUnmounting": "卸载错误。",
+      "serverRunning": "服务器运行中。",
+      "serverClosedSuccessfully": "服务器关闭成功。",
+      "serverClosedWithErrors": "服务器关闭时出现错误。"
     }
   },
   "countries": {
