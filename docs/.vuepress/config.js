@@ -49,14 +49,15 @@ module.exports = {
             "/guide/components/",
             "/guide/components/alert",
             "/guide/components/buttons/",
-            "/guide/components/table",
+            "/guide/components/table/",
             "/guide/components/toast",
           ]
           },
           {
             title: "Quick Start",
             children: [
-            "/guide/quickstart/page-anatomy"
+            "/guide/quickstart/page-anatomy",
+            "/guide/quickstart/store-anatomy"
           ]
           }
         ],
