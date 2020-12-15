@@ -1,21 +1,21 @@
 <template>
   <b-container fluid="xl">
     <page-title />
-    <b-row class="mb-3">
-      <b-col sm="7" xl="4" class="d-flex flex-column justify-content-end">
+    <b-row class="align-items-start">
+      <b-col sm="8" xl="6" class="d-sm-flex align-items-end">
         <search
           :placeholder="$t('pageEventLogs.table.searchLogs')"
           @change-search="onChangeSearchInput"
           @clear-search="onClearSearchInput"
         />
+        <div class="ml-sm-4">
+          <table-cell-count
+            :filtered-items-count="filteredRows"
+            :total-number-of-cells="allLogs.length"
+          ></table-cell-count>
+        </div>
       </b-col>
-      <b-col sm="3" class="d-flex flex-column justify-content-end">
-        <table-cell-count
-          :filtered-items-count="filteredRows"
-          :total-number-of-cells="allLogs.length"
-        ></table-cell-count>
-      </b-col>
-      <b-col sm="8" md="7" xl="5">
+      <b-col sm="8" md="7" xl="6">
         <table-date-filter @change="onChangeDateTimeFilter" />
       </b-col>
     </b-row>
@@ -70,14 +70,18 @@
               data-test-id="eventLogs-checkbox-selectAll"
               :indeterminate="tableHeaderCheckboxIndeterminate"
               @change="onChangeHeaderCheckbox($refs.table)"
-            />
+            >
+              <span class="sr-only">{{ $t('global.table.selectAll') }}</span>
+            </b-form-checkbox>
           </template>
           <template #cell(checkbox)="row">
             <b-form-checkbox
               v-model="row.rowSelected"
               :data-test-id="`eventLogs-checkbox-selectRow-${row.index}`"
               @change="toggleSelectRow($refs.table, row.index)"
-            />
+            >
+              <span class="sr-only">{{ $t('global.table.selectItem') }}</span>
+            </b-form-checkbox>
           </template>
 
           <!-- Severity column -->
@@ -160,12 +164,22 @@ import TableToolbarExport from '@/components/Global/TableToolbarExport';
 
 import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
 import TableFilterMixin from '@/components/Mixins/TableFilterMixin';
-import BVPaginationMixin from '@/components/Mixins/BVPaginationMixin';
-import BVTableSelectableMixin from '@/components/Mixins/BVTableSelectableMixin';
+import BVPaginationMixin, {
+  currentPage,
+  perPage,
+  itemsPerPageOptions,
+} from '@/components/Mixins/BVPaginationMixin';
+import BVTableSelectableMixin, {
+  selectedRows,
+  tableHeaderCheckboxModel,
+  tableHeaderCheckboxIndeterminate,
+} from '@/components/Mixins/BVTableSelectableMixin';
 import BVToastMixin from '@/components/Mixins/BVToastMixin';
 import TableDataFormatterMixin from '@/components/Mixins/TableDataFormatterMixin';
 import TableSortMixin from '@/components/Mixins/TableSortMixin';
-import SearchFilterMixin from '@/components/Mixins/SearchFilterMixin';
+import SearchFilterMixin, {
+  searchFilter,
+} from '@/components/Mixins/SearchFilterMixin';
 
 export default {
   components: {
@@ -250,9 +264,16 @@ export default {
           label: this.$t('global.action.delete'),
         },
       ],
+      currentPage: currentPage,
       filterStartDate: null,
       filterEndDate: null,
+      itemsPerPageOptions: itemsPerPageOptions,
+      perPage: perPage,
+      searchFilter: searchFilter,
       searchTotalFilteredRows: 0,
+      selectedRows: selectedRows,
+      tableHeaderCheckboxModel: tableHeaderCheckboxModel,
+      tableHeaderCheckboxIndeterminate: tableHeaderCheckboxIndeterminate,
     };
   },
   computed: {

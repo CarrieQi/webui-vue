@@ -207,11 +207,11 @@ const FirmwareStore = {
         });
     },
     async switchBmcFirmware({ state }) {
-      const backupLoaction = state.bmcFirmware.backupLoaction;
+      const backupLocation = state.bmcFirmware.backupLocation;
       const data = {
         Links: {
           ActiveSoftwareImage: {
-            '@odata.id': backupLoaction,
+            '@odata.id': backupLocation,
           },
         },
       };

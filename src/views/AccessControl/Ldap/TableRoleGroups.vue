@@ -49,14 +49,18 @@
               :indeterminate="tableHeaderCheckboxIndeterminate"
               :disabled="!isServiceEnabled"
               @change="onChangeHeaderCheckbox($refs.table)"
-            />
+            >
+              <span class="sr-only">{{ $t('global.table.selectAll') }}</span>
+            </b-form-checkbox>
           </template>
           <template #cell(checkbox)="row">
             <b-form-checkbox
               v-model="row.rowSelected"
               :disabled="!isServiceEnabled"
               @change="toggleSelectRow($refs.table, row.index)"
-            />
+            >
+              <span class="sr-only">{{ $t('global.table.selectItem') }}</span>
+            </b-form-checkbox>
           </template>
 
           <!-- table actions column -->
@@ -95,7 +99,11 @@ import { mapGetters } from 'vuex';
 import Alert from '@/components/Global/Alert';
 import TableToolbar from '@/components/Global/TableToolbar';
 import TableRowAction from '@/components/Global/TableRowAction';
-import BVTableSelectableMixin from '@/components/Mixins/BVTableSelectableMixin';
+import BVTableSelectableMixin, {
+  selectedRows,
+  tableHeaderCheckboxModel,
+  tableHeaderCheckboxIndeterminate,
+} from '@/components/Mixins/BVTableSelectableMixin';
 import BVToastMixin from '@/components/Mixins/BVToastMixin';
 import ModalAddRoleGroup from './ModalAddRoleGroup';
 import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
@@ -142,6 +150,9 @@ export default {
           label: this.$t('global.action.delete'),
         },
       ],
+      selectedRows: selectedRows,
+      tableHeaderCheckboxModel: tableHeaderCheckboxModel,
+      tableHeaderCheckboxIndeterminate: tableHeaderCheckboxIndeterminate,
     };
   },
   computed: {

@@ -209,7 +209,7 @@ import PageTitle from '@/components/Global/PageTitle';
 import PageSection from '@/components/Global/PageSection';
 
 import BVToastMixin from '@/components/Mixins/BVToastMixin';
-import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
+import LoadingBarMixin, { loading } from '@/components/Mixins/LoadingBarMixin';
 import LocalTimezoneLabelMixin from '@/components/Mixins/LocalTimezoneLabelMixin';
 import VuelidateMixin from '@/components/Mixins/VuelidateMixin.js';
 
@@ -243,6 +243,7 @@ export default {
         },
         ntp: { firstAddress: '', secondAddress: '', thirdAddress: '' },
       },
+      loading,
     };
   },
   validations() {

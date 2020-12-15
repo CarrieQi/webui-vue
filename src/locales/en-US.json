@@ -21,6 +21,7 @@
     "ariaLabel": {
       "clearSearch": "Clear search input",
       "hidePassword": "Hide password",
+      "scrollToTop": "Scroll to top",
       "showPassword": "Show password as plain text. Note: this will visually expose your password on the screen.",
       "tooltip": "Tooltip",
       "progressBar": "Page loading progress bar"
@@ -68,6 +69,8 @@
       "fromDate": "From date",
       "items": "%{count} items",
       "itemsPerPage": "Items per page",
+      "selectAll": "Select all",
+      "selectItem": "Select item",
       "selectedItems":"%{filterCount} of %{count} items",
       "toDate": "To date",
       "viewAll": "View all"

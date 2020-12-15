@@ -259,7 +259,346 @@ export default {
 </script>
 ```
 
-<!-- ## Pagination -->
-<!-- ## Row actions -->
-<!-- ## Batch actions -->
-<!-- ## Filter -->
+## Row actions
+
+To add table row actions, add a column for the action buttons in the table. Then in the array of table items, add a corresponding array of actions for each item. The array should have each desired row action with a `value` and `title` property.
+
+Import the `<table-row-action>` component. Provide the `value` and `title` props to the component and use the named `#icons` slot to include an icon. The component will emit a `@click-table-action` with the event value.
+
+![Table row actions example](./table-row-actions.png)
+
+```vue
+<template>
+  <b-table
+    hover
+    responsive="md"
+    :items="itemsWithActions"
+    :fields="fields"
+  >
+    <template #cell(actions)="row">
+      <table-row-action
+        v-for="(action, index) in row.item.actions"
+        :key="index"
+        :value="action.value"
+        :title="action.title"
+        @click-table-action="onTableRowAction($event, row.item)"
+      />
+        <template #icon>
+          <icon-edit v-if="action.value === 'edit'"/>
+          <icon-delete v-if="action.value === 'delete'"/>
+        </template>
+      </table-row-action>
+    </template>
+  </b-table>
+</template>
+<script>
+import IconDelete from '@carbon/icons-vue/es/trash-can/20';
+import IconEdit from '@carbon/icons-vue/es/edit/20';
+import TableRowAction from '@/components/Global/TableRowAction';
+
+export default {
+  components: { IconDelete, IconEdit, TableRowAction },
+  data() {
+    return {
+      items: [...],
+      fields: [
+        ...,
+        {
+          key: 'actions',
+          label: '',
+          tdClass: 'text-right text-nowrap',
+        }
+      ],
+    }
+  },
+  computed: {
+    itemsWithActions() {
+      return this.items.map((item) => {
+        return {
+          ...item,
+          actions: [
+            {
+              value: 'edit',
+              title: this.$t('global.action.edit'),
+            },
+            {
+              value: 'delete',
+              title: this.$t('global.action.delete'),
+            },
+          ],
+        };
+      });
+    }
+  },
+  methods: {
+    onTableRowAction(event, row) {
+      // row action callback
+    }
+  }
+}
+</script>
+```
+
+## Filters
+
+To add a table dropdown filter:
+1. Import the `<table-filter> `component and TableFilterMixin.
+1. Add a filters prop to the `<table-filters>` component. This prop should be an array of filter groups–each required to have a key, label, and values prop.
+
+The `label` prop value should be the translated filter group label. The `key` prop will usually match the filtered by table column key. The `values` prop should be an array of filter values that will render as a list of checkbox items in the dropdown.
+
+The component will emit a `@filter-change` event that will provide the filter group and all selected values in the group. Use the getFilteredTableData method from the TableFilterMixin to show the filtered table data.
+
+![Table filter example](./table-filter.png)
+
+![Table filter active example](./table-filter-active.png)
+
+```vue
+<template>
+  <b-container>
+    <b-row>
+      <b-col class="text-right">
+        <table-filter
+          :filters="tableFilters"
+          @filter-change="onTableFilterChange"
+        />
+      </b-col>
+    </b-row>
+    <b-table
+      hover
+      responsive="md"
+      :items="filteredItems"
+      :fields="fields"
+    />
+  </b-container>
+</template>
+<script>
+import TableFilter from '@/components/Global/TableFilter';
+import TableFilterMixin from '@/components/Mixins/TableFilterMixin';
+
+export default {
+  components: { TableFilter },
+  mixins: [ TableFilterMixin ],
+  data() {
+    return {
+      items: [...],
+      fields: [...],
+      tableFilters: [
+        {
+          label: this.$t('table.status'),
+          key: status,
+          values: ['Open', 'Closed']
+        }
+      ],
+      activeFilters: [],
+    },
+  },
+  computed: {
+    filteredItems() {
+      return this.getFilteredTableData(this.items, this.activeFilters);
+    },
+  },
+  methods: {
+    onTableFilterChange({ activeFilters }) {
+      this.activeFilters = activeFilters;
+    },
+  },
+}
+</script>
+```
+
+
+### Date filter
+
+To add a date filter, import the `<table-date-filter>` component. It will emit a `@change` event with the user input date values. There is a date filter method, `getFilteredTableDataByDate`, in the `TableFilterMixin`.
+
+
+## Batch actions
+
+Batch actions allow a user to take a single action on many items in a table at once.
+
+To add table batch actions:
+1. Import the `<table-toolbar> `component and BVTableSelectableMixin
+1. Add the `selectable`, `no-select-on-click` props and a unique `ref` to the table. The table will emit a `@row-selected` event. Use the `onRowSelected` mixin method as a callback and provide the `$event` as the first argument and the total table items count as the second argument.
+1. Add a table column for checkboxes. The table header checkbox should use the `tableHeaderCheckboxModel` and `tableHeaderCheckboxIndeterminate` values provided by the mixin. The table header checkbox should also use the `onChangeHeaderCheckbox` method as a callback for the `@change` event with the table `ref` passed as an argument. The table row checkboxes should use the `toggleSelectRow` method as a callback for the `@change` event with the table `ref` passed as the first argument and the row index passed as the second argument.
+1. Add an actions prop to the `<table-toolbar>` component. This prop should be an array of toolbar actions–required to have a value and label prop. Add the `selected-items-count` prop to the `<table-toolbar>` component. The component will emit a `@batch-action` event that will provide the user selected action. It will also emit a `@clear-selected` event. Provide the `clearSelectedRows` as a callback with the table `ref` passed as an argument.
+
+![Table batch action example](./table-batch-action.png)
+
+![Table batch action active example](./table-batch-action-active.png)
+
+```vue
+<template>
+  <b-container>
+    <table-toolbar
+      :selected-items-count="selectedRows.length"
+      :actions="tableToolbarActions"
+      @clear-selected="clearSelectedRows($refs.table)"
+      @batch-action="onBatchAction"
+    />
+    <b-table
+      ref="table"
+      hover
+      selectable
+      no-select-on-click
+      responsive="md"
+      :items="filteredItems"
+      :fields="fields"
+      @row-selected="onRowSelected($event, items.length)"
+    >
+      <template #head(checkbox)>
+        <b-form-checkbox
+          v-model="tableHeaderCheckboxModel"
+          :indeterminate="tableHeaderCheckboxIndeterminate"
+          @change="onChangeHeaderCheckbox($refs.table)"
+        />
+      </template>
+      <template #cell(checkbox)="row">
+        <b-form-checkbox
+          v-model="row.rowSelected"
+          @change="toggleSelectRow($refs.table, row.index)"
+        />
+      </template>
+    </b-table>
+  </b-container>
+</template>
+<script>
+import TableToolbar from '@/components/Global/TableToolbar';
+import BVTableSelectableMixin, {
+  tableHeaderCheckboxModel,
+  tableHeaderCheckboxIndeterminate,
+  selectedRows
+} from '@/components/Mixins/BVTableSelectableMixin';
+
+export default {
+  components: { TableToolbar },
+  mixins: [ BVTableSelectableMixin ],
+  data() {
+    return {
+      items: [...],
+      fields: [
+        {
+          key: 'checkbox'
+        },
+        ...
+      ],
+      tableToolbarActions: [
+        {
+          value: 'edit',
+          label: this.$t('global.action.edit')
+        },
+        {
+          value: 'delete',
+          label: this.$t('global.action.delete')
+        },
+      ],
+      tableHeaderCheckboxModel,
+      tableHeaderCheckboxIndeterminate,
+      selectedRows
+    },
+  },
+  methods: {
+    onBatchAction(action) {
+      // Do something with selected batch action and selected rows
+    },
+  },
+}
+</script>
+```
+
+
+## Pagination
+
+To add table pagination:
+1. Import the BVPaginationMixin
+1. Add the `per-page` and `current-page` props to the `<table>` component.
+1. Add the below HTML snippet to the template. Make sure to update the `total-rows` prop.
+
+```vue{21}
+<b-row>
+  <b-col sm="6">
+    <b-form-group
+      class="table-pagination-select"
+      :label="$t('global.table.itemsPerPage')"
+      label-for="pagination-items-per-page"
+    >
+      <b-form-select
+        id="pagination-items-per-page"
+        v-model="perPage"
+        :options="itemsPerPageOptions"
+      />
+    </b-form-group>
+  </b-col>
+  <b-col sm="6">
+    <b-pagination
+      v-model="currentPage"
+      first-number
+      last-number
+      :per-page="perPage"
+      :total-rows="getTotalRowCount(items.length)"
+      aria-controls="table-event-logs"
+    />
+  </b-col>
+</b-row>
+```
+![Table pagination example](./table-pagination.png)
+
+```vue
+<template>
+  <b-container>
+    <b-table
+      hover
+      responsive="md"
+      :items="filteredItems"
+      :fields="fields"
+      :per-page="perPage"
+      :current-page="currentPage"
+    />
+    <b-row>
+      <b-col sm="6">
+        <b-form-group
+          class="table-pagination-select"
+          :label="$t('global.table.itemsPerPage')"
+          label-for="pagination-items-per-page"
+        >
+          <b-form-select
+            id="pagination-items-per-page"
+            v-model="perPage"
+            :options="itemsPerPageOptions"
+          />
+        </b-form-group>
+      </b-col>
+      <b-col sm="6">
+        <b-pagination
+          v-model="currentPage"
+          first-number
+          last-number
+          :per-page="perPage"
+          :total-rows="getTotalRowCount(items.length)"
+          aria-controls="table-event-logs"
+        />
+      </b-col>
+    </b-row>
+  </b-container>
+</template>
+<script>
+import BVPaginationMixin, {
+  currentPage,
+  perPage,
+  itemsPerPageOptions
+} from '@/components/Mixins/BVPaginationMixin';
+
+export default {
+  mixins: [ BVPaginationMixin ],
+  data() {
+    return {
+      items: [...],
+      fields: [..],
+      currentPage,
+      perPage,
+      itemsPerPageOptions
+    },
+  }
+}
+</script>
+```

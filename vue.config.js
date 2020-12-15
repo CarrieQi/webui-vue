@@ -38,16 +38,16 @@ module.exports = {
   },
   devServer: {
     https: true,
-    /*proxy: {
+    proxy: {
       '/': {
         target: process.env.BASE_URL,
-        onProxyRes: proxyRes => {
+        onProxyRes: (proxyRes) => {
           // This header is ignored in the browser so removing
           // it so we don't see warnings in the browser console
           delete proxyRes.headers['strict-transport-security'];
-        }
-      }
-    },*/
+        },
+      },
+    },
     port: 8000,
   },
   productionSourceMap: false,

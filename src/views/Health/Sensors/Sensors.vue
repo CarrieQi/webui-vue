@@ -1,7 +1,7 @@
 <template>
   <b-container fluid="xl">
     <page-title />
-    <b-row>
+    <b-row class="align-items-end">
       <b-col sm="6" md="5" xl="4">
         <search
           :placeholder="$t('pageSensors.searchForSensors')"
@@ -61,13 +61,17 @@
               v-model="tableHeaderCheckboxModel"
               :indeterminate="tableHeaderCheckboxIndeterminate"
               @change="onChangeHeaderCheckbox($refs.table)"
-            />
+            >
+              <span class="sr-only">{{ $t('global.table.selectAll') }}</span>
+            </b-form-checkbox>
           </template>
           <template #cell(checkbox)="row">
             <b-form-checkbox
               v-model="row.rowSelected"
               @change="toggleSelectRow($refs.table, row.index)"
-            />
+            >
+              <span class="sr-only">{{ $t('global.table.selectItem') }}</span>
+            </b-form-checkbox>
           </template>
 
           <template #cell(status)="{ value }">
@@ -103,12 +107,18 @@ import TableToolbar from '@/components/Global/TableToolbar';
 import TableToolbarExport from '@/components/Global/TableToolbarExport';
 import TableCellCount from '@/components/Global/TableCellCount';
 
-import BVTableSelectableMixin from '@/components/Mixins/BVTableSelectableMixin';
+import BVTableSelectableMixin, {
+  selectedRows,
+  tableHeaderCheckboxModel,
+  tableHeaderCheckboxIndeterminate,
+} from '@/components/Mixins/BVTableSelectableMixin';
 import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
 import TableFilterMixin from '@/components/Mixins/TableFilterMixin';
 import TableDataFormatterMixin from '@/components/Mixins/TableDataFormatterMixin';
 import TableSortMixin from '@/components/Mixins/TableSortMixin';
-import SearchFilterMixin from '@/components/Mixins/SearchFilterMixin';
+import SearchFilterMixin, {
+  searchFilter,
+} from '@/components/Mixins/SearchFilterMixin';
 
 export default {
   name: 'Sensors',
@@ -187,7 +197,11 @@ export default {
         },
       ],
       activeFilters: [],
+      searchFilter: searchFilter,
       searchTotalFilteredRows: 0,
+      selectedRows: selectedRows,
+      tableHeaderCheckboxModel: tableHeaderCheckboxModel,
+      tableHeaderCheckboxIndeterminate: tableHeaderCheckboxIndeterminate,
     };
   },
   computed: {

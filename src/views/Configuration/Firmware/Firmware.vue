@@ -113,9 +113,7 @@
                 >
                   <template #invalid>
                     <b-form-invalid-feedback role="alert">
-                      <template>
-                        {{ $t('global.form.required') }}
-                      </template>
+                      {{ $t('global.form.required') }}
                     </b-form-invalid-feedback>
                   </template>
                 </form-file>
@@ -200,7 +198,7 @@ import ModalRebootBackupBmc from './FirmwareModalRebootBackupBmc';
 import FormFile from '@/components/Global/FormFile';
 
 import VuelidateMixin from '@/components/Mixins/VuelidateMixin.js';
-import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
+import LoadingBarMixin, { loading } from '@/components/Mixins/LoadingBarMixin';
 import BVToastMixin from '@/components/Mixins/BVToastMixin';
 
 export default {
@@ -228,6 +226,7 @@ export default {
       tftpFileName: null,
       timeoutId: null,
       isPageDisabled: null,
+      loading: loading,
     };
   },
   computed: {
