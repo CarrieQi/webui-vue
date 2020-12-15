@@ -56,8 +56,8 @@ export default {
   props: {
     isFullWindow: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
@@ -66,7 +66,7 @@ export default {
       terminalClass: this.isFullWindow ? 'full-window' : '',
       marginClass: this.isFullWindow ? 'margin-left-full-window' : '',
       status: Connecting,
-      convasRef: null
+      convasRef: null,
     };
   },
   computed: {
@@ -85,7 +85,7 @@ export default {
         return this.$t('pageKvm.disconnected');
       }
       return this.$t('pageKvm.connecting');
-    }
+    },
   },
   mounted() {
     this.openTerminal();
@@ -137,8 +137,8 @@ export default {
         '_blank',
         'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=yes,width=700,height=550'
       );
-    }
-  }
+    },
+  },
 };
 </script>
 

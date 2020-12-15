@@ -39,24 +39,19 @@
         </b-form-group>
       </template>
 
-      <b-form-group
-        :label="$t('pageSslCertificates.modal.certificateFile')"
-        label-for="certificate-file"
-      >
-        <b-form-file
+      <b-form-group :label="$t('pageSslCertificates.modal.certificateFile')">
+        <form-file
           id="certificate-file"
           v-model="form.file"
           accept=".pem"
-          :browse-text="$t('global.fileUpload.browseText')"
-          :drop-placeholder="$t('global.fileUpload.dropPlaceholder')"
-          :placeholder="$t('global.fileUpload.placeholder')"
           :state="getValidationState($v.form.file)"
-        />
-        <b-form-invalid-feedback role="alert">
-          <template v-if="!$v.form.file.required">
-            {{ $t('global.form.required') }}
+        >
+          <template #invalid>
+            <b-form-invalid-feedback role="alert">
+              {{ $t('global.form.required') }}
+            </b-form-invalid-feedback>
           </template>
-        </b-form-invalid-feedback>
+        </form-file>
       </b-form-group>
     </b-form>
     <template #modal-ok>
@@ -74,27 +69,30 @@
 import { required, requiredIf } from 'vuelidate/lib/validators';
 import VuelidateMixin from '@/components/Mixins/VuelidateMixin.js';
 
+import FormFile from '@/components/Global/FormFile';
+
 export default {
+  components: { FormFile },
   mixins: [VuelidateMixin],
   props: {
     certificate: {
       type: Object,
       default: null,
-      validator: prop => {
+      validator: (prop) => {
         if (prop === null) return true;
         return (
           Object.prototype.hasOwnProperty.call(prop, 'type') &&
           Object.prototype.hasOwnProperty.call(prop, 'certificate')
         );
-      }
-    }
+      },
+    },
   },
   data() {
     return {
       form: {
         certificateType: null,
-        file: null
-      }
+        file: null,
+      },
     };
   },
   computed: {
@@ -105,30 +103,30 @@ export default {
       return this.certificateTypes.map(({ type, label }) => {
         return {
           text: label,
-          value: type
+          value: type,
         };
       });
-    }
+    },
   },
   watch: {
-    certificateOptions: function(options) {
+    certificateOptions: function (options) {
       if (options.length) {
         this.form.certificateType = options[0].value;
       }
-    }
+    },
   },
   validations() {
     return {
       form: {
         certificateType: {
-          required: requiredIf(function() {
+          required: requiredIf(function () {
             return !this.certificate;
-          })
+          }),
         },
         file: {
-          required
-        }
-      }
+          required,
+        },
+      },
     };
   },
   methods: {
@@ -141,7 +139,7 @@ export default {
         location: this.certificate ? this.certificate.location : null,
         type: this.certificate
           ? this.certificate.type
-          : this.form.certificateType
+          : this.form.certificateType,
       });
       this.closeModal();
     },
@@ -161,7 +159,7 @@ export default {
       // prevent modal close
       bvModalEvt.preventDefault();
       this.handleSubmit();
-    }
-  }
+    },
+  },
 };
 </script>

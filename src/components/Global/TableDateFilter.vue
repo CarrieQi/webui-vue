@@ -34,13 +34,15 @@
             :label-help="
               $t('global.calendar.useCursorKeysToNavigateCalendarDates')
             "
-            :aria-label="$t('global.calendar.selectDate')"
             :title="$t('global.calendar.selectDate')"
             button-variant="link"
             aria-controls="input-from-date"
           >
             <template #button-content>
               <icon-calendar />
+              <span class="sr-only">
+                {{ $t('global.calendar.selectDate') }}
+              </span>
             </template>
           </b-form-datepicker>
         </b-input-group>
@@ -78,13 +80,15 @@
             :label-help="
               $t('global.calendar.useCursorKeysToNavigateCalendarDates')
             "
-            :aria-label="$t('global.calendar.openDatePicker')"
-            :title="$t('global.calendar.openDatePicker')"
+            :title="$t('global.calendar.selectDate')"
             button-variant="link"
             aria-controls="input-to-date"
           >
             <template #button-content>
               <icon-calendar />
+              <span class="sr-only">
+                {{ $t('global.calendar.selectDate') }}
+              </span>
             </template>
           </b-form-datepicker>
         </b-input-group>
@@ -109,31 +113,31 @@ export default {
       fromDate: '',
       toDate: '',
       offsetToDate: '',
-      locale: this.$store.getters['global/languagePreference']
+      locale: this.$store.getters['global/languagePreference'],
     };
   },
   validations() {
     return {
       fromDate: {
         pattern: helpers.regex('pattern', isoDateRegex),
-        maxDate: value => {
+        maxDate: (value) => {
           if (!this.toDate) return true;
           const date = new Date(value);
           const maxDate = new Date(this.toDate);
           if (date.getTime() > maxDate.getTime()) return false;
           return true;
-        }
+        },
       },
       toDate: {
         pattern: helpers.regex('pattern', isoDateRegex),
-        minDate: value => {
+        minDate: (value) => {
           if (!this.fromDate) return true;
           const date = new Date(value);
           const minDate = new Date(this.fromDate);
           if (date.getTime() < minDate.getTime()) return false;
           return true;
-        }
-      }
+        },
+      },
     };
   },
   watch: {
@@ -145,7 +149,7 @@ export default {
       // entries from selected end date are included in filter
       this.offsetToDate = new Date(newVal).setUTCHours(23, 59, 59, 999);
       this.emitChange();
-    }
+    },
   },
   methods: {
     emitChange() {
@@ -153,9 +157,9 @@ export default {
       this.$v.$reset(); //reset to re-validate on blur
       this.$emit('change', {
         fromDate: this.fromDate ? new Date(this.fromDate) : null,
-        toDate: this.toDate ? new Date(this.offsetToDate) : null
+        toDate: this.toDate ? new Date(this.offsetToDate) : null,
       });
-    }
-  }
+    },
+  },
 };
 </script>

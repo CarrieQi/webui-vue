@@ -3,7 +3,7 @@
     <b-form-group
       :label="$t('global.form.search')"
       :label-for="`searchInput-${_uid}`"
-      label-sr-only
+      label-class="invisible"
       class="mb-2"
     >
       <b-input-group size="md" class="align-items-center">
@@ -16,6 +16,7 @@
           v-model="filter"
           class="search-input"
           type="text"
+          :aria-label="$t('global.form.search')"
           :placeholder="placeholder"
           @input="onChangeInput"
         >
@@ -45,14 +46,14 @@ export default {
   props: {
     placeholder: {
       type: String,
-      default: function() {
+      default: function () {
         return this.$t('global.form.search');
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      filter: null
+      filter: null,
     };
   },
   methods: {
@@ -63,8 +64,8 @@ export default {
       this.filter = '';
       this.$emit('clear-search');
       this.$refs.searchInput.focus();
-    }
-  }
+    },
+  },
 };
 </script>
 

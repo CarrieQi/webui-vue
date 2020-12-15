@@ -115,8 +115,8 @@
                     :data-test-id="`networkSettings-input-staticIpv4-${index}`"
                     :aria-label="
                       $t('pageNetworkSettings.ariaLabel.staticIpv4AddressRow') +
-                        ' ' +
-                        (index + 1)
+                      ' ' +
+                      (index + 1)
                     "
                     :readonly="dhcpEnabled"
                     :state="
@@ -155,8 +155,8 @@
                     :data-test-id="`networkSettings-input-subnetMask-${index}`"
                     :aria-label="
                       $t('pageNetworkSettings.ariaLabel.staticIpv4SubnetRow') +
-                        ' ' +
-                        (index + 1)
+                      ' ' +
+                      (index + 1)
                     "
                     :readonly="dhcpEnabled"
                     :state="
@@ -229,8 +229,8 @@
                     :data-test-id="`networkSettings-input-dnsAddress-${index}`"
                     :aria-label="
                       $t('pageNetworkSettings.ariaLabel.staticDnsRow') +
-                        ' ' +
-                        (index + 1)
+                      ' ' +
+                      (index + 1)
                     "
                     :readonly="dhcpEnabled"
                     :state="
@@ -299,7 +299,7 @@
 import IconTrashcan from '@carbon/icons-vue/es/trash-can/20';
 import IconAdd from '@carbon/icons-vue/es/add--alt/20';
 import BVToastMixin from '@/components/Mixins/BVToastMixin';
-import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
+import LoadingBarMixin, { loading } from '@/components/Mixins/LoadingBarMixin';
 import PageSection from '@/components/Global/PageSection';
 import PageTitle from '@/components/Global/PageTitle';
 import TableRowAction from '@/components/Global/TableRowAction';
@@ -327,7 +327,7 @@ export default {
     PageSection,
     TableRowAction,
     IconTrashcan,
-    IconAdd
+    IconAdd,
   },
   mixins: [BVToastMixin, VuelidateMixin, LoadingBarMixin],
   beforeRouteLeave(to, from, next) {
@@ -341,20 +341,20 @@ export default {
       ipv4StaticTableFields: [
         {
           key: 'Address',
-          label: this.$t('pageNetworkSettings.table.ipAddress')
+          label: this.$t('pageNetworkSettings.table.ipAddress'),
         },
         {
           key: 'SubnetMask',
-          label: this.$t('pageNetworkSettings.table.subnet')
+          label: this.$t('pageNetworkSettings.table.subnet'),
         },
-        { key: 'actions', label: '', tdClass: 'text-right' }
+        { key: 'actions', label: '', tdClass: 'text-right' },
       ],
       dnsTableFields: [
         {
           key: 'address',
-          label: this.$t('pageNetworkSettings.table.ipAddress')
+          label: this.$t('pageNetworkSettings.table.ipAddress'),
         },
-        { key: 'actions', label: '', tdClass: 'text-right' }
+        { key: 'actions', label: '', tdClass: 'text-right' },
       ],
       selectedInterfaceIndex: 0,
       selectedInterface: {},
@@ -363,8 +363,9 @@ export default {
         hostname: '',
         macAddress: '',
         ipv4StaticTableItems: [],
-        dnsStaticTableItems: []
-      }
+        dnsStaticTableItems: [],
+      },
+      loading,
     };
   },
   validations() {
@@ -376,45 +377,45 @@ export default {
           $each: {
             Address: {
               required,
-              validateAddress
+              validateAddress,
             },
             SubnetMask: {
               required,
-              validateAddress
-            }
-          }
+              validateAddress,
+            },
+          },
         },
         macAddress: { required, validateMacAddress },
         dnsStaticTableItems: {
           $each: {
             address: {
               required,
-              validateAddress
-            }
-          }
-        }
-      }
+              validateAddress,
+            },
+          },
+        },
+      },
     };
   },
   computed: {
     ...mapState('networkSettings', [
       'ethernetData',
       'interfaceOptions',
-      'defaultGateway'
+      'defaultGateway',
     ]),
     interfaceSelectOptions() {
       return this.interfaceOptions.map((option, index) => {
         return {
           text: option,
-          value: index
+          value: index,
         };
       });
-    }
+    },
   },
   watch: {
-    ethernetData: function() {
+    ethernetData: function () {
       this.selectInterface();
-    }
+    },
   },
   created() {
     this.startLoader();
@@ -437,16 +438,16 @@ export default {
     },
     getDnsStaticTableItems() {
       const dns = this.selectedInterface.StaticNameServers || [];
-      this.form.dnsStaticTableItems = dns.map(server => {
+      this.form.dnsStaticTableItems = dns.map((server) => {
         return {
           address: server,
           actions: [
             {
               value: 'delete',
               enabled: this.dhcpEnabled,
-              title: this.$t('pageNetworkSettings.table.deleteDns')
-            }
-          ]
+              title: this.$t('pageNetworkSettings.table.deleteDns'),
+            },
+          ],
         };
       });
     },
@@ -458,9 +459,9 @@ export default {
           {
             value: 'delete',
             enabled: this.dhcpEnabled,
-            title: this.$t('pageNetworkSettings.table.deleteDns')
-          }
-        ]
+            title: this.$t('pageNetworkSettings.table.deleteDns'),
+          },
+        ],
       });
     },
     deleteDnsTableRow(index) {
@@ -472,7 +473,7 @@ export default {
     },
     getIpv4StaticTableItems() {
       const addresses = this.selectedInterface.IPv4StaticAddresses || [];
-      this.form.ipv4StaticTableItems = addresses.map(ipv4 => {
+      this.form.ipv4StaticTableItems = addresses.map((ipv4) => {
         return {
           Address: ipv4.Address,
           SubnetMask: ipv4.SubnetMask,
@@ -480,9 +481,9 @@ export default {
             {
               value: 'delete',
               enabled: this.dhcpEnabled,
-              title: this.$t('pageNetworkSettings.table.deleteStaticIpv4')
-            }
-          ]
+              title: this.$t('pageNetworkSettings.table.deleteStaticIpv4'),
+            },
+          ],
         };
       });
     },
@@ -495,9 +496,9 @@ export default {
           {
             value: 'delete',
             enabled: this.dhcpEnabled,
-            title: this.$t('pageNetworkSettings.table.deleteStaticIpv4')
-          }
-        ]
+            title: this.$t('pageNetworkSettings.table.deleteStaticIpv4'),
+          },
+        ],
       });
     },
     deleteIpv4StaticTableRow(index) {
@@ -522,17 +523,17 @@ export default {
         hostname,
         macAddress,
         selectedInterfaceIndex,
-        isDhcpEnabled
+        isDhcpEnabled,
       };
       networkSettingsForm.staticIpv4 = this.form.ipv4StaticTableItems.map(
-        updateIpv4 => {
+        (updateIpv4) => {
           delete updateIpv4.actions;
           updateIpv4.Gateway = this.form.gateway;
           return updateIpv4;
         }
       );
       networkSettingsForm.staticNameServers = this.form.dnsStaticTableItems.map(
-        updateDns => {
+        (updateDns) => {
           return updateDns.address;
         }
       );
@@ -541,7 +542,7 @@ export default {
           'networkSettings/updateInterfaceSettings',
           networkSettingsForm
         )
-        .then(success => {
+        .then((success) => {
           this.successToast(success);
         })
         .catch(({ message }) => this.errorToast(message))
@@ -549,7 +550,7 @@ export default {
           this.$v.form.$reset();
           this.endLoader();
         });
-    }
-  }
+    },
+  },
 };
 </script>

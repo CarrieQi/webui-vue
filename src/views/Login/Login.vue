@@ -79,42 +79,42 @@ export default {
     return {
       userInfo: {
         username: 'root',
-        password: '0penBmc'
+        password: '0penBmc',
       },
       disableSubmitButton: false,
       languages: [
         {
           value: 'en-US',
-          text: 'English'
+          text: 'English',
         },
         {
           value: 'es',
-          text: 'Español'
+          text: 'Español',
         },
         {
           value: 'cn',
-          text: '中文'
-        }
-      ]
+          text: '中文',
+        },
+      ],
     };
   },
   computed: {
     authError() {
       return this.$store.getters['authentication/authError'];
-    }
+    },
   },
   validations: {
     userInfo: {
       username: {
-        required
+        required,
       },
       password: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
-    login: function() {
+    login: function () {
       this.$v.$touch();
       if (this.$v.$invalid) return;
       this.disableSubmitButton = true;
@@ -132,17 +132,17 @@ export default {
             username
           );
         })
-        .then(passwordChangeRequired => {
+        .then((passwordChangeRequired) => {
           if (passwordChangeRequired) {
             this.$router.push('/change-password');
           } else {
             this.$router.push('/');
           }
         })
-        .catch(error => console.log(error))
+        .catch((error) => console.log(error))
         .finally(() => (this.disableSubmitButton = false));
-    }
-  }
+    },
+  },
 };
 </script>
 

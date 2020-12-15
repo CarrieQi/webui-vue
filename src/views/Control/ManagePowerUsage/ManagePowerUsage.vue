@@ -46,7 +46,7 @@
                 {{
                   $t('pageManagePowerUsage.powerCapLabelTextInfo', {
                     min: 1,
-                    max: 10000
+                    max: 10000,
                   })
                 }}
               </b-form-text>
@@ -87,7 +87,7 @@
 
 <script>
 import PageTitle from '@/components/Global/PageTitle';
-import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
+import LoadingBarMixin, { loading } from '@/components/Mixins/LoadingBarMixin';
 import VuelidateMixin from '@/components/Mixins/VuelidateMixin.js';
 import BVToastMixin from '@/components/Mixins/BVToastMixin';
 import { requiredIf, between } from 'vuelidate/lib/validators';
@@ -101,9 +101,14 @@ export default {
     this.hideLoader();
     next();
   },
+  data() {
+    return {
+      loading,
+    };
+  },
   computed: {
     ...mapGetters({
-      powerConsumptionValue: 'powerControl/powerConsumptionValue'
+      powerConsumptionValue: 'powerControl/powerConsumptionValue',
     }),
 
     /**
@@ -118,7 +123,7 @@ export default {
         let newValue = value ? '' : null;
         this.$v.$reset();
         this.$store.dispatch('powerControl/setPowerCapUpdatedValue', newValue);
-      }
+      },
     },
     powerCapValue: {
       get() {
@@ -127,8 +132,8 @@ export default {
       set(value) {
         this.$v.$touch();
         this.$store.dispatch('powerControl/setPowerCapUpdatedValue', value);
-      }
-    }
+      },
+    },
   },
   created() {
     this.startLoader();
@@ -139,10 +144,10 @@ export default {
   validations: {
     powerCapValue: {
       between: between(1, 10000),
-      required: requiredIf(function() {
+      required: requiredIf(function () {
         return this.isPowerCapFieldEnabled;
-      })
-    }
+      }),
+    },
   },
   methods: {
     submitForm() {
@@ -151,10 +156,10 @@ export default {
       this.startLoader();
       this.$store
         .dispatch('powerControl/setPowerControl', this.powerCapValue)
-        .then(message => this.successToast(message))
+        .then((message) => this.successToast(message))
         .catch(({ message }) => this.errorToast(message))
         .finally(() => this.endLoader());
-    }
-  }
+    },
+  },
 };
 </script>

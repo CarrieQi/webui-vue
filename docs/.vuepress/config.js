@@ -42,20 +42,25 @@ module.exports = {
               "/guide/guidelines/typography"
             ]
           },
+          "/guide/unit-testing/",
           {
             title: "Components",
             children: [
             "/guide/components/",
             "/guide/components/alert",
-            "/guide/components/button",
-            "/guide/components/table",
+            "/guide/components/buttons/",
+            "/guide/components/page",
+            "/guide/components/status-icon/",
+            "/guide/components/table/",
             "/guide/components/toast",
+            "/guide/components/tooltip"
           ]
           },
           {
             title: "Quick Start",
             children: [
-            "/guide/quickstart/page-anatomy"
+            "/guide/quickstart/page-anatomy",
+            "/guide/quickstart/store-anatomy"
           ]
           }
         ],

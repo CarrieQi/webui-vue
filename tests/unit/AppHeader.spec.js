@@ -20,8 +20,8 @@ describe('AppHeader.vue', () => {
     store,
     localVue,
     mocks: {
-      $t: key => key
-    }
+      $t: (key) => key,
+    },
   });
 
   // Reset dispatch between tests so that multiple

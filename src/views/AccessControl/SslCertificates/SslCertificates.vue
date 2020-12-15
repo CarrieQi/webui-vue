@@ -11,7 +11,7 @@
           <template v-else>
             {{
               $t('pageSslCertificates.alert.certificateExpiredMessage', {
-                certificate: expiredCertificateTypes[0]
+                certificate: expiredCertificateTypes[0],
               })
             }}
           </template>
@@ -24,7 +24,7 @@
           <template v-else>
             {{
               $t('pageSslCertificates.alert.certificateExpiringMessage', {
-                certificate: expiringCertificateTypes[0]
+                certificate: expiringCertificateTypes[0],
               })
             }}
           </template>
@@ -124,7 +124,7 @@ export default {
     ModalUploadCertificate,
     PageTitle,
     StatusIcon,
-    TableRowAction
+    TableRowAction,
   },
   mixins: [BVToastMixin, LoadingBarMixin],
   beforeRouteLeave(to, from, next) {
@@ -137,30 +137,30 @@ export default {
       fields: [
         {
           key: 'certificate',
-          label: this.$t('pageSslCertificates.table.certificate')
+          label: this.$t('pageSslCertificates.table.certificate'),
         },
         {
           key: 'issuedBy',
-          label: this.$t('pageSslCertificates.table.issuedBy')
+          label: this.$t('pageSslCertificates.table.issuedBy'),
         },
         {
           key: 'issuedTo',
-          label: this.$t('pageSslCertificates.table.issuedTo')
+          label: this.$t('pageSslCertificates.table.issuedTo'),
         },
         {
           key: 'validFrom',
-          label: this.$t('pageSslCertificates.table.validFrom')
+          label: this.$t('pageSslCertificates.table.validFrom'),
         },
         {
           key: 'validUntil',
-          label: this.$t('pageSslCertificates.table.validUntil')
+          label: this.$t('pageSslCertificates.table.validUntil'),
         },
         {
           key: 'actions',
           label: '',
-          tdClass: 'text-right text-nowrap'
-        }
-      ]
+          tdClass: 'text-right text-nowrap',
+        },
+      ],
     };
   },
   computed: {
@@ -168,21 +168,21 @@ export default {
       return this.$store.getters['sslCertificates/allCertificates'];
     },
     tableItems() {
-      return this.certificates.map(certificate => {
+      return this.certificates.map((certificate) => {
         return {
           ...certificate,
           actions: [
             {
               value: 'replace',
-              title: this.$t('pageSslCertificates.replaceCertificate')
+              title: this.$t('pageSslCertificates.replaceCertificate'),
             },
             {
               value: 'delete',
               title: this.$t('pageSslCertificates.deleteCertificate'),
               enabled:
-                certificate.type === 'TrustStore Certificate' ? true : false
-            }
-          ]
+                certificate.type === 'TrustStore Certificate' ? true : false,
+            },
+          ],
         };
       });
     },
@@ -209,7 +209,7 @@ export default {
         }
         return acc;
       }, []);
-    }
+    },
   },
   async created() {
     this.startLoader();
@@ -240,15 +240,15 @@ export default {
         .msgBoxConfirm(
           this.$t('pageSslCertificates.modal.deleteConfirmMessage', {
             issuedBy: certificate.issuedBy,
-            certificate: certificate.certificate
+            certificate: certificate.certificate,
           }),
           {
             title: this.$t('pageSslCertificates.deleteCertificate'),
             okTitle: this.$t('global.action.delete'),
-            cancelTitle: this.$t('global.action.cancel')
+            cancelTitle: this.$t('global.action.cancel'),
           }
         )
-        .then(deleteConfirmed => {
+        .then((deleteConfirmed) => {
           if (deleteConfirmed) this.deleteCertificate(certificate);
         });
     },
@@ -265,7 +265,7 @@ export default {
       this.startLoader();
       this.$store
         .dispatch('sslCertificates/addNewCertificate', { file, type })
-        .then(success => this.successToast(success))
+        .then((success) => this.successToast(success))
         .catch(({ message }) => this.errorToast(message))
         .finally(() => this.endLoader());
     },
@@ -273,15 +273,15 @@ export default {
       this.startLoader();
       const reader = new FileReader();
       reader.readAsBinaryString(file);
-      reader.onloadend = event => {
+      reader.onloadend = (event) => {
         const certificateString = event.target.result;
         this.$store
           .dispatch('sslCertificates/replaceCertificate', {
             certificateString,
             type,
-            location
+            location,
           })
-          .then(success => this.successToast(success))
+          .then((success) => this.successToast(success))
           .catch(({ message }) => this.errorToast(message))
           .finally(() => this.endLoader());
       };
@@ -291,9 +291,9 @@ export default {
       this.$store
         .dispatch('sslCertificates/deleteCertificate', {
           type,
-          location
+          location,
         })
-        .then(success => this.successToast(success))
+        .then((success) => this.successToast(success))
         .catch(({ message }) => this.errorToast(message))
         .finally(() => this.endLoader());
     },
@@ -313,7 +313,7 @@ export default {
       } else if (daysUntilExpired < 31) {
         return 'warning';
       }
-    }
-  }
+    },
+  },
 };
 </script>

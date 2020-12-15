@@ -136,7 +136,7 @@
                 {{
                   $t('pageLocalUserManagement.modal.passwordMustBeBetween', {
                     min: passwordRequirements.minLength,
-                    max: passwordRequirements.maxLength
+                    max: passwordRequirements.maxLength,
                   })
                 }}
               </b-form-text>
@@ -165,7 +165,7 @@
                         'pageLocalUserManagement.modal.passwordMustBeBetween',
                         {
                           min: passwordRequirements.minLength,
-                          max: passwordRequirements.maxLength
+                          max: passwordRequirements.maxLength,
                         }
                       )
                     }}
@@ -238,7 +238,7 @@ import {
   minLength,
   sameAs,
   helpers,
-  requiredIf
+  requiredIf,
 } from 'vuelidate/lib/validators';
 import VuelidateMixin from '@/components/Mixins/VuelidateMixin.js';
 import InputPasswordToggle from '@/components/Global/InputPasswordToggle';
@@ -250,12 +250,12 @@ export default {
   props: {
     user: {
       type: Object,
-      default: null
+      default: null,
     },
     passwordRequirements: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -266,8 +266,8 @@ export default {
         privilege: null,
         password: '',
         passwordConfirmation: '',
-        manualUnlock: false
-      }
+        manualUnlock: false,
+      },
     };
   },
   computed: {
@@ -282,46 +282,46 @@ export default {
     },
     privilegeTypes() {
       return this.$store.getters['localUsers/accountRoles'];
-    }
+    },
   },
   watch: {
-    user: function(value) {
+    user: function (value) {
       if (value === null) return;
       this.originalUsername = value.username;
       this.form.username = value.username;
       this.form.status = value.Enabled;
       this.form.privilege = value.privilege;
-    }
+    },
   },
   validations() {
     return {
       form: {
         status: {
-          required
+          required,
         },
         username: {
           required,
           maxLength: maxLength(16),
-          pattern: helpers.regex('pattern', /^([a-zA-Z_][a-zA-Z0-9_]*)/)
+          pattern: helpers.regex('pattern', /^([a-zA-Z_][a-zA-Z0-9_]*)/),
         },
         privilege: {
-          required
+          required,
         },
         password: {
-          required: requiredIf(function() {
+          required: requiredIf(function () {
             return this.requirePassword();
           }),
           minLength: minLength(this.passwordRequirements.minLength),
-          maxLength: maxLength(this.passwordRequirements.maxLength)
+          maxLength: maxLength(this.passwordRequirements.maxLength),
         },
         passwordConfirmation: {
-          required: requiredIf(function() {
+          required: requiredIf(function () {
             return this.requirePassword();
           }),
-          sameAsPassword: sameAs('password')
+          sameAsPassword: sameAs('password'),
         },
-        manualUnlock: {}
-      }
+        manualUnlock: {},
+      },
     };
   },
   methods: {
@@ -389,7 +389,7 @@ export default {
       // prevent modal close
       bvModalEvt.preventDefault();
       this.handleSubmit();
-    }
-  }
+    },
+  },
 };
 </script>

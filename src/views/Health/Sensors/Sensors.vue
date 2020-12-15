@@ -1,7 +1,7 @@
 <template>
   <b-container fluid="xl">
     <page-title />
-    <b-row>
+    <b-row class="align-items-end">
       <b-col sm="6" md="5" xl="4">
         <search
           :placeholder="$t('pageSensors.searchForSensors')"
@@ -61,13 +61,17 @@
               v-model="tableHeaderCheckboxModel"
               :indeterminate="tableHeaderCheckboxIndeterminate"
               @change="onChangeHeaderCheckbox($refs.table)"
-            />
+            >
+              <span class="sr-only">{{ $t('global.table.selectAll') }}</span>
+            </b-form-checkbox>
           </template>
           <template #cell(checkbox)="row">
             <b-form-checkbox
               v-model="row.rowSelected"
               @change="toggleSelectRow($refs.table, row.index)"
-            />
+            >
+              <span class="sr-only">{{ $t('global.table.selectItem') }}</span>
+            </b-form-checkbox>
           </template>
 
           <template #cell(status)="{ value }">
@@ -103,12 +107,18 @@ import TableToolbar from '@/components/Global/TableToolbar';
 import TableToolbarExport from '@/components/Global/TableToolbarExport';
 import TableCellCount from '@/components/Global/TableCellCount';
 
-import BVTableSelectableMixin from '@/components/Mixins/BVTableSelectableMixin';
+import BVTableSelectableMixin, {
+  selectedRows,
+  tableHeaderCheckboxModel,
+  tableHeaderCheckboxIndeterminate,
+} from '@/components/Mixins/BVTableSelectableMixin';
 import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
 import TableFilterMixin from '@/components/Mixins/TableFilterMixin';
 import TableDataFormatterMixin from '@/components/Mixins/TableDataFormatterMixin';
 import TableSortMixin from '@/components/Mixins/TableSortMixin';
-import SearchFilterMixin from '@/components/Mixins/SearchFilterMixin';
+import SearchFilterMixin, {
+  searchFilter,
+} from '@/components/Mixins/SearchFilterMixin';
 
 export default {
   name: 'Sensors',
@@ -119,7 +129,7 @@ export default {
     TableCellCount,
     TableFilter,
     TableToolbar,
-    TableToolbarExport
+    TableToolbarExport,
   },
   mixins: [
     TableFilterMixin,
@@ -127,7 +137,7 @@ export default {
     LoadingBarMixin,
     TableDataFormatterMixin,
     TableSortMixin,
-    SearchFilterMixin
+    SearchFilterMixin,
   ],
   beforeRouteLeave(to, from, next) {
     this.hideLoader();
@@ -139,55 +149,59 @@ export default {
         {
           key: 'checkbox',
           sortable: false,
-          label: ''
+          label: '',
         },
         {
           key: 'name',
           sortable: true,
-          label: this.$t('pageSensors.table.name')
+          label: this.$t('pageSensors.table.name'),
         },
         {
           key: 'status',
           sortable: true,
           label: this.$t('pageSensors.table.status'),
-          tdClass: 'text-nowrap'
+          tdClass: 'text-nowrap',
         },
         {
           key: 'lowerCritical',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.lowerCritical')
+          label: this.$t('pageSensors.table.lowerCritical'),
         },
         {
           key: 'lowerCaution',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.lowerWarning')
+          label: this.$t('pageSensors.table.lowerWarning'),
         },
 
         {
           key: 'currentValue',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.currentValue')
+          label: this.$t('pageSensors.table.currentValue'),
         },
         {
           key: 'upperCaution',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.upperWarning')
+          label: this.$t('pageSensors.table.upperWarning'),
         },
         {
           key: 'upperCritical',
           formatter: this.tableFormatter,
-          label: this.$t('pageSensors.table.upperCritical')
-        }
+          label: this.$t('pageSensors.table.upperCritical'),
+        },
       ],
       tableFilters: [
         {
           key: 'status',
           label: this.$t('pageSensors.table.status'),
-          values: ['OK', 'Warning', 'Critical']
-        }
+          values: ['OK', 'Warning', 'Critical'],
+        },
       ],
       activeFilters: [],
-      searchTotalFilteredRows: 0
+      searchFilter: searchFilter,
+      searchTotalFilteredRows: 0,
+      selectedRows: selectedRows,
+      tableHeaderCheckboxModel: tableHeaderCheckboxModel,
+      tableHeaderCheckboxIndeterminate: tableHeaderCheckboxIndeterminate,
     };
   },
   computed: {
@@ -201,7 +215,7 @@ export default {
     },
     filteredSensors() {
       return this.getFilteredTableData(this.allSensors, this.activeFilters);
-    }
+    },
   },
   created() {
     this.startLoader();
@@ -230,13 +244,9 @@ export default {
       date =
         date.toISOString().slice(0, 10) +
         '_' +
-        date
-          .toString()
-          .split(':')
-          .join('-')
-          .split(' ')[4];
+        date.toString().split(':').join('-').split(' ')[4];
       return this.$t('pageSensors.exportFilePrefix') + date;
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <page-section :section-title="$t('pageHardwareStatus.processors')">
     <!-- Search -->
-    <b-row>
+    <b-row class="align-items-end">
       <b-col sm="6" md="5" xl="4">
         <search
           @change-search="onChangeSearchInput"
@@ -106,8 +106,12 @@ import TableCellCount from '@/components/Global/TableCellCount';
 import TableSortMixin from '@/components/Mixins/TableSortMixin';
 import TableDataFormatterMixin from '@/components/Mixins/TableDataFormatterMixin';
 import Search from '@/components/Global/Search';
-import SearchFilterMixin from '@/components/Mixins/SearchFilterMixin';
-import TableRowExpandMixin from '@/components/Mixins/TableRowExpandMixin';
+import SearchFilterMixin, {
+  searchFilter,
+} from '@/components/Mixins/SearchFilterMixin';
+import TableRowExpandMixin, {
+  expandRowLabel,
+} from '@/components/Mixins/TableRowExpandMixin';
 
 export default {
   components: { IconChevron, PageSection, StatusIcon, Search, TableCellCount },
@@ -115,7 +119,7 @@ export default {
     TableRowExpandMixin,
     TableDataFormatterMixin,
     TableSortMixin,
-    SearchFilterMixin
+    SearchFilterMixin,
   ],
   data() {
     return {
@@ -124,35 +128,37 @@ export default {
           key: 'expandRow',
           label: '',
           tdClass: 'table-row-expand',
-          sortable: false
+          sortable: false,
         },
         {
           key: 'id',
           label: this.$t('pageHardwareStatus.table.id'),
           formatter: this.tableFormatter,
-          sortable: true
+          sortable: true,
         },
         {
           key: 'health',
           label: this.$t('pageHardwareStatus.table.health'),
           formatter: this.tableFormatter,
           sortable: true,
-          tdClass: 'text-nowrap'
+          tdClass: 'text-nowrap',
         },
         {
           key: 'partNumber',
           label: this.$t('pageHardwareStatus.table.partNumber'),
           formatter: this.tableFormatter,
-          sortable: true
+          sortable: true,
         },
         {
           key: 'serialNumber',
           label: this.$t('pageHardwareStatus.table.serialNumber'),
           formatter: this.tableFormatter,
-          sortable: true
-        }
+          sortable: true,
+        },
       ],
-      searchTotalFilteredRows: 0
+      searchFilter: searchFilter,
+      searchTotalFilteredRows: 0,
+      expandRowLabel: expandRowLabel,
     };
   },
   computed: {
@@ -163,7 +169,7 @@ export default {
     },
     processors() {
       return this.$store.getters['processors/processors'];
-    }
+    },
   },
   created() {
     this.$store.dispatch('processors/getProcessorsInfo').finally(() => {
@@ -174,7 +180,7 @@ export default {
   methods: {
     onFiltered(filteredItems) {
       this.searchTotalFilteredRows = filteredItems.length;
-    }
-  }
+    },
+  },
 };
 </script>

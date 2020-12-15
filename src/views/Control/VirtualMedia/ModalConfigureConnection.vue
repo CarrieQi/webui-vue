@@ -76,11 +76,11 @@ export default {
     connection: {
       type: Object,
       default: null,
-      validator: prop => {
+      validator: (prop) => {
         console.log(prop);
         return true;
-      }
-    }
+      },
+    },
   },
   data() {
     return {
@@ -88,23 +88,23 @@ export default {
         serverUri: null,
         username: null,
         password: null,
-        isRW: false
-      }
+        isRW: false,
+      },
     };
   },
   watch: {
-    connection: function(value) {
+    connection: function (value) {
       if (value === null) return;
       Object.assign(this.form, value);
-    }
+    },
   },
   validations() {
     return {
       form: {
         serverUri: {
-          required
-        }
-      }
+          required,
+        },
+      },
     };
   },
   methods: {
@@ -136,7 +136,7 @@ export default {
     onOk(bvModalEvt) {
       bvModalEvt.preventDefault();
       this.handleSubmit();
-    }
-  }
+    },
+  },
 };
 </script>
