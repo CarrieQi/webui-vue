@@ -108,6 +108,11 @@ const AppNavigationMixin = {
               route: '/configuration/network-settings',
             },
             {
+              id: 'security-settings',
+              label: this.$t('appNavigation.securitySettings'),
+              route: '/configuration/security-settings',
+            },
+            {
               id: 'snmp-settings',
               label: this.$t('appNavigation.snmpSettings'),
               route: '/snmp-settings',
@@ -119,6 +124,11 @@ const AppNavigationMixin = {
           label: this.$t('appNavigation.accessControl'),
           icon: 'iconAccessControl',
           children: [
+            {
+              id: 'client-sessions',
+              label: this.$t('appNavigation.clientSessions'),
+              route: '/access-control/client-sessions',
+            },
             {
               id: 'ldap',
               label: this.$t('appNavigation.ldap'),

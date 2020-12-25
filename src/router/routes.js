@@ -7,6 +7,7 @@ import Firmware from '@/views/Configuration/Firmware';
 import HardwareStatus from '@/views/Health/HardwareStatus';
 import Kvm from '@/views/Control/Kvm';
 import KvmConsole from '@/views/Control/Kvm/KvmConsole';
+import ClientSessions from '../views/AccessControl/ClientSessions';
 import Ldap from '@/views/AccessControl/Ldap';
 import LocalUserManagement from '@/views/AccessControl/LocalUserManagement';
 import Login from '@/views/Login';
@@ -17,6 +18,7 @@ import Overview from '@/views/Overview';
 import PageNotFound from '@/views/PageNotFound';
 import ProfileSettings from '@/views/ProfileSettings';
 import RebootBmc from '@/views/Control/RebootBmc';
+import SecuritySettings from '@/views/Configuration/SecuritySettings';
 import Sensors from '@/views/Health/Sensors';
 import SerialOverLan from '@/views/Control/SerialOverLan';
 import SerialOverLanConsole from '@/views/Control/SerialOverLan/SerialOverLanConsole';
@@ -123,6 +125,14 @@ const routes = [
         },
       },
       {
+        path: '/access-control/client-sessions',
+        name: 'client-sessions',
+        component: ClientSessions,
+        meta: {
+          title: i18n.t('appPageTitle.clientSessions'),
+        },
+      },
+      {
         path: '/access-control/ldap',
         name: 'ldap',
         component: Ldap,
@@ -160,6 +170,14 @@ const routes = [
         component: Firmware,
         meta: {
           title: i18n.t('appPageTitle.firmware'),
+        },
+      },
+      {
+        path: '/configuration/security-settings',
+        name: 'security-settings',
+        component: SecuritySettings,
+        meta: {
+          title: i18n.t('appPageTitle.securitySettings'),
         },
       },
       {

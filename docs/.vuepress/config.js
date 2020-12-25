@@ -47,13 +47,15 @@ module.exports = {
             title: "Components",
             children: [
             "/guide/components/",
-            "/guide/components/alert",
+            "/guide/components/alerts/",
             "/guide/components/buttons/",
-            "/guide/components/page",
+            "/guide/components/file-upload/",
+            "/guide/components/info-tooltip/",
+            "/guide/components/page-section/",
+            "/guide/components/page-title/",
             "/guide/components/status-icon/",
             "/guide/components/table/",
-            "/guide/components/toast",
-            "/guide/components/tooltip"
+            "/guide/components/toasts/"
           ]
           },
           {

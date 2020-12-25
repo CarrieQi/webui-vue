@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import GlobalStore from './modules/GlobalStore';
 import AuthenticationStore from './modules/Authentication/AuthenticanStore';
+import ClientSessions from './modules/AccessControl/ClientSessionsStore';
 import LdapStore from './modules/AccessControl/LdapStore';
 import LocalUserManagementStore from './modules/AccessControl/LocalUserMangementStore';
 import SslCertificatesStore from './modules/AccessControl/SslCertificatesStore';
@@ -21,6 +22,7 @@ import FanStore from './modules/Health/FanStore';
 import ChassisStore from './modules/Health/ChassisStore';
 import BmcStore from './modules/Health/BmcStore';
 import ProcessorStore from './modules/Health/ProcessorStore';
+import SecuritySettingsStore from './modules/Configuration/SecuritySettingsStore';
 
 import WebSocketPlugin from './plugins/WebSocketPlugin';
 import DateTimeStore from './modules/Configuration/DateTimeSettingsStore';
@@ -35,6 +37,7 @@ export default new Vuex.Store({
   modules: {
     global: GlobalStore,
     authentication: AuthenticationStore,
+    clientSessions: ClientSessions,
     dateTime: DateTimeStore,
     ldap: LdapStore,
     localUsers: LocalUserManagementStore,
@@ -55,6 +58,7 @@ export default new Vuex.Store({
     bmc: BmcStore,
     processors: ProcessorStore,
     virtualMedia: VirtualMediaStore,
+    securitySettings: SecuritySettingsStore,
   },
   plugins: [WebSocketPlugin],
 });
