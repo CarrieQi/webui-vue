@@ -29,6 +29,11 @@ const AppNavigationMixin = {
           icon: 'iconHealth',
           children: [
             {
+              id: 'dumps',
+              label: this.$t('appNavigation.dumps'),
+              route: '/health/dumps',
+            },
+            {
               id: 'event-logs',
               label: this.$t('appNavigation.eventLogs'),
               route: '/health/event-logs',
@@ -106,7 +111,7 @@ const AppNavigationMixin = {
         },
         {
           id: 'access-control',
-          label: this.$t('appNavigation.configuration'),
+          label: this.$t('appNavigation.accessControl'),
           icon: 'iconAccessControl',
           children: [
             {
