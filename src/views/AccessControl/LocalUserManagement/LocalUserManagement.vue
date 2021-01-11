@@ -309,6 +309,7 @@ export default {
                   'pageLocalUserManagement.deleteUser',
                   this.selectedRows.length
                 ),
+                cancelTitle: this.$t('global.action.cancel'),
               }
             )
             .then((deleteConfirmed) => {
