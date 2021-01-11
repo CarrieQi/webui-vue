@@ -21,12 +21,13 @@
     "ariaLabel": {
       "clearSearch": "清空搜索框",
       "hidePassword": "隐藏密码",
+      "scrollToTop": "Scroll to top",
       "showPassword": "以纯文本显示密码。注意:这将在屏幕上显示您的密码.",
       "tooltip": "提示",
       "progressBar": "页面加载进度条"
     },
     "calendar": {
-      "openDatePicker": "打开日期选择器",
+      "selectDate": "打开日期选择器",
       "useCursorKeysToNavigateCalendarDates": "使用光标键浏览日历日期"
     },
     "fileUpload": {
@@ -68,6 +69,8 @@
       "fromDate": "起始日期",
       "items": "%{count}个项目",
       "itemsPerPage": "每页项目数",
+      "selectAll": "Select all",
+      "selectItem": "Select item",
       "selectedItems":"%{count}个项目的%{filterCount}",
       "toDate": "截止日期",
       "viewAll": "查看全部"
@@ -92,9 +95,11 @@
   },
   "appNavigation": {
     "accessControl": "访问控制",
+    "clientSessions": "@:appPageTitle.clientSessions",
     "configuration": "配置",
     "control": "控制",
     "dateTimeSettings": "@:appPageTitle.dateTimeSettings",
+    "dumps": "@:appPageTitle.dumps",
     "eventLogs": "@:appPageTitle.eventLogs",
     "firmware": "@:appPageTitle.firmware",
     "hardwareStatus": "@:appPageTitle.hardwareStatus",
@@ -107,6 +112,7 @@
     "overview": "@:appPageTitle.overview",
     "primaryNavigation": "主导航",
     "rebootBmc": "@:appPageTitle.rebootBmc",
+    "securitySettings": "@:appPageTitle.securitySettings",
     "sensors": "@:appPageTitle.sensors",
     "serialOverLan": "SOL 控制台",
     "serverLed": "@:appPageTitle.serverLed",
@@ -117,7 +123,9 @@
   },
   "appPageTitle": {
     "changePassword": "修改密码",
+    "clientSessions": "客户端会话",
     "dateTimeSettings": "日期时间设置",
+    "dumps": "转储",
     "eventLogs": "事件日志",
     "firmware": "固件刷新",
     "hardwareStatus": "硬件状态",
@@ -131,6 +139,7 @@
     "pageNotFound": "找不到页面",
     "profileSettings": "个人信息设置",
     "rebootBmc": "重启 BMC",
+    "securitySettings": "安全设置",
     "sensors": "传感器",
     "serialOverLan": "LAN (SOL) 串行控制台",
     "serverLed": "服务器LED",
@@ -147,6 +156,25 @@
     "goBack": "返回",
     "newPassword": "新密码",
     "username": "用户名"
+  },
+  "pageClientSessions" : {
+    "action": {
+      "disconnect" : "断开"
+    },
+    "modal": {
+      "disconnectTitle": "断开会话",
+      "disconnectMessage": "确实要断开%{count}会话吗？此操作无法撤消。"
+    },
+    "table": {
+      "clientID": "客户端ID",
+      "username": "用户名",
+      "ipAddress": "IP地址",
+      "searchSessions": "搜索会话"
+    },
+    "toast": {
+      "errorDelete": "断开会话出错。",
+      "successDelete": "断开会话成功。"
+    }
   },
   "pageDateTimeSettings": {
     "alert": {
@@ -170,6 +198,44 @@
     "toast": {
       "errorSaveDateTimeSettings": "保存日期和时间设置时出错。",
       "successSaveDateTimeSettings": "保存日期和时间设置时成功。"
+    }
+  },
+  "pageDumps": {
+    "dumpsAvailableOnBmc": "BMC上可用的转储",
+    "initiateDump": "初始化转储",
+    "form": {
+      "bmcDump": "BMC转储",
+      "initiateDump": "初始化转储",
+      "selectDumpType": "选择转储类型",
+      "systemDump": "系统转储（中断）",
+      "systemDumpInfo": "系统转储将卸载到操作系统，不会出现在下表中。"
+    },
+    "modal": {
+      "deleteDump": "删除转储",
+      "deleteDumpConfirmation": "确定要删除%{count}转储吗？此操作无法撤消。",
+      "initiateSystemDump": "初始化系统转储",
+      "initiateSystemDumpMessage1": "确定吗？",
+      "initiateSystemDumpMessage2": "当系统转储正在进行时，您将无法启动任何其他转储。",
+      "initiateSystemDumpMessage3": "启动系统转储将异常终止所有活动系统分区。",
+      "initiateSystemDumpMessage4": "继续转储初始化"
+    },
+    "table": {
+      "createdBy": "继续转储初始化",
+      "dateAndTime": "日期和时间",
+      "dumpType": "转储类型",
+      "id": "ID",
+      "searchDumps": "搜索转储",
+      "size": "长度"
+    },
+    "toast": {
+      "errorDeleteDump": "删除%{count}转储时出错。",
+      "errorStartBmcDump": "启动新BMC转储时出错。",
+      "errorStartSystemDump": "启动新系统转储时出错。",
+      "successDeleteDump": "已成功删除%{count}转储。",
+      "successStartBmcDump": "转储需要一些时间才能完成。刷新应用程序以查看表中已完成的转储。",
+      "successStartBmcDumpTitle": "BMC转储已启动",
+      "successStartSystemDump": "转储需要一些时间才能完成。转储将卸载到操作系统。",
+      "successStartSystemDumpTitle": "系统转储已启动"
     }
   },
   "pageEventLogs": {
@@ -541,6 +607,33 @@
     "toast": {
       "errorRebootStart": "重启BMC失败。",
       "successRebootStart": "正在重启BMC。"
+    }
+  },
+  "pageSecuritySettings": {
+    "ipmi": "网络ipmi（带外ipmi）",
+    "ipmiDescription": "允许通过IPMI远程管理平台。ipmitool等工具要求启用此设置。",
+    "networkServices": "网络服务",
+    "ssh": "ssh端口22（BMC shell）",
+    "sshDescription": "SSH访问BMC的命令shell。禁用此选项将禁用用户通过SSH连接BMC shell的能力。",
+    "modal": {
+      "disableMessage": {
+        "ipmi": "确定要禁用@:pageSecuritySettings.ipmi?",
+        "ssh": "确定要禁用@:pageSecuritySettings.ssh?"
+      },
+      "enableMessage": {
+        "ipmi": "确定要启用@:pageSecuritySettings.ipmi?",
+        "ssh": "确定要启用@:pageSecuritySettings.ssh?"
+      }
+    },
+    "toast": {
+      "errorIpmiDisabled": "禁用IPMI安全设置时出错。",
+      "errorIpmiEnabled":"启用IPMI安全设置时出错。",
+      "errorSshDisabled":"禁用SSH安全设置时出错。",
+      "errorSshEnabled": "启用SSH安全设置时出错。",
+      "successIpmiDisabled": "已成功禁用IPMI安全设置。",
+      "successIpmiEnabled": "已成功启用IPMI安全设置。",
+      "successSshDisabled": "已成功禁用SSH安全设置。",
+      "successSshEnabled": "已成功启用SSH安全设置。"
     }
   },
   "pageSensors": {
