@@ -6,24 +6,36 @@
       :download="download"
       :href="href"
       :title="title"
-      :aria-label="title"
     >
       <slot name="icon">
         {{ $t('global.action.export') }}
       </slot>
+      <span v-if="btnIconOnly" class="sr-only">{{ title }}</span>
+    </b-link>
+    <b-link
+      v-else-if="value === 'download'"
+      class="align-bottom btn-icon-only py-0 btn-link"
+      :download="exportName"
+      :href="downloadLocation"
+      :title="title"
+    >
+      <slot name="icon" />
+      <span class="sr-only">
+        {{ $t('global.action.download') }}
+      </span>
     </b-link>
     <b-button
       v-else
       variant="link"
-      class="btn-icon-only"
-      :aria-label="title"
-      :title="title"
+      :class="{ 'btn-icon-only': btnIconOnly }"
       :disabled="!enabled"
+      :title="btnIconOnly ? title : !title"
       @click="$emit('click-table-action', value)"
     >
       <slot name="icon">
         {{ title }}
       </slot>
+      <span v-if="btnIconOnly" class="sr-only">{{ title }}</span>
     </b-button>
   </span>
 </template>
@@ -53,6 +65,14 @@ export default {
     exportName: {
       type: String,
       default: 'export',
+    },
+    downloadLocation: {
+      type: String,
+      default: '',
+    },
+    btnIconOnly: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
