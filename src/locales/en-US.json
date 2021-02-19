@@ -13,6 +13,7 @@
       "enable": "Enable",
       "export": "Export",
       "filter": "Filter",
+      "refresh": "Refresh",
       "replace": "Replace",
       "save": "Save",
       "saveSettings": "Save settings",
@@ -111,6 +112,7 @@
     "networkSettings": "@:appPageTitle.networkSettings",
     "overview": "@:appPageTitle.overview",
     "primaryNavigation": "Primary navigation",
+    "powerRestorePolicy": "@:appPageTitle.powerRestorePolicy",
     "rebootBmc": "@:appPageTitle.rebootBmc",
     "securitySettings": "@:appPageTitle.securitySettings",
     "sensors": "@:appPageTitle.sensors",
@@ -137,6 +139,7 @@
     "networkSettings": "Network settings",
     "overview": "Overview",
     "pageNotFound": "Page not found",
+    "powerRestorePolicy": "Power restore policy",
     "profileSettings": "Profile settings",
     "rebootBmc": "Reboot BMC",
     "securitySettings": "Security settings",
@@ -259,29 +262,19 @@
   },
   "pageFirmware": {
     "backup": "Backup:",
-    "backupImage": "Backup image",
     "bmcStatus": "BMC status",
-    "changeAndRebootBmc": "Change image and reboot BMC",
-    "changeToBackupImage": "Change to backup image",
     "current": "Current:",
     "firmwareOnBmc": "Firmware on BMC",
     "firmwareOnHost": "Firmware on host",
-    "firmwareOnSystem": "Firmware on system",
     "hostStatus": "Host status",
     "makeCurrentVersion": "Make current version",
     "pageDescription": "Update firmware by uploading a BMC or Host image file from your workstation or TFTP server",
-    "pageDescriptionSingleImage": "Update firmware by uploading a system image file from your workstation or TFTP server",
     "running": "Running",
     "state": "State",
     "updateCode": "Update code",
     "alert": {
-      "operationInProgress": "Server power operation in progress.",
-      "serverShutdownRequiredBeforeUpdate": "Server shutdown required before update",
-      "serverShutdownRequiredInfo": "Shutdown will be orderly - OS will shutdown before the server shuts down.",
-      "shutDownServer": "Shut down server",
       "updateProcess": "Update process",
-      "updateProcessInfo": "The new image will be uploaded and activated. After that, the BMC or host will reboot automatically to run from the new image.",
-      "updateProcessInfoSingleImage": "The new image will be uploaded and activated. After that, the BMC will reboot automatically to run from the new image."
+      "updateProcessInfo": "The new image will be uploaded and activated. After that, the BMC or host will reboot automatically to run from the new image."
     },
     "form": {
       "imageFile": "Image file",
@@ -297,21 +290,11 @@
     },
     "modal": {
       "connectionToBmcWillBeLost": "Connection to BMC will be lost",
-      "serverShutdownMessage": "There will be a server outage until the server is powered back on. Are you sure you want to shut down?",
-      "serverShutdownWillCauseOutage": "Server shutdown will cause outage",
-      "shutDownServer": "Shut down server",
       "rebootFromBackup": {
         "message1": "A BMC reboot is required before the system can run the backup image %{backup}. The reboot will cause a disconnection, and may require logging in again.",
         "message2": "The current firmware image %{current} will be moved to backup. During the reboot, server cannot be powered back on.",
         "message3": "Are you sure you want to reboot the BMC from backup image %{backup}?",
         "primaryAction": "Reboot BMC from backup image",
-        "title": "@:pageFirmware.modal.connectionToBmcWillBeLost"
-      },
-      "uploadAndRebootSingleImage": {
-        "message1": "A BMC reboot is required before the system can run the new firmware image. The reboot will cause a disconnection, and may require logging in again.",
-        "message2": "During the reboot, the server cannot be powered back on. The backup image will be permanently deleted.",
-        "message3": "Are you sure you want to upload the new firmware image and reboot the BMC?",
-        "primaryAction": "Upload and reboot BMC",
         "title": "@:pageFirmware.modal.connectionToBmcWillBeLost"
       },
       "uploadAndRebootBmcOrHost": {
@@ -332,6 +315,44 @@
       "successRebootFromBackup": "Successfully started reboot from backup image.",
       "successUploadMessage": "The upload was successful. During code update, the BMC will be not be responsive. Wait for the code update notification before making any changes.",
       "successUploadTitle": "Code update started"
+    },
+    "singleFileUpload": {
+      "backupImage": "Backup image",
+      "bmcAndServer": "BMC and server:",
+      "fileAddress": "File address",
+      "fileSource": "File source",
+      "runningImage": "Running image",
+      "startUpdate": "Start update",
+      "switchToRunning": "Switch to running",
+      "updateFirmware": "Update firmware",
+      "alert": {
+        "operationInProgress": "Server power operation in progress.",
+        "serverMustBePoweredOffTo": "Server must be powered off to:",
+        "serverMustBePoweredOffToUpdateFirmware": "Server must be powered off to update firmware",
+        "switchRunningAndBackupImages": "Switch running and backup images",
+        "updateFirmware": "Update firmware",
+        "viewServerPowerOperations": "View server power operations"
+      },
+      "modal": {
+        "switchImages": "Switch images",
+        "switchRunningImage": "Switch running image",
+        "switchRunningImageInfo": "A BMC reboot is required to run the backup image. The application might be unresponsive during this time.",
+        "switchRunningImageInfo2": "Are you sure you want to switch to the backup image (%{backup})?",
+        "updateFirmwareInfo": "The BMC will reboot during the update process. The server cannot be powered on until the update is finished.",
+        "updateFirmwareInfo2": "The running image (%{running}) will be copied to backup and the backup image (%{backup}) will be permanently deleted.",
+        "updateFirmwareInfo3": "Are you sure you want to proceed with the update?"
+      },
+      "toast": {
+        "errorSwitchImages": "Error switching running and backup images.",
+        "rebootStarted": "Reboot started",
+        "rebootStartedMessage": "Successfully started reboot from backup image.",
+        "updateStarted": "Update started",
+        "updateStartedMessage": "Wait for the firmware update notification before making any changes.",
+        "verifySwitch": "Verify switch",
+        "verifySwitchMessage": "Refresh the application to verify the running and backup images switched.",
+        "verifyUpdate": "Verify update",
+        "verifyUpdateMessage": "Refresh the application to verify firmware updated successfully"
+      }
     }
   },
   "pageHardwareStatus": {
@@ -470,12 +491,8 @@
       "configureComponentsManagedByThisService": "Configure components managed by this service",
       "configureManagerResources": "Configure manager resources",
       "configureUsersAndTheirAccounts": "Configure users and their accounts",
-      "ipmiAccessPoint": "IPMI access point",
       "logInToTheServiceAndReadResources": "Log in to the service and read resources",
-      "redfishAccessPoint": "Redfish access point",
-      "sshAccessPoint": "SSH access point",
-      "updatePasswordForCurrentUserAccount": "Update password for current user account",
-      "webUiAccessPoint": "WebUI access point"
+      "updatePasswordForCurrentUserAccount": "Update password for current user account"
     },
     "toast": {
       "errorBatchDelete": "Error deleting %{count} user. | Error deleting %{count} users.",
@@ -564,16 +581,15 @@
     "serverPowCapSetting": "Server power cap setting"
   },
   "pageNetworkSettings": {
+    "dhcp": "DHCP",
+    "ipv4": "IPV4",
+    "ipv4Configuration": "IPV4 configuration",
+    "ipv4Helper": "An IP address must be available to enable DHCP or Static configuration",
     "interface": "Interface",
-    "pageDescription": "Configure network settings for the BMC and the Virtualization management interface",
+    "pageDescription": "Configure network settings for the BMC",
+    "static": "Static",
     "staticDns": "Static DNS",
-    "staticIpv4": "Static IPv4",
     "system": "System",
-    "ariaLabel": {
-      "staticDnsRow": "Static DNS address",
-      "staticIpv4AddressRow": "Static IPv4 address",
-      "staticIpv4SubnetRow": "Static IPV4 subnet"
-    },
     "form": {
       "defaultGateway": "Default gateway",
       "hostname": "Hostname",
@@ -584,17 +600,38 @@
       "addDns": "Add DNS server",
       "addStaticIpv4Address": "Add static IP",
       "deleteDns": "Delete DNS row",
+      "deleteDHCPIpv4": "Delete IPv4 row",
       "deleteStaticIpv4": "Delete IPv4 row",
+      "dhcpIpv4AddressRow": "DHCP IPv4 address",
+      "dhcpIpv4SubnetRow": "DHCP IPV4 subnet",
       "ipAddress": "IP address",
+      "staticDnsRow": "Static DNS address",
+      "staticIpv4AddressRow": "Static IPv4 address",
+      "staticIpv4SubnetRow": "Static IPV4 subnet",
       "subnet": "Subnet mask"
     },
     "toast": {
+      "errorSaveDhcpSettings": "Error enabling DHCP configuration.",
       "errorSaveNetworkSettings": "Error saving network settings.",
       "successSaveNetworkSettings": "Successfully saved network settings."
     }
   },
   "pagePageNotFound": {
     "description": "The requested resource could not be found."
+  },
+  "pagePowerRestorePolicy": {
+    "currentPolicy": "Current Policy",
+    "description": "Configure power policy to determine how the system starts after a power disturbance.",
+    "powerPoliciesLabel": "Power restore policies",
+    "policies" :{
+      "AlwaysOn": "Always on",
+      "AlwaysOff": "Always off",
+      "LastState": "Last state"
+    },
+    "toast": {
+      "errorSaveSettings": "Error saving settings.",
+      "successSaveSettings": "Power restore policy updated successfully."
+    }
   },
   "pageRebootBmc": {
     "lastReboot": "Last BMC reboot",

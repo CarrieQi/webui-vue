@@ -1,7 +1,11 @@
 <template>
   <div>
     <header id="page-header">
-      <a role="link" class="link-skip-nav btn btn-light" href="#main-content">
+      <a
+        class="link-skip-nav btn btn-light"
+        href="#main-content"
+        @click="setFocus"
+      >
         {{ $t('appHeader.skipToContent') }}
       </a>
 
@@ -172,10 +176,9 @@ export default {
   watch: {
     isAuthorized(value) {
       if (value === false) {
-        this.errorToast(
-          this.$t('global.toast.unAuthDescription'),
-          this.$t('global.toast.unAuthTitle')
-        );
+        this.errorToast(this.$t('global.toast.unAuthDescription'), {
+          title: this.$t('global.toast.unAuthTitle'),
+        });
       }
     },
   },
@@ -207,6 +210,10 @@ export default {
     },
     toggleNavigation() {
       this.$root.$emit('toggle-navigation');
+    },
+    setFocus(event) {
+      event.preventDefault();
+      this.$root.$emit('skip-navigation');
     },
   },
 };

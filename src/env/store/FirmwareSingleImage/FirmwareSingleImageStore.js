@@ -13,9 +13,10 @@ const FirmwareSingleImageStore = {
       version: '--',
       id: null,
       location: null,
-      status: '--',
+      status: null,
     },
     applyTime: null,
+    tftpAvailable: false,
   },
   getters: {
     systemFirmwareVersion: (state) => state.activeFirmware.version,
@@ -23,7 +24,8 @@ const FirmwareSingleImageStore = {
     backupFirmwareStatus: (state) => state.backupFirmware.status,
     isRebootFromBackupAvailable: (state) =>
       state.backupFirmware.id ? true : false,
-    bmcFirmwareCurrentVersion: (state) => state.activeFirmware.version, //this getter is needed for the Overview page
+    bmcFirmwareCurrentVersion: (state) => state.activeFirmware.version, //this getter is needed for the Overview page,
+    isTftpUploadAvailable: (state) => state.tftpAvailable,
   },
   mutations: {
     setActiveFirmware: (state, { version, id, location }) => {
@@ -38,6 +40,8 @@ const FirmwareSingleImageStore = {
       state.backupFirmware.status = status;
     },
     setApplyTime: (state, applyTime) => (state.applyTime = applyTime),
+    setTftpUploadAvailable: (state, tftpAvailable) =>
+      (state.tftpAvailable = tftpAvailable),
   },
   actions: {
     async getFirmwareInformation({ commit }) {
@@ -72,18 +76,26 @@ const FirmwareSingleImageStore = {
             version: backupData.data?.Version,
             id: backupData.data?.Id,
             location: backupData.data?.['@odata.id'],
-            status: backupData.data?.Status?.State,
+            status: backupData.data?.Status?.Health,
           });
         })
         .catch((error) => console.log(error));
     },
-    getUpdateServiceApplyTime({ commit }) {
+    getUpdateServiceSettings({ commit }) {
       api
         .get('/redfish/v1/UpdateService')
         .then(({ data }) => {
           const applyTime =
             data.HttpPushUriOptions.HttpPushUriApplyTime.ApplyTime;
+          const allowableActions =
+            data?.Actions?.['#UpdateService.SimpleUpdate']?.[
+              'TransferProtocol@Redfish.AllowableValues'
+            ];
+
           commit('setApplyTime', applyTime);
+          if (allowableActions.includes('TFTP')) {
+            commit('setTftpUploadAvailable', true);
+          }
         })
         .catch((error) => console.log(error));
     },
@@ -110,17 +122,15 @@ const FirmwareSingleImageStore = {
         .post('/redfish/v1/UpdateService', image, {
           headers: { 'Content-Type': 'application/octet-stream' },
         })
-        .then(() => dispatch('getSystemFirwareVersion'))
-        .then(() => i18n.t('pageFirmware.toast.successUploadMessage'))
         .catch((error) => {
           console.log(error);
           throw new Error(i18n.t('pageFirmware.toast.errorUploadAndReboot'));
         });
     },
-    async uploadFirmwareTFTP({ state, dispatch }, { address, filename }) {
+    async uploadFirmwareTFTP({ state, dispatch }, fileAddress) {
       const data = {
         TransferProtocol: 'TFTP',
-        ImageURI: `${address}/${filename}`,
+        ImageURI: fileAddress,
       };
       if (state.applyTime !== 'Immediate') {
         // ApplyTime must be set to Immediate before making
@@ -132,8 +142,6 @@ const FirmwareSingleImageStore = {
           '/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate',
           data
         )
-        .then(() => dispatch('getSystemFirwareVersion'))
-        .then(() => i18n.t('pageFirmware.toast.successUploadMessage'))
         .catch((error) => {
           console.log(error);
           throw new Error(i18n.t('pageFirmware.toast.errorUploadAndReboot'));
@@ -150,10 +158,11 @@ const FirmwareSingleImageStore = {
       };
       return await api
         .patch('/redfish/v1/Managers/bmc', data)
-        .then(() => i18n.t('pageFirmware.toast.successRebootFromBackup'))
         .catch((error) => {
           console.log(error);
-          throw new Error(i18n.t('pageFirmware.toast.errorRebootFromBackup'));
+          throw new Error(
+            i18n.t('pageFirmware.singleFileUpload.toast.errorSwitchImages')
+          );
         });
     },
   },
