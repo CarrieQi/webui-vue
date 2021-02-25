@@ -22,7 +22,7 @@
         <redfishItem
           v-if="!!redfish_data"
           :item-data="redfish_data"
-          @changeData="changeRedfishData"
+          @change-data="changeRedfishData"
         ></redfishItem>
       </div>
     </div>

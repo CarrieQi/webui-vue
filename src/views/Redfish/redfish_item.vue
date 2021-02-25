@@ -16,6 +16,22 @@
             v-on="$listeners"
           ></reddfishItem>
         </div>
+        <div
+          v-else-if="
+            Array.isArray(items[item]) &&
+            items[item].length &&
+            typeof items[item][0] == 'object'
+          "
+        >
+          {{ item }} : [
+          <reddfishItem
+            v-for="(objItem, index2) in items[item]"
+            :key="index2"
+            :item-data="objItem"
+            v-on="$listeners"
+          ></reddfishItem>
+          ]
+        </div>
         <div v-else>
           {{ item }} : "
           <template v-if="item === '@odata.id'">
@@ -57,7 +73,7 @@ export default {
   },
   methods: {
     changeUrl: function (url) {
-      this.$emit('changeData', url);
+      this.$emit('change-data', url);
     },
   },
 };
