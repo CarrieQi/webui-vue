@@ -4,6 +4,8 @@ import ClientSessions from '@/views/AccessControl/ClientSessions';
 import ConsoleLayout from '@/layouts/ConsoleLayout.vue';
 import DateTimeSettings from '@/views/Configuration/DateTimeSettings';
 import EventLogs from '@/views/Health/EventLogs';
+import FactoryReset from '@/views/Control/FactoryReset';
+import Firmware from '@/views/Configuration/Firmware';
 import HardwareStatus from '@/views/Health/HardwareStatus';
 import Ldap from '@/views/AccessControl/Ldap';
 import LocalUserManagement from '@/views/AccessControl/LocalUserManagement';
@@ -26,8 +28,7 @@ import SslCertificates from '@/views/AccessControl/SslCertificates';
 import i18n from '@/i18n';
 
 // Custom components
-import FirmwareSingleImage from '../components/FirmwareSingleImage';
-import Dumps from '../components/Dumps';
+import Dumps from '@/views/Health/Dumps';
 
 const routes = [
   {
@@ -168,7 +169,7 @@ const routes = [
       {
         path: '/configuration/firmware',
         name: 'firmware',
-        component: FirmwareSingleImage,
+        component: Firmware,
         meta: {
           title: i18n.t('appPageTitle.firmware'),
         },
@@ -203,6 +204,14 @@ const routes = [
         component: SecuritySettings,
         meta: {
           title: i18n.t('appPageTitle.securitySettings'),
+        },
+      },
+      {
+        path: '/control/factory-reset',
+        name: 'factory-reset',
+        component: FactoryReset,
+        meta: {
+          title: i18n.t('appPageTitle.factoryReset'),
         },
       },
       {

@@ -15,6 +15,7 @@
       "filter": "Filter",
       "refresh": "Refresh",
       "replace": "Replace",
+      "reset": "Reset",
       "save": "Save",
       "saveSettings": "Save settings",
       "selected": "Selected"
@@ -72,7 +73,7 @@
       "itemsPerPage": "Items per page",
       "selectAll": "Select all",
       "selectItem": "Select item",
-      "selectedItems":"%{filterCount} of %{count} items",
+      "selectedItems": "%{filterCount} of %{count} items",
       "toDate": "To date",
       "viewAll": "View all"
     },
@@ -102,6 +103,7 @@
     "dateTimeSettings": "@:appPageTitle.dateTimeSettings",
     "dumps": "@:appPageTitle.dumps",
     "eventLogs": "@:appPageTitle.eventLogs",
+    "factoryReset": "@:appPageTitle.factoryReset",
     "firmware": "@:appPageTitle.firmware",
     "hardwareStatus": "@:appPageTitle.hardwareStatus",
     "health": "Health",
@@ -129,6 +131,7 @@
     "dateTimeSettings": "Date and time settings",
     "dumps": "Dumps",
     "eventLogs": "Event logs",
+    "factoryReset": "Factory reset",
     "firmware": "Firmware",
     "hardwareStatus": "Hardware status",
     "kvm": "KVM",
@@ -160,9 +163,9 @@
     "newPassword": "New password",
     "username": "Username"
   },
-  "pageClientSessions" : {
+  "pageClientSessions": {
     "action": {
-      "disconnect" : "Disconnect"
+      "disconnect": "Disconnect"
     },
     "modal": {
       "disconnectTitle": "Disconnect session| Disconnect sessions",
@@ -260,99 +263,92 @@
       "successDelete": "Successfully deleted %{count} log. | Successfully deleted %{count} logs."
     }
   },
-  "pageFirmware": {
-    "backup": "Backup:",
-    "bmcStatus": "BMC status",
-    "current": "Current:",
-    "firmwareOnBmc": "Firmware on BMC",
-    "firmwareOnHost": "Firmware on host",
-    "hostStatus": "Host status",
-    "makeCurrentVersion": "Make current version",
-    "pageDescription": "Update firmware by uploading a BMC or Host image file from your workstation or TFTP server",
-    "running": "Running",
-    "state": "State",
-    "updateCode": "Update code",
-    "alert": {
-      "updateProcess": "Update process",
-      "updateProcessInfo": "The new image will be uploaded and activated. After that, the BMC or host will reboot automatically to run from the new image."
-    },
+  "pageFactoryReset": {
+    "description": "These functions do not perform a secure delete of any sensitive data.",
     "form": {
-      "imageFile": "Image file",
-      "imageFileName": "Image file name",
-      "onlyTarFilesAccepted": "Only .tar files accepted",
-      "tftpServer": "TFTP server",
-      "tftpServerAddress": "TFTP server address",
-      "tftpServerAddressHelper": "IP address or FQDN",
-      "uploadAndRebootBmc": "Upload and reboot BMC",
-      "uploadAndRebootBmcOrHost": "Upload and reboot BMC or host",
-      "uploadLocation": "Upload location",
-      "workstation": "Workstation"
+      "resetOptionsLabel": "Reset options",
+      "resetBiosOptionLabel": "Reset host settings only",
+      "resetBiosOptionHelperText": "Resets firmware settings including: Platform keystore, partition NVRAM, and partition configurations.",
+      "resetToDefaultsOptionLabel": "Reset BMC and host settings",
+      "resetToDefaultsOptionHelperText": "In addition to host settings, this option resets BMC settings, including: all BMC account data, all changed passwords, all policies, LDAP configurations, network addresses, and time of day."
     },
     "modal": {
-      "connectionToBmcWillBeLost": "Connection to BMC will be lost",
-      "rebootFromBackup": {
-        "message1": "A BMC reboot is required before the system can run the backup image %{backup}. The reboot will cause a disconnection, and may require logging in again.",
-        "message2": "The current firmware image %{current} will be moved to backup. During the reboot, server cannot be powered back on.",
-        "message3": "Are you sure you want to reboot the BMC from backup image %{backup}?",
-        "primaryAction": "Reboot BMC from backup image",
-        "title": "@:pageFirmware.modal.connectionToBmcWillBeLost"
+      "resetBiosTitle": "Reset host settings",
+      "resetBiosHeader": "Do you want to reset the host settings?",
+      "resetBiosSubmitText": "Reset host settings",
+      "resetBiosSettingsList": {
+        "item1": "All manual settings will be deleted.",
+        "item2": "Partition configurations and the platform keystore may be recovered if backups exist."
       },
-      "uploadAndRebootBmcOrHost": {
-        "message1": "A BMC or host reboot is required before the system can run the new firmware image. The reboot will cause a disconnection, and may require logging in again.",
-        "message2": "The backup image will be permanently deleted.",
-        "message3": "Are you sure you want to upload the new firmware image and reboot the BMC or host?",
-        "primaryAction": "Upload and reboot BMC or host",
-        "title": "Connection to BMC or host will be lost"
-      }
+      "resetToDefaultsTitle": "Reset BMC and host settings",
+      "resetToDefaultsHeader": "Do you want to reset both the BMC and host settings?",
+      "resetToDefaultsSubmitText": "Reset BMC and host settings",
+      "resetToDefaultsSettingsList": {
+        "item1": "All manual settings will be deleted.",
+        "item2": "Partition configurations and the platform keystore may be recovered if backups exist.",
+        "item3": "All BMC logs will be removed.",
+        "item4": "Currently active sessions on all network interfaces will be disconnected.",
+        "item5": "The BMC default account and password settings will be restored."
+      },
+      "resetWarningMessage": "Resetting without shutting down the system might cause an unrecoverable error.",
+      "resetWarningCheckLabel": "Continue without shutting down the system"
     },
     "toast": {
-      "errorRebootFromBackup": "Error rebooting from backup image.",
-      "errorUploadAndReboot": "Error uploading image.",
-      "infoRefreshApplicationMessage": "Refresh the application to confirm the code update has completed and was successful.",
-      "infoRefreshApplicationTitle": "Verify code update",
-      "infoUploadStartTimeMessage": "Start time: %{startTime}",
-      "infoUploadStartTimeTitle": "Upload started",
-      "successRebootFromBackup": "Successfully started reboot from backup image.",
-      "successUploadMessage": "The upload was successful. During code update, the BMC will be not be responsive. Wait for the code update notification before making any changes.",
-      "successUploadTitle": "Code update started"
-    },
-    "singleFileUpload": {
-      "backupImage": "Backup image",
-      "bmcAndServer": "BMC and server:",
-      "fileAddress": "File address",
-      "fileSource": "File source",
-      "runningImage": "Running image",
-      "startUpdate": "Start update",
-      "switchToRunning": "Switch to running",
+      "resetBiosSuccess": "Factory reset of host settings successful.",
+      "resetBiosError": "Factory reset of host settings failed.",
+      "resetToDefaultsSuccess": "Factory reset of BMC and host settings successful.",
+      "resetToDefaultsError": "Factory reset of BMC and host settings failed."
+    }
+  },
+  "pageFirmware": {
+    "cardActionSwitchToRunning": "Switch to running",
+    "cardBodyVersion": "Version",
+    "cardTitleBackup": "Backup image",
+    "cardTitleRunning": "Running image",
+    "sectionTitleBmcCards": "BMC",
+    "sectionTitleBmcCardsCombined": "BMC and server",
+    "sectionTitleHostCards": "Host",
+    "sectionTitleUpdateFirmware": "Update firmware",
+    "alert": {
+      "operationInProgress": "Server power operation in progress.",
+      "serverMustBePoweredOffTo": "Server must be powered off to:",
+      "serverMustBePoweredOffToUpdateFirmware": "Server must be powered off to update firmware",
+      "switchRunningAndBackupImages": "Switch running and backup images",
       "updateFirmware": "Update firmware",
-      "alert": {
-        "operationInProgress": "Server power operation in progress.",
-        "serverMustBePoweredOffTo": "Server must be powered off to:",
-        "serverMustBePoweredOffToUpdateFirmware": "Server must be powered off to update firmware",
-        "switchRunningAndBackupImages": "Switch running and backup images",
-        "updateFirmware": "Update firmware",
-        "viewServerPowerOperations": "View server power operations"
-      },
-      "modal": {
-        "switchImages": "Switch images",
-        "switchRunningImage": "Switch running image",
-        "switchRunningImageInfo": "A BMC reboot is required to run the backup image. The application might be unresponsive during this time.",
-        "switchRunningImageInfo2": "Are you sure you want to switch to the backup image (%{backup})?",
-        "updateFirmwareInfo": "The BMC will reboot during the update process. The server cannot be powered on until the update is finished.",
-        "updateFirmwareInfo2": "The running image (%{running}) will be copied to backup and the backup image (%{backup}) will be permanently deleted.",
-        "updateFirmwareInfo3": "Are you sure you want to proceed with the update?"
-      },
-      "toast": {
-        "errorSwitchImages": "Error switching running and backup images.",
-        "rebootStarted": "Reboot started",
-        "rebootStartedMessage": "Successfully started reboot from backup image.",
-        "updateStarted": "Update started",
-        "updateStartedMessage": "Wait for the firmware update notification before making any changes.",
-        "verifySwitch": "Verify switch",
-        "verifySwitchMessage": "Refresh the application to verify the running and backup images switched.",
-        "verifyUpdate": "Verify update",
-        "verifyUpdateMessage": "Refresh the application to verify firmware updated successfully"
+      "viewServerPowerOperations": "View server power operations"
+    },
+    "form": {
+      "updateFirmware": {
+        "fileAddress": "File address",
+        "fileSource": "File source",
+        "imageFile": "Image file",
+        "imageFileHelperText": "Only .tar files accepted",
+        "startUpdate": "Start update",
+        "tftpServer": "TFTP server",
+        "workstation": "Workstation"
       }
+    },
+    "modal": {
+      "switchImages": "Switch images",
+      "switchRunningImage": "Switch running image",
+      "switchRunningImageInfo": "A BMC reboot is required to run the backup image. The application might be unresponsive during this time.",
+      "switchRunningImageInfo2": "Are you sure you want to switch to the backup image (%{backup})?",
+      "updateFirmwareInfo": "The BMC will reboot during the update process. The server cannot be powered on until the update is finished.",
+      "updateFirmwareInfo2": "The running image (%{running}) will be copied to backup. The backup image will be deleted.",
+      "updateFirmwareInfo3": "Are you sure you want to proceed with the update?",
+      "updateFirmwareInfoDefault": "The new image will be uploaded and activated. After that, the BMC or host will reboot automatically to run from the new image."
+    },
+    "toast": {
+      "errorSwitchImages": "Error switching running and backup images.",
+      "errorUpdateFirmware": "Error starting firmware update.",
+      "rebootStarted": "Reboot started",
+      "rebootStartedMessage": "Successfully started reboot from backup image.",
+      "updateStarted": "Update started",
+      "updateStartedMessage": "Wait for the firmware update notification before making any changes.",
+      "verifySwitch": "Verify switch",
+      "verifySwitchMessage": "Refresh the application to verify the running and backup images switched.",
+      "verifyUpdate": "Verify update",
+      "verifyUpdateMessage": "Refresh the application to verify firmware updated successfully"
     }
   },
   "pageHardwareStatus": {
@@ -623,7 +619,7 @@
     "currentPolicy": "Current Policy",
     "description": "Configure power policy to determine how the system starts after a power disturbance.",
     "powerPoliciesLabel": "Power restore policies",
-    "policies" :{
+    "policies": {
       "AlwaysOn": "Always on",
       "AlwaysOff": "Always off",
       "LastState": "Last state"
@@ -664,8 +660,8 @@
     },
     "toast": {
       "errorIpmiDisabled": "Error disabling IPMI security setting.",
-      "errorIpmiEnabled":"Error enabling IPMI security setting.",
-      "errorSshDisabled":"Error disabling SSH security setting.",
+      "errorIpmiEnabled": "Error enabling IPMI security setting.",
+      "errorSshDisabled": "Error disabling SSH security setting.",
       "errorSshEnabled": "Error enabling SSH security setting.",
       "successIpmiDisabled": "Successfully disabled IPMI security setting.",
       "successIpmiEnabled": "Successfully enabled IPMI security setting.",
