@@ -13,6 +13,7 @@
       "enable": "启用",
       "export": "导出",
       "filter": "筛选",
+      "refresh": "刷新",
       "replace": "更新",
       "save": "保存",
       "saveSettings": "保存设置",
@@ -21,7 +22,7 @@
     "ariaLabel": {
       "clearSearch": "清空搜索框",
       "hidePassword": "隐藏密码",
-      "scrollToTop": "Scroll to top",
+      "scrollToTop": "滚动到顶部",
       "showPassword": "以纯文本显示密码。注意:这将在屏幕上显示您的密码.",
       "tooltip": "提示",
       "progressBar": "页面加载进度条"
@@ -111,6 +112,7 @@
     "networkSettings": "@:appPageTitle.networkSettings",
     "overview": "@:appPageTitle.overview",
     "primaryNavigation": "主导航",
+    "powerRestorePolicy": "@:appPageTitle.powerRestorePolicy",
     "rebootBmc": "@:appPageTitle.rebootBmc",
     "securitySettings": "@:appPageTitle.securitySettings",
     "sensors": "@:appPageTitle.sensors",
@@ -137,6 +139,7 @@
     "networkSettings": "网络设置",
     "overview": "概述",
     "pageNotFound": "找不到页面",
+    "powerRestorePolicy": "电源恢复策略",
     "profileSettings": "个人信息设置",
     "rebootBmc": "重启 BMC",
     "securitySettings": "安全设置",
@@ -259,10 +262,7 @@
   },
   "pageFirmware": {
     "backup": "备份:",
-    "backupImage": "备份镜像",
     "bmcStatus": "BMC 状态",
-    "changeAndRebootBmc": "修改镜像并重启BMC",
-    "changeToBackupImage": "切换为备份镜像",
     "current": "当前版本:",
     "firmwareOnBmc": "BMC固件",
     "firmwareOnHost": "主机固件",
@@ -270,18 +270,12 @@
     "hostStatus": "主机状态",
     "makeCurrentVersion": "生成当前版本",
     "pageDescription": "通过本地计算机或TFTP服务上传镜像来刷新固件",
-    "pageDescriptionSingleImage": "通过成本地计算机或TFTP服务上传镜像来刷新固件",
     "running": "运行中",
     "state": "状态",
     "updateCode": "更新固件",
     "alert": {
-      "operationInProgress": "正在进行服务器电源操作。",
-      "serverShutdownRequiredBeforeUpdate": "更新前必须关闭服务器",
-      "serverShutdownRequiredInfo": "关闭将是有序的- OS将关闭之前，服务器关闭。",
-      "shutDownServer": "关闭服务器",
       "updateProcess": "更新过程",
-      "updateProcessInfo": "新镜像上传成功并激活后，BMC或者主机会使用新的镜像并自动重启",
-      "updateProcessInfoSingleImage": "新镜像将被上传并激活。之后，BMC将自动重新启动以从新镜像运行。"
+      "updateProcessInfo": "新镜像上传成功并激活后，BMC或者主机会使用新的镜像并自动重启"
     },
     "form": {
       "imageFile": "镜像文件",
@@ -297,21 +291,11 @@
     },
     "modal": {
       "connectionToBmcWillBeLost": "到BMC的连接将要断开",
-      "serverShutdownMessage": "在服务器重新通电之前，服务器将会关机。你确定要关机吗?",
-      "serverShutdownWillCauseOutage": "服务器关闭将导致关机",
-      "shutDownServer": "关闭服务器",
       "rebootFromBackup": {
         "message1": "在系统能够运行备份镜像%{backup}之前，需要重新启动BMC。重新启动将导致断开连接，可能需要重新登录。",
         "message2": "当前固件映像%{current}将移动到备份。在重新启动期间，服务器无法重新启动。",
         "message3": "您确定要通过备份镜像%{backup}重启BMC？",
         "primaryAction": "从备份镜像重启BMC",
-        "title": "@:pageFirmware.modal.connectionToBmcWillBeLost"
-      },
-      "uploadAndRebootSingleImage": {
-        "message1": "在系统能够运行新镜像前需要重启BMC或者主机。重启会导致BMC断开连接，可能需要重新登录",
-        "message2": "在重新启动期间，服务器无法重新启动。备份映像将被永久删除。",
-        "message3": "您确定要上传新镜像并重启BMC？",
-        "primaryAction": "上传并重启BMC",
         "title": "@:pageFirmware.modal.connectionToBmcWillBeLost"
       },
       "uploadAndRebootBmcOrHost": {
@@ -332,6 +316,44 @@
       "successRebootFromBackup": "从备份镜像成功启动重新启动。",
       "successUploadMessage": "上传成功。在代码更新期间，BMC将不会响应。在进行任何更改之前，等待代码更新通知。",
       "successUploadTitle": "代码更新开始"
+    },
+    "singleFileUpload": {
+      "backupImage": "备份映像",
+      "bmcAndServer": "BMC和服务器:",
+      "fileAddress": "文件地址",
+      "fileSource": "文件源",
+      "runningImage": "运行中镜像",
+      "startUpdate": "开始更新",
+      "switchToRunning": "切换到运行",
+      "updateFirmware": "更新固件",
+      "alert": {
+        "operationInProgress": "正在进行服务器电源操作。",
+        "serverMustBePoweredOffTo": "服务器必须关机到:",
+        "serverMustBePoweredOffToUpdateFirmware": "必须关闭服务器才能更新固件",
+        "switchRunningAndBackupImages": "切换运行和备份映像",
+        "updateFirmware": "更新固件",
+        "viewServerPowerOperations": "查看服务器电源操作"
+      },
+      "modal": {
+        "switchImages": "切换镜像",
+        "switchRunningImage": "交换机运行映像",
+        "switchRunningImageInfo": "运行备份映像需要BMC重新启动。应用程序在此期间可能没有响应。",
+        "switchRunningImageInfo2": "确实要切换到备份映像(%{backup})?",
+        "updateFirmwareInfo": "BMC将在更新过程中重新启动。在更新完成之前，服务器无法开机。",
+        "updateFirmwareInfo2": "正在运行的映像(%{running})将被复制到备份，备份映像(%{backup})将被永久删除。",
+        "updateFirmwareInfo3": "确定要继续更新吗？"
+      },
+      "toast": {
+        "errorSwitchImages": "切换运行和备份映像时出错。",
+        "rebootStarted": "重新启动",
+        "rebootStartedMessage": "已成功从备份映像启动重新启动。",
+        "updateStarted": "更新已启动",
+        "updateStartedMessage": "在进行任何更改之前，请等待固件更新通知。",
+        "verifySwitch": "验证交换机",
+        "verifySwitchMessage": "刷新应用程序以验证所切换的运行和备份映像。",
+        "verifyUpdate": "验证更新",
+        "verifyUpdateMessage": "刷新应用程序以验证固件已成功更新。"
+      }
     }
   },
   "pageHardwareStatus": {
@@ -585,7 +607,12 @@
       "addStaticIpv4Address": "添加静态IP",
       "deleteDns": "删除DNS行",
       "deleteStaticIpv4": "删除IPv4行",
+      "dhcpIpv4AddressRow": "DHCP IPv4 address",
+      "dhcpIpv4SubnetRow": "DHCP IPV4 subnet",
       "ipAddress": "IP地址",
+      "staticDnsRow": "Static DNS address",
+      "staticIpv4AddressRow": "Static IPv4 address",
+      "staticIpv4SubnetRow": "Static IPV4 subnet",
       "subnet": "子网掩码"
     },
     "toast": {
@@ -595,6 +622,20 @@
   },
   "pagePageNotFound": {
     "description": "找不到请求的资源。"
+  },
+  "pagePowerRestorePolicy": {
+    "currentPolicy": "当前策略",
+    "description": "配置电源策略以确定在电源干扰后系统如何启动。",
+    "powerPoliciesLabel": "电源还原策略",
+    "policies" :{
+      "AlwaysOn": "始终开启",
+      "AlwaysOff": "始终关闭",
+      "LastState": "上一个状态"
+    },
+    "toast": {
+      "errorSaveSettings": "保存设置时出错。",
+      "successSaveSettings": "电源还原策略更新成功。"
+    }
   },
   "pageRebootBmc": {
     "lastReboot": "Last BMC reboot",
