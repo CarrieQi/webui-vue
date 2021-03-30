@@ -15,6 +15,7 @@
       "filter": "筛选",
       "refresh": "刷新",
       "replace": "更新",
+      "reset": "重置",
       "save": "保存",
       "saveSettings": "保存设置",
       "selected": "已选择"
@@ -70,8 +71,8 @@
       "fromDate": "起始日期",
       "items": "%{count}个项目",
       "itemsPerPage": "每页项目数",
-      "selectAll": "Select all",
-      "selectItem": "Select item",
+      "selectAll": "选择所有",
+      "selectItem": "选择条目",
       "selectedItems":"%{count}个项目的%{filterCount}",
       "toDate": "截止日期",
       "viewAll": "查看全部"
@@ -102,6 +103,7 @@
     "dateTimeSettings": "@:appPageTitle.dateTimeSettings",
     "dumps": "@:appPageTitle.dumps",
     "eventLogs": "@:appPageTitle.eventLogs",
+    "factoryReset": "@:appPageTitle.factoryReset",
     "firmware": "@:appPageTitle.firmware",
     "hardwareStatus": "@:appPageTitle.hardwareStatus",
     "health": "健康",
@@ -129,6 +131,7 @@
     "dateTimeSettings": "日期时间设置",
     "dumps": "转储",
     "eventLogs": "事件日志",
+    "factoryReset": "恢复出厂设置",
     "firmware": "固件刷新",
     "hardwareStatus": "硬件状态",
     "kvm": "KVM",
@@ -260,6 +263,43 @@
       "successDelete": "删除日志这%{count}个成功。"
     }
   },
+  "pageFactoryReset": {
+    "description": "这些函数不执行任何敏感数据的安全删除。 ",
+    "form": {
+      "resetOptionsLabel": "重置选项",
+      "resetBiosOptionLabel": "仅重置主机设置 ",
+      "resetBiosOptionHelperText": "重置固件设置，包括：平台密钥库、分区NVRAM和分区配置。",
+      "resetToDefaultsOptionLabel": "重置BMC和主机设置",
+      "resetToDefaultsOptionHelperText": "除了主机设置外，此选项还重置BMC设置，包括：所有BMC帐户数据、所有更改的密码、所有策略、LDAP配置、网络地址和一天中的时间。"
+    },
+    "modal": {
+      "resetBiosTitle": "仅重置主机设置",
+      "resetBiosHeader": "是否要重置主机设置？",
+      "resetBiosSubmitText": "重置主机设置",
+      "resetBiosSettingsList": {
+        "item1": "将删除所有手动设置。",
+        "item2": "如果存在备份，可以恢复分区配置和平台密钥库。"
+      },
+      "resetToDefaultsTitle": "重置BMC和主机设置",
+      "resetToDefaultsHeader": "是否同时重置BMC和主机设置？",
+      "resetToDefaultsSubmitText": "重置BMC和主机设置",
+      "resetToDefaultsSettingsList": {
+        "item1": "将删除所有手动设置。",
+        "item2": "如果存在备份，可以恢复分区配置和平台密钥库。",
+        "item3": "将删除所有BMC日志。",
+        "item4": "将断开所有网络接口上当前活动的会话。",
+        "item5": "将恢复BMC默认帐户和密码设置。"
+      },
+      "resetWarningMessage": "在不关闭系统的情况下进行重置可能会导致不可恢复的错误。",
+      "resetWarningCheckLabel": "继续而不关闭系统"
+    },
+    "toast": {
+      "resetBiosSuccess": "恢复主机出厂设置成功。",
+      "resetBiosError": "恢复主机出厂设置失败。",
+      "resetToDefaultsSuccess": "恢复BMC和主机出厂设置成功。",
+      "resetToDefaultsError": "恢复BMC和主机出厂设置失败。"
+    }
+  },
   "pageFirmware": {
     "backup": "备份:",
     "bmcStatus": "BMC 状态",
@@ -359,7 +399,7 @@
   "pageHardwareStatus": {
     "dimmSlot": "DIMM插槽",
     "fans": "风扇",
-    "powerSupplies": "风扇",
+    "powerSupplies": "电源",
     "bmcManager": "BMC管理器",
     "chassis": "机箱",
     "processors": "处理器",
@@ -492,12 +532,8 @@
       "configureComponentsManagedByThisService": "配置此服务管理的组件",
       "configureManagerResources": "配置管理资源",
       "configureUsersAndTheirAccounts": "配置用户及其账户",
-      "ipmiAccessPoint": "IPMI 权限",
       "logInToTheServiceAndReadResources": "登录查询权限",
-      "redfishAccessPoint": "Redfish 权限",
-      "sshAccessPoint": "SSH 权限",
-      "updatePasswordForCurrentUserAccount": "更新当前用户密码",
-      "webUiAccessPoint": "页面访问权限"
+      "updatePasswordForCurrentUserAccount": "更新当前用户密码"
     },
     "toast": {
       "errorBatchDelete": "删除用户%{count}出错。",
@@ -586,16 +622,15 @@
     "serverPowCapSetting": "服务器功率上限设置"
   },
   "pageNetworkSettings": {
+  "dhcp": "DHCP",
+    "ipv4": "IPV4",
+    "ipv4Configuration": "IPV4 设置",
+    "ipv4Helper": "IP地址必须可用才能启用DHCP或静态配置",
     "interface": "接口",
     "pageDescription": "配置BMC和虚拟化管理接口的网络设置",
+    "static": "静态",
     "staticDns": "静态DNS",
-    "staticIpv4": "静态IPv4",
     "system": "系统",
-    "ariaLabel": {
-      "staticDnsRow": "静态DNS地址",
-      "staticIpv4AddressRow": "静态IPv4地址",
-      "staticIpv4SubnetRow": "静态IPV4子网"
-    },
     "form": {
       "defaultGateway": "默认网关",
       "hostname": "主机名",
@@ -606,16 +641,18 @@
       "addDns": "添加DNS服务器",
       "addStaticIpv4Address": "添加静态IP",
       "deleteDns": "删除DNS行",
+      "deleteDHCPIpv4": "Delete IPv4 行",
       "deleteStaticIpv4": "删除IPv4行",
-      "dhcpIpv4AddressRow": "DHCP IPv4 address",
-      "dhcpIpv4SubnetRow": "DHCP IPV4 subnet",
+      "dhcpIpv4AddressRow": "DHCP IPv4 地址",
+      "dhcpIpv4SubnetRow": "DHCP IPV4 子网掩码",
       "ipAddress": "IP地址",
-      "staticDnsRow": "Static DNS address",
-      "staticIpv4AddressRow": "Static IPv4 address",
-      "staticIpv4SubnetRow": "Static IPV4 subnet",
+      "staticDnsRow": "静态 DNS 地址",
+      "staticIpv4AddressRow": "静态 IPv4 地址",
+      "staticIpv4SubnetRow": "静态 IPV4 子网掩码",
       "subnet": "子网掩码"
     },
     "toast": {
+      "errorSaveDhcpSettings": "Error enabling DHCP configuration.",
       "errorSaveNetworkSettings": "保存网络设置时出错。",
       "successSaveNetworkSettings": "已成功保存网络设置。"
     }

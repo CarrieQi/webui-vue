@@ -51,6 +51,11 @@ const AppNavigationMixin = {
           icon: 'iconControl',
           children: [
             {
+              id: 'factory-reset',
+              label: this.$t('appNavigation.factoryReset'),
+              route: '/control/factory-reset',
+            },
+            {
               id: 'kvm',
               label: this.$t('appNavigation.kvm'),
               route: '/control/kvm',
@@ -59,6 +64,11 @@ const AppNavigationMixin = {
               id: 'manage-power-usage',
               label: this.$t('appNavigation.managePowerUsage'),
               route: '/control/manage-power-usage',
+            },
+            {
+              id: 'power-restore-policy',
+              label: this.$t('appNavigation.powerRestorePolicy'),
+              route: '/control/power-restore-policy',
             },
             {
               id: 'reboot-bmc',
