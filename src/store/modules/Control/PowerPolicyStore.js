@@ -31,7 +31,9 @@ const PowerControlStore = {
               (powerState) => {
                 let desc = `${i18n.t(
                   `pagePowerRestorePolicy.policies.${powerState}`
-                )} - ${PowerRestorePolicyTypes.enumDescriptions[powerState]}`;
+                )} - ${i18n.t(
+                  `pagePowerRestorePolicy.policies.desc.${powerState}`
+                )}`;
                 return {
                   state: powerState,
                   desc,

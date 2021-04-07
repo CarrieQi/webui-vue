@@ -301,99 +301,54 @@
     }
   },
   "pageFirmware": {
-    "backup": "备份:",
-    "bmcStatus": "BMC 状态",
-    "current": "当前版本:",
-    "firmwareOnBmc": "BMC固件",
-    "firmwareOnHost": "主机固件",
-    "firmwareOnSystem": "系统固件",
-    "hostStatus": "主机状态",
-    "makeCurrentVersion": "生成当前版本",
-    "pageDescription": "通过本地计算机或TFTP服务上传镜像来刷新固件",
-    "running": "运行中",
-    "state": "状态",
-    "updateCode": "更新固件",
+    "cardActionSwitchToRunning": "运行此镜像",
+    "cardBodyVersion": "版本",
+    "cardTitleBackup": "镜像备份",
+    "cardTitleRunning": "运行中镜像",
+    "sectionTitleBmcCards": "BMC",
+    "sectionTitleBmcCardsCombined": "BMC和服务器",
+    "sectionTitleHostCards": "主机",
+    "sectionTitleUpdateFirmware": "更新固件",
     "alert": {
-      "updateProcess": "更新过程",
-      "updateProcessInfo": "新镜像上传成功并激活后，BMC或者主机会使用新的镜像并自动重启"
+      "operationInProgress": "正在进行服务器电源操作。",
+      "serverMustBePoweredOffTo": "服务器必须关机到：",
+      "serverMustBePoweredOffToUpdateFirmware": "须关闭服务器才能更新固件",
+      "switchRunningAndBackupImages": "切换运行和备份映像",
+      "updateFirmware": "更新固件",
+      "viewServerPowerOperations": "查看服务器电源操作"
     },
     "form": {
-      "imageFile": "镜像文件",
-      "imageFileName": "镜像名称",
-      "onlyTarFilesAccepted": "只能上传.tar为后缀的文件",
-      "tftpServer": "TFTP服务器",
-      "tftpServerAddress": "TFTP服务器地址",
-      "tftpServerAddressHelper": "IP地址或者FQDN",
-      "uploadAndRebootBmc": "上传并重启BMC",
-      "uploadAndRebootBmcOrHost": "上传并重启BMC或主机",
-      "uploadLocation": "上传地点",
-      "workstation": "本地"
+      "updateFirmware": {
+        "fileAddress": "文件地址",
+        "fileSource": "文件源",
+        "imageFile": "镜像文件",
+        "imageFileHelperText": "只能上传.tar为后缀的文件",
+        "startUpdate": "开始刷新",
+        "tftpServer": "TFTP服务器",
+        "workstation": "本地"
+      }
     },
     "modal": {
-      "connectionToBmcWillBeLost": "到BMC的连接将要断开",
-      "rebootFromBackup": {
-        "message1": "在系统能够运行备份镜像%{backup}之前，需要重新启动BMC。重新启动将导致断开连接，可能需要重新登录。",
-        "message2": "当前固件映像%{current}将移动到备份。在重新启动期间，服务器无法重新启动。",
-        "message3": "您确定要通过备份镜像%{backup}重启BMC？",
-        "primaryAction": "从备份镜像重启BMC",
-        "title": "@:pageFirmware.modal.connectionToBmcWillBeLost"
-      },
-      "uploadAndRebootBmcOrHost": {
-        "message1": "在系统可以运行新的固件映像之前，需要进行BMC或主机重新引导。重新启动将导致断开连接，可能需要再次登录。",
-        "message2": "备份镜像将被永久删除。",
-        "message3": "您确定要上传新的固件映像并重新启动BMC或主机吗?",
-        "primaryAction": "上传并重启BMC或主机",
-        "title": "到BMC或主机的连接将要断开"
-      }
+      "switchImages": "切换镜像",
+      "switchRunningImage": "交换机运行镜像",
+      "switchRunningImageInfo": "运行备份镜像需要BMC重新启动。应用程序在此期间可能没有响应。",
+      "switchRunningImageInfo2": "确实要切换到备份镜像(%{backup})?",
+      "updateFirmwareInfo": "BMC将在更新过程中重新启动。在更新完成之前，服务器无法开机。",
+      "updateFirmwareInfo2": "正在运行的镜像(%{running})将被复制到备份，备份镜像(%{backup})将被永久删除。",
+      "updateFirmwareInfo3": "确定要继续更新吗？",
+      "updateFirmwareInfoDefault": "将上载并激活新镜像后，BMC或主机将自动重新启动以从新镜像运行。"
     },
     "toast": {
-      "errorRebootFromBackup": "从备份镜像重新启动时出错。",
-      "errorUploadAndReboot": "上传镜像时出错。",
-      "infoRefreshApplicationMessage": "刷新应用程序以确认代码更新已经完成并成功。",
-      "infoRefreshApplicationTitle": "验证代码更新",
-      "infoUploadStartTimeMessage": "开始时间：%{startTime}",
-      "infoUploadStartTimeTitle": "上传开始",
-      "successRebootFromBackup": "从备份镜像成功启动重新启动。",
-      "successUploadMessage": "上传成功。在代码更新期间，BMC将不会响应。在进行任何更改之前，等待代码更新通知。",
-      "successUploadTitle": "代码更新开始"
-    },
-    "singleFileUpload": {
-      "backupImage": "备份映像",
-      "bmcAndServer": "BMC和服务器:",
-      "fileAddress": "文件地址",
-      "fileSource": "文件源",
-      "runningImage": "运行中镜像",
-      "startUpdate": "开始更新",
-      "switchToRunning": "切换到运行",
-      "updateFirmware": "更新固件",
-      "alert": {
-        "operationInProgress": "正在进行服务器电源操作。",
-        "serverMustBePoweredOffTo": "服务器必须关机到:",
-        "serverMustBePoweredOffToUpdateFirmware": "必须关闭服务器才能更新固件",
-        "switchRunningAndBackupImages": "切换运行和备份映像",
-        "updateFirmware": "更新固件",
-        "viewServerPowerOperations": "查看服务器电源操作"
-      },
-      "modal": {
-        "switchImages": "切换镜像",
-        "switchRunningImage": "交换机运行映像",
-        "switchRunningImageInfo": "运行备份映像需要BMC重新启动。应用程序在此期间可能没有响应。",
-        "switchRunningImageInfo2": "确实要切换到备份映像(%{backup})?",
-        "updateFirmwareInfo": "BMC将在更新过程中重新启动。在更新完成之前，服务器无法开机。",
-        "updateFirmwareInfo2": "正在运行的映像(%{running})将被复制到备份，备份映像(%{backup})将被永久删除。",
-        "updateFirmwareInfo3": "确定要继续更新吗？"
-      },
-      "toast": {
-        "errorSwitchImages": "切换运行和备份映像时出错。",
-        "rebootStarted": "重新启动",
-        "rebootStartedMessage": "已成功从备份映像启动重新启动。",
-        "updateStarted": "更新已启动",
-        "updateStartedMessage": "在进行任何更改之前，请等待固件更新通知。",
-        "verifySwitch": "验证交换机",
-        "verifySwitchMessage": "刷新应用程序以验证所切换的运行和备份映像。",
-        "verifyUpdate": "验证更新",
-        "verifyUpdateMessage": "刷新应用程序以验证固件已成功更新。"
-      }
+      "errorSwitchImages": "切换运行和备份镜像时出错。",
+      "errorUpdateFirmware": "启动固件更新时出错。",
+      "rebootStarted": "重新启动",
+      "rebootStartedMessage": "已成功从备份镜像启动重新启动。",
+      "updateStarted": "更新已启动",
+      "updateStartedMessage": "在进行任何更改之前，请等待固件更新通知。",
+      "verifySwitch": "验证交换机",
+      "verifySwitchMessage": "刷新应用程序以验证所切换的运行和备份镜像。",
+      "verifyUpdate": "验证更新",
+      "verifyUpdateMessage": "刷新应用程序以验证固件已成功更新。"
     }
   },
   "pageHardwareStatus": {
@@ -667,7 +622,12 @@
     "policies" :{
       "AlwaysOn": "始终开启",
       "AlwaysOff": "始终关闭",
-      "LastState": "上一个状态"
+      "LastState": "上一个状态",
+      "desc": {
+        "AlwaysOn": "通电时，系统始终保持关机状态。",
+        "AlwaysOff": "通电时系统始终通电。",
+        "LastState": "通电时，系统将返回到上次的通电或断电状态。"
+      }
     },
     "toast": {
       "errorSaveSettings": "保存设置时出错。",
