@@ -78,8 +78,8 @@ export default {
   data() {
     return {
       userInfo: {
-        username: 'root',
-        password: '0penBmc',
+        username: '',
+        password: '',
       },
       disableSubmitButton: false,
       languages: [
