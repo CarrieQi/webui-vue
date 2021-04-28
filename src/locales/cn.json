@@ -635,7 +635,7 @@
     }
   },
   "pageRebootBmc": {
-    "lastReboot": "Last BMC reboot",
+    "lastReboot": "上次重启时间",
     "rebootBmc": "重启BMC",
     "rebootInformation": "重新启动BMC时，web浏览器将与BMC失去联系几分钟。当BMC重新联机时，您可能需要再次登录。",
     "modal": {
