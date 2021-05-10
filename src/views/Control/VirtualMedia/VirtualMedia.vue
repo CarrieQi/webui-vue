@@ -170,7 +170,7 @@ export default {
       data.Image = connectionData.serverUri;
       data.UserName = connectionData.username;
       data.Password = connectionData.password;
-      data.WriteProtected = connectionData.isRW;
+      data.WriteProtected = !connectionData.isRW;
       this.startLoader();
       this.$store
         .dispatch('virtualMedia/mountImage', {
@@ -179,7 +179,7 @@ export default {
         })
         .then(() => {
           this.successToast(
-            this.$t('pageVirtualMedia.toast.serverClosedSuccessfully')
+            this.$t('pageVirtualMedia.toast.serverConnectionEstablished')
           );
           connectionData.isActive = true;
         })
