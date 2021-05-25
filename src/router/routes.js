@@ -28,7 +28,6 @@ import ServerLed from '@/views/Control/ServerLed';
 import ServerPowerOperations from '@/views/Control/ServerPowerOperations';
 import SslCertificates from '@/views/AccessControl/SslCertificates';
 import VirtualMedia from '@/views/Control/VirtualMedia';
-import i18n from '@/i18n';
 
 const routes = [
   {
@@ -40,7 +39,7 @@ const routes = [
         name: 'login',
         component: Login,
         meta: {
-          title: i18n.t('appPageTitle.login'),
+          title: 'appPageTitle.login',
         },
       },
       {
@@ -48,7 +47,7 @@ const routes = [
         name: 'change-password',
         component: ChangePassword,
         meta: {
-          title: i18n.t('appPageTitle.changePassword'),
+          title: 'appPageTitle.changePassword',
           requiresAuth: true,
         },
       },
@@ -66,7 +65,7 @@ const routes = [
         name: 'serial-over-lan-console',
         component: SerialOverLanConsole,
         meta: {
-          title: i18n.t('appPageTitle.serialOverLan'),
+          title: 'appPageTitle.serialOverLan',
         },
       },
       {
@@ -74,7 +73,7 @@ const routes = [
         name: 'kvm-console',
         component: KvmConsole,
         meta: {
-          title: i18n.t('appPageTitle.kvm'),
+          title: 'appPageTitle.kvm',
         },
       },
     ],
@@ -91,7 +90,7 @@ const routes = [
         name: 'overview',
         component: Overview,
         meta: {
-          title: i18n.t('appPageTitle.overview'),
+          title: 'appPageTitle.overview',
         },
       },
       {
@@ -99,7 +98,7 @@ const routes = [
         name: 'profile-settings',
         component: ProfileSettings,
         meta: {
-          title: i18n.t('appPageTitle.profileSettings'),
+          title: 'appPageTitle.profileSettings',
         },
       },
       {
@@ -107,7 +106,7 @@ const routes = [
         name: 'event-logs',
         component: EventLogs,
         meta: {
-          title: i18n.t('appPageTitle.eventLogs'),
+          title: 'appPageTitle.eventLogs',
         },
       },
       {
@@ -115,7 +114,7 @@ const routes = [
         name: 'hardware-status',
         component: HardwareStatus,
         meta: {
-          title: i18n.t('appPageTitle.hardwareStatus'),
+          title: 'appPageTitle.hardwareStatus',
         },
       },
       {
@@ -123,7 +122,7 @@ const routes = [
         name: 'sensors',
         component: Sensors,
         meta: {
-          title: i18n.t('appPageTitle.sensors'),
+          title: 'appPageTitle.sensors',
         },
       },
       {
@@ -131,7 +130,7 @@ const routes = [
         name: 'client-sessions',
         component: ClientSessions,
         meta: {
-          title: i18n.t('appPageTitle.clientSessions'),
+          title: 'appPageTitle.clientSessions',
         },
       },
       {
@@ -139,7 +138,7 @@ const routes = [
         name: 'ldap',
         component: Ldap,
         meta: {
-          title: i18n.t('appPageTitle.ldap'),
+          title: 'appPageTitle.ldap',
         },
       },
       {
@@ -147,7 +146,7 @@ const routes = [
         name: 'local-users',
         component: LocalUserManagement,
         meta: {
-          title: i18n.t('appPageTitle.localUserManagement'),
+          title: 'appPageTitle.localUserManagement',
         },
       },
       {
@@ -155,7 +154,7 @@ const routes = [
         name: 'ssl-certificates',
         component: SslCertificates,
         meta: {
-          title: i18n.t('appPageTitle.sslCertificates'),
+          title: 'appPageTitle.sslCertificates',
         },
       },
       {
@@ -163,7 +162,7 @@ const routes = [
         name: 'date-time-settings',
         component: DateTimeSettings,
         meta: {
-          title: i18n.t('appPageTitle.dateTimeSettings'),
+          title: 'appPageTitle.dateTimeSettings',
         },
       },
       {
@@ -171,7 +170,7 @@ const routes = [
         name: 'firmware',
         component: Firmware,
         meta: {
-          title: i18n.t('appPageTitle.firmware'),
+          title: 'appPageTitle.firmware',
         },
       },
       {
@@ -179,7 +178,7 @@ const routes = [
         name: 'security-settings',
         component: SecuritySettings,
         meta: {
-          title: i18n.t('appPageTitle.securitySettings'),
+          title: 'appPageTitle.securitySettings',
         },
       },
       {
@@ -187,7 +186,7 @@ const routes = [
         name: 'factory-reset',
         component: FactoryReset,
         meta: {
-          title: i18n.t('appPageTitle.factoryReset'),
+          title: 'appPageTitle.factoryReset',
         },
       },
       {
@@ -195,7 +194,7 @@ const routes = [
         name: 'kvm',
         component: Kvm,
         meta: {
-          title: i18n.t('appPageTitle.kvm'),
+          title: 'appPageTitle.kvm',
         },
       },
       {
@@ -203,7 +202,7 @@ const routes = [
         name: 'manage-power-usage',
         component: ManagePowerUsage,
         meta: {
-          title: i18n.t('appPageTitle.managePowerUsage'),
+          title: 'appPageTitle.managePowerUsage',
         },
       },
       {
@@ -211,7 +210,7 @@ const routes = [
         name: 'power-restore-policy',
         component: PowerRestorePolicy,
         meta: {
-          title: i18n.t('appPageTitle.powerRestorePolicy'),
+          title: 'appPageTitle.powerRestorePolicy',
         },
       },
       {
@@ -219,7 +218,7 @@ const routes = [
         name: 'network-settings',
         component: NetworkSettings,
         meta: {
-          title: i18n.t('appPageTitle.networkSettings'),
+          title: 'appPageTitle.networkSettings',
         },
       },
       {
@@ -227,7 +226,7 @@ const routes = [
         name: 'reboot-bmc',
         component: RebootBmc,
         meta: {
-          title: i18n.t('appPageTitle.rebootBmc'),
+          title: 'appPageTitle.rebootBmc',
         },
       },
       {
@@ -235,7 +234,7 @@ const routes = [
         name: 'server-led',
         component: ServerLed,
         meta: {
-          title: i18n.t('appPageTitle.serverLed'),
+          title: 'appPageTitle.serverLed',
         },
       },
       {
@@ -243,7 +242,7 @@ const routes = [
         name: 'serial-over-lan',
         component: SerialOverLan,
         meta: {
-          title: i18n.t('appPageTitle.serialOverLan'),
+          title: 'appPageTitle.serialOverLan',
         },
       },
       {
@@ -251,7 +250,7 @@ const routes = [
         name: 'server-power-operations',
         component: ServerPowerOperations,
         meta: {
-          title: i18n.t('appPageTitle.serverPowerOperations'),
+          title: 'appPageTitle.serverPowerOperations',
         },
       },
       {
@@ -259,7 +258,7 @@ const routes = [
         name: 'virtual-media',
         component: VirtualMedia,
         meta: {
-          title: i18n.t('appPageTitle.virtualMedia'),
+          title: 'appPageTitle.virtualMedia',
         },
       },
       {
@@ -267,7 +266,7 @@ const routes = [
         name: 'page-not-found',
         component: PageNotFound,
         meta: {
-          title: i18n.t('appPageTitle.pageNotFound'),
+          title: 'appPageTitle.pageNotFound',
         },
       },
     ],

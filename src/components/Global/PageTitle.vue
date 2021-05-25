@@ -1,6 +1,6 @@
 <template>
   <div class="page-title">
-    <h1>{{ title }}</h1>
+    <h1>{{ $t(title) }}</h1>
     <p v-if="description">{{ description }}</p>
   </div>
 </template>
