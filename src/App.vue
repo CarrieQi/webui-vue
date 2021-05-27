@@ -15,18 +15,18 @@ export default {
   watch: {
     assetTag: function (tag) {
       if (tag) {
-        document.title = `${tag} - ${this.$route.meta.title}`;
+        document.title = `${tag} - ${this.$t(this.$route.meta.title)}`;
       }
     },
     $route: function (to) {
-      document.title = to.meta.title || 'Page is missing title';
+      document.title = this.$t(to.meta.title) || 'Page is missing title';
       if (this.assetTag) {
-        document.title = `${this.assetTag} - ${to.meta.title}`;
+        document.title = `${this.assetTag} - ${this.$t(to.meta.title)}`;
       }
     },
   },
   created() {
-    document.title = this.$route.meta.title || 'Page is missing title';
+    document.title = this.$t(this.$route.meta.title) || 'Page is missing title';
   },
 };
 </script>
