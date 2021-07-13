@@ -60,14 +60,14 @@ export default {
   data() {
     return {
       form: {
-        bootOption: this.$store.getters['hostBootSettings/bootSource'],
-        oneTimeBoot: this.$store.getters['hostBootSettings/overrideEnabled'],
-        tpmPolicyOn: this.$store.getters['hostBootSettings/tpmEnabled'],
+        bootOption: this.$store.getters['serverBootSettings/bootSource'],
+        oneTimeBoot: this.$store.getters['serverBootSettings/overrideEnabled'],
+        tpmPolicyOn: this.$store.getters['serverBootSettings/tpmEnabled'],
       },
     };
   },
   computed: {
-    ...mapState('hostBootSettings', [
+    ...mapState('serverBootSettings', [
       'bootSourceOptions',
       'bootSource',
       'overrideEnabled',
@@ -95,12 +95,11 @@ export default {
     },
   },
   created() {
-    Promise.all([
-      this.$store.dispatch('hostBootSettings/getBootSettings'),
-      this.$store.dispatch('hostBootSettings/getTpmPolicy'),
-    ]).finally(() =>
-      this.$root.$emit('server-power-operations-boot-settings-complete')
-    );
+    this.$store
+      .dispatch('serverBootSettings/getTpmPolicy')
+      .finally(() =>
+        this.$root.$emit('server-power-operations-boot-settings-complete')
+      );
   },
   methods: {
     handleSubmit() {
@@ -123,7 +122,7 @@ export default {
       settings = { bootSource, overrideEnabled, tpmEnabled };
 
       this.$store
-        .dispatch('hostBootSettings/saveSettings', settings)
+        .dispatch('serverBootSettings/saveSettings', settings)
         .then((message) => this.successToast(message))
         .catch(({ message }) => this.errorToast(message))
         .finally(() => {
